@@ -1,0 +1,324 @@
+[
+    {
+        "question": "Apakah Kamu tahu berapa budget laptop kamu?",
+        "askIf": "",
+        "isMultiple": false,
+        "questionLabel": "priceRange",
+        "options": [
+            "0 - 8 Juta",
+            "8 - 15 Juta",
+            "15 - 22 Juta",
+            "22++ Juta",
+            "Belum Tahu"
+        ],
+        "tags":[
+            "0-8",
+            "8-15",
+            "15-22",
+            "22-99",
+            "budgetUnknown"
+        ]
+    },
+    {
+        "question": "Pilih tipe budget yang kamu inginkan",
+        "askIf": "budgetUnknown",
+        "isMultiple": false,
+        "questionLabel": "pricePref",
+        "options": [
+            "Pilihkan aku laptop dengan spesifikasi yang budget friendly",
+            "Pilihkan aku laptop dengan spesifikasi yang recommended",
+            "Pilihkan aku laptop dengan spesifikasi yang terbaik",
+            "Aku tidak ada preferensi untuk sekarang"
+        ],
+        "tags":[
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "MEDIUM"
+        ]
+    },
+    {
+        "question": "Aktivitas apa saja yang biasa kamu lakukan dengan laptop kamu? (Pilih multiple)",
+        "askIf": "",
+        "isMultiple": true,
+        "questionLabel": "activities",
+        "options": [
+            "Video Conference",
+            "Browsing Internet",
+            "Nonton Film",
+            "Microsoft Office",
+            "Image Editing or 2D Graphics Design",
+            "Programming",
+            "Gaming",
+            "Streaming to public (Twitch, Youtube Live, dll)",
+            "Video Editing",
+            "3D Graphics Design"
+        ],
+        "tags":[
+            "videoConference",
+            "surfInternet",
+            "watchFilm",
+            "microsoftOffice",
+            "imageGraphics",
+            "programming",
+            "gaming",
+            "streaming",
+            "videoEdit",
+            "3dGraphics"
+        ]
+    },
+    {
+        "question": "Bagaimanakah cara yang biasa kamu lakukan untuk menonton film? (Pilih multiple)",
+        "askIf": "watchFilm",
+        "isMultiple": true,
+        "questionLabel": "filmMethod",
+        "options": [
+            "Lewat Internet (Youtube, Netflix, dll)",
+            "Lewat file2 offline"
+        ],
+        "tags":[
+            "filmOnline",
+            "filmOffline"
+        ]
+    },
+    {
+        "question": "Apakah kamu menyimpan film2mu di hard disk external?",
+        "askIf": "filmOffline",
+        "isMultiple": false,
+        "questionLabel": "filmHd",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "tags":[
+            "external",
+            "internal"
+        ]
+    },
+    {
+        "question": "Software apa saja yang kamu pakai untuk image editing / graphic design? (Pilih multiple)",
+        "askIf": "imageGraphics",
+        "isMultiple": true,
+        "questionLabel": "imageGraphicsSoftware",
+        "options": [
+            "Adobe Photoshop",
+            "Adobe Illustrator",
+            "Adobe Lightroom",
+            "CorelDraw",
+            "Corel Paintshop Pro"
+        ],
+        "tags":[
+            "Photoshop",
+            "Illustrator",
+            "Lightroom",
+            "Coreldraw",
+            "Paintshop"
+        ]
+    },
+    {
+        "question": "Apakah foto2 yang biasa kamu edit adalah foto2 high definition (HD)?",
+        "askIf": "imageGraphics",
+        "isMultiple": false,
+        "questionLabel": "imageGraphicsImageQuality",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Saya tidak melakukan image editing"
+        ],
+        "tags":[
+            "picHigh",
+            "picMed",
+            "picMed"
+        ]
+    },
+    {
+        "question": "Apakah kamu menyimpan foto2 itu di hard disk external?",
+        "askIf": "picHigh",
+        "isMultiple": false,
+        "questionLabel": "imageGraphicsImageHD",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Saya tidak melakukan image editing"
+        ],
+        "tags":[
+            "external",
+            "internal",
+            "internal"
+        ]
+    },
+    {
+        "question": "Pilihlah game2 yang biasa kamu mainkan (Pilih multiple)",
+        "askIf": "gaming",
+        "isMultiple": true,
+        "questionLabel": "gamingSoftware",
+        "options": [
+            "Dota 2",
+            "League Of Legends",
+            "Rising Force Online",
+            "Valorant",
+            "Counter Strike: Global Offensive",
+            "Overwatch",
+            "Apex Legends",
+            "Fortnite",
+            "PUBG",
+            "Rainbow Six Siege"
+        ],
+        "tags":[
+            "dota2",
+            "leagueOfLegends",
+            "risingForceOnline",
+            "valorant",
+            "counterStrikeGo",
+            "overwatch",
+            "apexLegends",
+            "fortnite",
+            "pubg",
+            "rainbowSix"
+        ]
+    },
+    {
+        "question": "Software apa saja yang akan kamu pakai untuk video editing ? (Pilih multiple)",
+        "askIf": "videoEdit",
+        "isMultiple": true,
+        "questionLabel": "videoEditingSoftware",
+        "options": [
+            "Adobe Premiere",
+            "Final Cut Pro X",
+            "Filmora",
+            "iMovie",
+            "Windows Movie Maker",
+            "Kinemaster",
+            "Lightworks"
+        ],
+        "tags":[
+            "premiere",
+            "finalCutProX",
+            "filmora",
+            "iMovie",
+            "movieMaker",
+            "kinemaster",
+            "lightworks"
+        ]
+    },
+    {
+        "question": "Filmora atau Final Cut Pro X hanya bisa digunakan oleh laptop dari Apple (Mac). Apakah kamu ingin mencari laptop Mac atau Windows? (Pilih multiple)",
+        "askIf": "finalCut",
+        "isMultiple": true,
+        "questionLabel": "operatingSystem",
+        "options": [
+            "MacBook",
+            "Windows"
+        ],
+        "tags":[
+            "mac",
+            "windows"
+        ]
+    },
+    {
+        "question": "Apakah kamu menyimpan video2 yang kamu edit di hard disk external?",
+        "askIf": "videoEdit",
+        "isMultiple": false,
+        "questionLabel": "videoEditingHd",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "tags":[
+            "external",
+            "internal"
+        ]
+    },
+    {
+        "question": "Software apa saja yang akan kamu pakai untuk 3D Graphics? (Pilih multiple)",
+        "askIf": "3dGraphics",
+        "isMultiple": true,
+        "questionLabel": "3dGraphicsSoftware",
+        "options": [
+            "Blender",
+            "Maya",
+            "3D Max",
+            "AutoCAD"
+        ],
+        "tags":[
+            "blender",
+            "maya",
+            "3dMax",
+            "autoCad"
+        ]
+    },
+    {
+        "question": "Pilih ukuran laptop yang kamu inginkan",
+        "askIf": "",
+        "isMultiple": false,
+        "questionLabel": "size",
+        "options": [
+            "13-inch -- Portable & Kecil. Cocok untuk berpergian",
+            "15-inch -- Paling populer. Balance antara ukuran dan berat laptop",
+            "17-inch -- Ukuran terbesar untuk hasil yang maksimal"
+        ],
+        "tags":[
+            "13Size",
+            "15Size",
+            "17Size"
+        ]
+    },
+    {
+        "question": "Apakah kamu sering memakai laptopmu saat traveling?",
+        "askIf": "",
+        "isMultiple": false,
+        "questionLabel": "weight",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "tags":[
+            "light",
+            "medium" 
+        ]
+    },
+    {
+        "question": "Apakah kamu sering menggunakan laptopmu diluar rumah? (Cafe, Kantor, dll)",
+        "askIf": "",
+        "isMultiple": false,
+        "questionLabel": "weight",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "tags":[
+            "light",
+            "medium" 
+        ]
+    },
+    {
+        "question": "Pilih brand2 yang kamu inginkan",
+        "askIf": "",
+        "isMultiple": true,
+        "questionLabel": "brand",
+        "options": [
+            "Dell",
+            "Asus",
+            "Acer",
+            "HP",
+            "Lenovo",
+            "MSI",
+            "Razer",
+            "Apple",
+            "Microsoft",
+            "Tidak Ada Preference"
+        ],
+        "tags":[
+            "Dell",
+            "Asus",
+            "Acer",
+            "HP",
+            "Lenovo",
+            "MSI",
+            "Razer",
+            "Apple",
+            "Microsoft",
+            "noPref"
+        ]
+    }
+]

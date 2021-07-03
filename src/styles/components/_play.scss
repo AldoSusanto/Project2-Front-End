@@ -1,0 +1,92 @@
+.questions{
+    background-color: $off-white;
+    border-left: 5px solid $blue;
+    width: 80%;
+    margin: $lg auto 0 auto;
+    padding: $sm $md;
+
+    h5{
+        font-size: 2.3rem;
+        margin-top: $sm;
+        margin-bottom: $md;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .options-container{
+        display: inline-block;
+        width: 50%;
+    }
+
+    .option{
+        background-color: $blue;
+        border-radius: $button-radius;
+        margin: $md auto $sm auto;
+        color: $off-white;
+        cursor: pointer;
+        padding: $normal;
+        transition: 0.3s linear all;
+        text-align: center;
+        width: 90%;
+    }
+
+    .option:hover{
+        background-color: darken($blue, 15%);
+    }
+
+    .option-multiple{
+        background-color: $blue;
+        margin: $md auto $sm auto;
+        color: $off-white;
+        cursor: pointer;
+        padding: $normal;
+        transition: 0.3s linear all;
+        text-align: center;
+        width: 90%;
+    }
+
+    .option-multiple:hover{
+        background-color: darken($blue, 15%);
+    }
+
+    .selected{
+        background-color: red !important;
+    }
+}
+
+.button-container{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto $sm auto;
+    padding: $md;
+    width: 80%;
+
+    button {
+        border: none;
+        color: $off-white;
+        cursor: pointer;
+        font-family: $quicksand;
+        margin-right: $md;
+        padding: $xs $sm;
+    }
+
+    button:first-child{
+        background-color: darken($blue, 10%);
+        box-shadow: $off-black;
+        transition: 0.2s linear all;
+    }
+
+    button:first-child:hover{
+        background-color:darken($blue, 20%);
+    }
+
+    button:nth-child(2){
+        background-color: $green;
+        box-shadow: $off-black;
+        transition: 0.2s linear all;
+    }
+
+    button:nth-child(2):hover{
+        background-color: darken($green, 20%);
+    }
+}
