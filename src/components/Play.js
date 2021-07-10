@@ -82,13 +82,12 @@ class Play extends Component {
                         <button
                             id="next-button"
                             onClick={this.buttonClick}
-                            className= {classNames('', {'disable': !currentQuestion.isMultiple})}>
+                            className= {classNames('', {'disable': false})}>
                             Next
                         </button>
                         <span className= {classNames('', {'disable-span': !this.state.isLastQuestion})}>
                             <p>Hore !! Ini pertanyaan terakhir untuk kamu</p>
                         </span>
-                        
                     </div>
                 </div>
             </Fragment>
@@ -131,7 +130,7 @@ class Play extends Component {
         var index = this.state.currentQuestionIndex;
 
         switch(event.target.id){
-            case "prev-button":
+            case "prev-button": // Deprecated
                 if(index > 0){
                     this.setState({
                         currentQuestion :jsonQuestions[index - 1],
@@ -141,16 +140,20 @@ class Play extends Component {
                 this.disableButtonIfNeeded(index-1)
                 break;
             case "next-button":
+                //1) Gather the choices that user has selected
                 var tagArray = this.state.collectedTags.concat(this.state.currentSelectedTags); 
                 var nextIndex = this.determineNextIndex(tagArray, jsonQuestions, index);
 
                 var currentTagList = this.state.currentSelectedTags;
                 var questionLabel = this.state.currentQuestion.questionLabel;
-                for(const [index, value] of currentTagList.entries()){
+                
+                //2) For each of the choices, map them to the correct result
+                for(const [_, value] of currentTagList.entries()){
                     console.log("value " + value );
                     this.mapAnswerToResult(questionLabel, value);
                 }
 
+                //3) Move on to the next question and refresh the "currentSelectedTags" variable
                 if(index < jsonQuestions.length-1){
                     this.setState({
                         currentQuestion :jsonQuestions[nextIndex],
@@ -159,15 +162,18 @@ class Play extends Component {
                         currentSelectedTags: []
                     })
                 }else{
-                    alert("We are done !")
+                    // 4) If we reached the end of questions list, we show the result page
                     console.log(JSON.stringify(this.state.result));
-                    this.props.history.push('/result');
+                    this.props.history.push({
+                        pathname: '/result',
+                        state: this.state.result
+                    });
                 }
-                console.log("collected Tags: " + tagArray);
-                this.disableButtonIfNeeded(index+1)
+                console.log("CollectedTags: " + JSON.stringify(tagArray));
+                this.disableButtonIfNeeded(index+1);
                 break;
             default:
-                console.log("A button is clicked, but the ID is unidentified " + event.target.id)
+                console.error("A button is clicked, but the ID is unidentified " + event.target.id);
                 break;
         }
     }
@@ -181,16 +187,9 @@ class Play extends Component {
             let currQuestion = jsonQuestions[i];
             let askIfExist = currQuestion.askIf;
 
-            if(!askIfExist){ // If the askIf Tag is empty, we just return the question
-                console.log("AskIf Indicator: " + askIfExist);
+            if(!askIfExist || tagArray.includes(askIfExist)){ // If the askIf Tag is empty, we just return the question
                 return i;
             } 
-
-            if(tagArray.includes(askIfExist)){
-                console.log("AskIf Indicator: " + askIfExist);
-                return i;
-            }
-
         }
     }
 
@@ -204,18 +203,22 @@ class Play extends Component {
                 if( i + 1 < questions.length ){
                     let q1 = i;
                     let q2 = i+1;
+                    
+                    let q1Selected = this.state.currentSelectedChoices.includes(currentQuestion.questionLabel + q1);
+                    let q2Selected = this.state.currentSelectedChoices.includes(currentQuestion.questionLabel + q2);
     
                     choices.push(
                         <div key={i} className="options-container">
-                            <p key={questions[i]} onClick={(e) => this.userAnswered(e, q1)} className="option">{questions[i]}</p>
-                            <p key={questions[i+1]} onClick={(e) => this.userAnswered(e, q2)} className="option">{questions[i+1]}</p>
+                            <p key={questions[i]} onClick={(e) => this.userAnswered(e, q1)} className={q1Selected ? "option selected" : "option"}>{questions[i]}</p>
+                            <p key={questions[i+1]} onClick={(e) => this.userAnswered(e, q2)} className={q2Selected ? "option selected" : "option"}>{questions[i+1]}</p>
                         </div>
                     )
                 }else{
                     let q1 = i;
+                    let q1Selected = this.state.currentSelectedChoices.includes(currentQuestion.questionLabel + q1);
                     choices.push(
                         <div key= {i} className="options-container">
-                            <p key={questions[i]} onClick={(e) => this.userAnswered(e, q1)} className="option">{questions[i]}</p>
+                            <p key={questions[i]} onClick={(e) => this.userAnswered(e, q1)} className={q1Selected ? "option selected" : "option"}>{questions[i]}</p>
                         </div>
                     )
                 }
@@ -247,45 +250,26 @@ class Play extends Component {
                 }
             }
         }
-
         return choices;
     }
 
     userAnswered(event, tagIndex) {
-        var index = this.state.currentQuestionIndex;
         var selectedTag = this.state.currentQuestion.tags[tagIndex];
-        var tagArray = this.state.collectedTags.concat(selectedTag);
-
-        var nextIndex = this.determineNextIndex(tagArray, jsonQuestions, index);
-
-        var questionLabel = this.state.currentQuestion.questionLabel;
-
-        console.log("Question Label: " + questionLabel);
-        this.mapAnswerToResult(questionLabel, selectedTag);
-
-        if(nextIndex < jsonQuestions.length){
-            this.setState({
-                currentQuestion :jsonQuestions[nextIndex],
-                currentQuestionIndex: nextIndex,
-                collectedTags: tagArray
-            })
-        }else{
-            alert("We are done !")
-            console.log(JSON.stringify(this.state.result));
-            this.props.history.push('/result');
-        }
-
-        console.log("collected Tags: " + tagArray);
-        this.disableButtonIfNeeded(nextIndex)
+        var indexAndQuestionLabel = this.state.currentQuestion.questionLabel + tagIndex; 
+        this.setState({
+            currentSelectedTags: [selectedTag],
+            currentSelectedChoices: [indexAndQuestionLabel]
+        })
     }
 
     userAnsweredMultiple(event, tagIndex) {
-        // Update the tags array
+        // 1) Grab the index of the multiple choice that user just clicked, then find the tag for it
         var selectedTag = this.state.currentQuestion.tags[tagIndex];
         var tagArray = this.state.currentSelectedTags;
 
+        //2) We check whether the tag selected already exists in our currentSelectedTags array or not. (-1 if not found)
         const tagExists = (element) => element === selectedTag;
-        var findTagIndex = tagArray.findIndex(tagExists) // We check whether the tag selected already exists in our array or not. (-1 if not found)
+        var findTagIndex = tagArray.findIndex(tagExists) 
 
         if(findTagIndex >= 0 ){
             console.log(selectedTag + " has already been selected, removing element from index: " + findTagIndex);
@@ -293,12 +277,14 @@ class Play extends Component {
         }else{
             tagArray = tagArray.concat(selectedTag);
         }
-        
-        console.log("Array tags: " + tagArray);
 
-        // Update the choices array
+        // After we updated the currentSelectedTAGS array, now we update the currentSelectedCHOICES
+        // CurrentSelectedChoices contains elements like: activities0, activities1
+        // CurrentSelectedTags contains elements like: videoConference, watchFilm
+        // The consistent naming in choices makes it easier for us to identify the selected choices.
+        // Do a console.log on the choices and tags array in render func if you don't understand
         var choicesArray= this.state.currentSelectedChoices;
-        var indexAndQuestionLabel = this.state.currentQuestion.questionLabel + tagIndex;
+        var indexAndQuestionLabel = this.state.currentQuestion.questionLabel + tagIndex; 
         const choiceExists = (element) => element === indexAndQuestionLabel;
         var findChoicesIndex = choicesArray.findIndex(choiceExists) // We check whether the choice selected already exists in our array or not. (-1 if not found)
         
@@ -370,7 +356,11 @@ class Play extends Component {
             currResult.size = selectedTag;
         }
 
-        if(questionLabel === "weight"){
+        if(questionLabel === "weightOne"){
+            currResult.weight = currResult.weight.concat(selectedTag);
+        }
+
+        if(questionLabel === "weightTwo"){
             currResult.weight = currResult.weight.concat(selectedTag);
         }
 
@@ -381,9 +371,7 @@ class Play extends Component {
         this.setState({
             result: currResult
         })
-        
     }
-
 }
 
 

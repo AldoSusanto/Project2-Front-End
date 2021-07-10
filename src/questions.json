@@ -267,7 +267,7 @@
         "question": "Apakah kamu sering memakai laptopmu saat traveling?",
         "askIf": "",
         "isMultiple": false,
-        "questionLabel": "weight",
+        "questionLabel": "weightOne",
         "options": [
             "Ya",
             "Tidak"
@@ -281,7 +281,7 @@
         "question": "Apakah kamu sering menggunakan laptopmu diluar rumah? (Cafe, Kantor, dll)",
         "askIf": "",
         "isMultiple": false,
-        "questionLabel": "weight",
+        "questionLabel": "weightTwo",
         "options": [
             "Ya",
             "Tidak"

@@ -1,30 +1,39 @@
+
+
 .quiz-summary {
     font-family: $quicksand;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: $off-white;
+    height: 100vh;
+    padding-top: 2rem;
 
     span.success-icon {
-        color: $green;
+        color: $blue;
         font-size: $xxlg;
     }
 
     h1 {
-        color: $green;
-        text-align: center;
-        font-size: $lg;
-        margin-top: $xxlg;
-    }
-
-    h2 {
         color: $blue;
+        text-align: left;
+        font-size: 2.5rem;
+        margin-top: 3rem;
     }
 
-    h4 {
-        color: lighten($off-black, 10%);
+    h3{
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+
+    p{
+        margin-top: $md;
+        line-height: 2rem;
+        font-size: 18px;
     }
 
     .stats {
-        background-color: $off-white;
-        max-width: 50%;
-        padding: $sm $md $md $md;
+        // max-width: 50%;
+        padding: $sm $md $md $sm;
     }
 
     .stats h4, .stats h2 {
@@ -38,50 +47,6 @@
         margin-bottom: $md;
     }
 
-    section ul {
-        margin-top: $sm;
-        text-align: center;
-    }
-
-    section ul li {
-        display: inline-block;
-    }
-
-    section ul li a {
-        padding: $sm !important;
-    }
-
-    section ul li a:hover {
-        color: $off-white;
-    }
-
-    section ul li:first-child {
-        border: 1px solid $blue;
-        margin-right: $sm;
-        transition: 0.3s linear all;
-    }
-
-    section ul li:first-child:hover {
-        background-color: $blue;
-    }
-
-    section ul li:last-child {
-        border: 1px solid $green;
-        transition: 0.3s linear all;
-    }
-
-    section ul li:last-child:hover {
-        background-color: $green;
-    }
-
-    section ul li:last-child a {
-        color: $green;
-    }
-
-    section ul li:last-child a:hover {
-        color: $off-white;
-    }
-
     .no-stats {
         color: $off-black;
         margin: $xxlg auto;
@@ -89,8 +54,10 @@
 
     div.container.stats {
         width: 80%;
-        margin: auto;
+        margin: $md $sm $md $lg;
+        padding: $md $md $md $lg;
         margin-top: $md;
+        // border: red 1px solid;
     }
 }
 
@@ -104,7 +71,89 @@
     div.container.stats {
         margin: 0;
         padding: $sm;
-        max-width: 100%;
-        width: 100%;
+        max-width: 30%;
+        width: 30%;
     }
+}
+
+
+// -------- Form CSS ---------
+
+.wrapper{
+    width: 60%;
+    background: $off-white;
+    margin: 120px auto auto auto;
+    padding: 30px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+    border-left: 5px solid $blue;
+}
+
+.wrapper .title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: $blue;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.wrapper .form{
+    width: 100%;
+}
+
+.wrapper .form .input_field{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .form .input_field label{
+    width: 200px;
+    color: #0a0a0a;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.wrapper .form .input_field .input {
+    width: 100%;
+    outline: none;
+    border: 1px solid #d4dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.wrapper .form .input_field .btn{
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: $blue;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.wrapper .form .input_field .btn:hover{
+    background-color: darken($blue, 15%);
+}
+
+.retry-button{
+    background-color: #bfbfbf !important;
+    padding: 0.7rem $xxlg !important;
+    border-radius: 15px !important;
+    border: none;
+    margin: $lg auto !important;
+    color: #fff !important;
+    font-size: 16px;
+    transition: 0.3s linear all;
+}
+
+.retry-button:hover{
+    background-color: darken($blue,5%) !important;
 }

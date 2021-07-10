@@ -1,5 +1,5 @@
 .questions{
-    background-color: $off-white;
+    background-color: #f2f2f2;
     border-left: 5px solid $blue;
     width: 80%;
     margin: $lg auto 0 auto;
@@ -20,12 +20,22 @@
 
     .option{
         background-color: $blue;
+        color: $off-white;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.125);
+
+        // background-color: #fff;
+        // color: $blue;
+        // border: 2px solid $blue;
+        // font-weight: 700;
+        
+
         border-radius: $button-radius;
         margin: $md auto $sm auto;
-        color: $off-white;
+        
+        font-size: 16px;
         cursor: pointer;
         padding: $normal;
-        transition: 0.3s linear all;
+        transition: 0.2s linear all;
         text-align: center;
         width: 90%;
     }
@@ -35,12 +45,13 @@
     }
 
     .option-multiple{
+        border-radius: $button-radius;
         background-color: $blue;
         margin: $md auto $sm auto;
         color: $off-white;
         cursor: pointer;
         padding: $normal;
-        transition: 0.3s linear all;
+        transition: 0.2s linear all;
         text-align: center;
         width: 90%;
     }
@@ -50,14 +61,14 @@
     }
 
     .selected{
-        background-color: red !important;
+        background-color: darken($green, 0%) !important;
     }
 }
 
 .button-container{
     display: flex;
     justify-content: flex-start;
-    margin: 0 auto $sm auto;
+    margin: 20px auto $sm 10px;
     padding: $md;
     width: 80%;
 
@@ -67,7 +78,8 @@
         cursor: pointer;
         font-family: $quicksand;
         margin-right: $md;
-        padding: $xs $sm;
+        padding: $xs $xxlg;
+        border-radius: 15px;
     }
 
     button:first-child{
@@ -87,6 +99,6 @@
     }
 
     button:nth-child(2):hover{
-        background-color: darken($green, 20%);
+        background-color: darken($green, 10%);
     }
 }

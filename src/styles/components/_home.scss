@@ -1,46 +1,66 @@
 #home{
-    background-image: url(../../assets/background.jpg);
+    // background-image: url(../../assets/background.jpg);
+    background-color: $blue;
     background-size: cover;
     background-position: center;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content:space-around;
-
-    section{
-        background-color: rgba(0, 0, 0, 0.7);
-        width: 30%;
-        height: 80%;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-top: 110px;
-    }
+    font-family: 'Poppins', sans-serif;
 
     h1{
         text-align: center;
         color: $off-white;
         font-size: $lg;
-        margin-top: 5rem;
+        margin-top: 15rem;
         font-weight: 500;
     }
-    
-    .play-button-container{
-        width: 100%;
-        margin-top: 70px;
-    }
 
-    a.play-button{
-        color: $off-white;
-        padding: $normal;
-        background-color: $green;
-        cursor: pointer;
-        display: block;
-        border-radius:$button-radius;
+    p{
         text-align: center;
-        transition: 0.3s linear all;
-    }   
-
-    a.play-button:hover{
-        background-color: darken($color: $green, $amount: 10%);
+        color: $off-white;
+        font-size: $sm;
+        margin-top: 2rem;
+        font-weight: 500;
     }
+
+    button{
+        padding: 8px 80px;
+        margin-top: 50px;
+        border-radius: 15px;
+        letter-spacing: 1.5px;
+        border: none;
+        background-color: #2db94b;
+    }
+    
+    // .play-button-container{
+    //     width: 100%;
+    //     margin-top: 70px;
+    // }
+
+    // a.play-button{
+    //     color: $off-white;
+    //     padding: $normal;
+    //     background-color: $green;
+    //     cursor: pointer;
+    //     display: block;
+    //     border-radius:$button-radius;
+    //     text-align: center;
+    //     transition: 0.3s linear all;
+    // }   
+
+    // a.play-button:hover{
+    //     background-color: darken($color: $green, $amount: 10%);
+    // }
+}
+
+.img-container{
+    position: relative;
+    bottom: 0;
+    right: 0;
+}
+
+img{
+    height: 75%;
 }

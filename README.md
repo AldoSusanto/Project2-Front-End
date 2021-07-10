@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+List of installations:
+    - npm install react-bootstrap bootstrap@4.6.0
+    - yarn add node-sass react-helmet react-router-dom @mdi/font materialize-css classnames
+    
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
