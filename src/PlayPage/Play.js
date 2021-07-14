@@ -63,7 +63,6 @@ class Play extends Component {
         const { currentQuestion } = this.state;
 
         const choices = this.generateOptions(currentQuestion);
-        
 
         return (
             <Fragment>
@@ -82,7 +81,7 @@ class Play extends Component {
                         <button
                             id="next-button"
                             onClick={this.buttonClick}
-                            className= {classNames('', {'disable': false})}>
+                            className= {classNames('', {'disable': this.state.currentSelectedTags.length <= 0})}>
                             Next
                         </button>
                         <span className= {classNames('', {'disable-span': !this.state.isLastQuestion})}>
@@ -142,6 +141,8 @@ class Play extends Component {
             case "next-button":
                 //1) Gather the choices that user has selected
                 var tagArray = this.state.collectedTags.concat(this.state.currentSelectedTags); 
+                //1.5) Check whether user has selected a choice
+
                 var nextIndex = this.determineNextIndex(tagArray, jsonQuestions, index);
 
                 var currentTagList = this.state.currentSelectedTags;

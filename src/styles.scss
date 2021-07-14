@@ -7,6 +7,7 @@ $blue: #1da1f2;
 $off-black: #333;
 
 
+
 // sizes
 $xs: 0.5rem;
 $normal: 1rem;
@@ -21,12 +22,14 @@ $button-radius: 30px;
 $md-breakpoint: 768px;
 
 $quicksand: 'Quicksand', sans-serif;
+$poppins: 'Poppins', sans-serif;
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import './components/home';
-@import './components/play';
-@import './components/result';
+@import './HomePage/home';
+@import './PlayPage/play';
+@import './ResultPage/result';
+@import './menubar';
 
 * {
     padding: 0;
