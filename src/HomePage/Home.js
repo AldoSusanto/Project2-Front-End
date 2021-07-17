@@ -22,30 +22,27 @@ const Home = () => (
             </div>
         </div>
 
-        <div className="howItWorks">
+        <div className="howItWorks" id="howItWorks">
             <div className="row HIW-row ">
                 <div className="col-md-12 text-center">
                     <h1>How it works</h1> 
                 </div>
             </div>
             <div className="row HIW-row">
-                <div className="col-md-4 text-center">
+                <div className="col-md-1"></div>
+                <div className="col-md-5 text-center">
+                    <p className="">Step 1</p>
                     <FontAwesomeIcon icon="laptop" className="HIW-icons" />
-                    <h3 className="HIW-title text-center">Start Quiz</h3>
+                    <h3 className="HIW-title text-center">Isi Quiz</h3>
+                    <p>Beri tahu kami kriteria laptop<br></br>yang kamu inginkan</p>
                 </div>
-                <div className="col-md-4 text-center">
-                    <FontAwesomeIcon icon="envelope" className="HIW-icons"/>
-                    <h3 className="HIW-title text-center">Tell us how we<br></br> can contact you</h3>
+                <div className="col-md-5 text-center">
+                    <p className="text-center">Step 2</p>
+                    <FontAwesomeIcon icon="laptop" className="HIW-icons"/>
+                    <h3 className="HIW-title text-center">Cek Email</h3>
+                    <p>Dapatkan rekomendasi laptop<br></br> yang terbaik untukmu</p>
                 </div>
-                <div className="col-md-4 text-center">
-                    <FontAwesomeIcon icon="tags" className="HIW-icons"/>
-                    <h3 className="HIW-title text-center">We show you the best <br></br>deals through email <br></br>in <u>1-2 days</u></h3>
-                </div>
-            </div>
-            <div className="row HIW-row ">
-                <div className="col-md-12 text-center">
-                    <h2>No newsletter, no fuss. Just our recommended picks for you</h2> 
-                </div>
+                <div className="col-md-1"></div>
             </div>
         </div>
     </Fragment>

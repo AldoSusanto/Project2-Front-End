@@ -4,11 +4,11 @@ import Result from  './ResultPage/Result';
 import Play from  './PlayPage/Play';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faUserTie, faTags , faLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faUserTie, faTags , faLaptop, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
-  library.add(fab, faEnvelope, faUserTie, faTags, faLaptop) 
+  library.add(fab, faEnvelope, faUserTie, faTags, faLaptop, faPlay) 
   return (
     <Router>
       <Route path="/" exact component={Home} />

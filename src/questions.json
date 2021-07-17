@@ -1,6 +1,6 @@
 [
     {
-        "question": "Apakah Kamu tahu berapa budget laptop kamu?",
+        "question": "Apakah kamu tahu berapa budget laptop kamu?",
         "askIf": "",
         "isMultiple": false,
         "questionLabel": "priceRange",
@@ -43,7 +43,7 @@
         "isMultiple": true,
         "questionLabel": "activities",
         "options": [
-            "Video Conference",
+            "Video Conference (Zoom, Google Meet, dll)",
             "Browsing Internet",
             "Nonton Film",
             "Microsoft Office",
