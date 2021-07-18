@@ -48,7 +48,6 @@ class Play extends Component {
             answer: '',
             currentQuestionIndex: 0,
             isFirstQuestion: true,
-            isLastQuestion: false,
             collectedTags: [],
             currentSelectedTags: [],
             currentSelectedChoices: [],
@@ -84,9 +83,6 @@ class Play extends Component {
                             className= {classNames('', {'disable': this.state.currentSelectedTags.length <= 0})}>
                             Next
                         </button>
-                        <span className= {classNames('', {'disable-span': !this.state.isLastQuestion})}>
-                            <p>Hore !! Ini pertanyaan terakhir untuk kamu</p>
-                        </span>
                     </div>
                 </div>
             </Fragment>
@@ -112,16 +108,6 @@ class Play extends Component {
             this.setState({
                 isFirstQuestion: true
             })           
-        }
-
-        if(nextIndex >= jsonQuestions.length-1){
-            this.setState({
-                isLastQuestion: true
-            })
-        }else{
-            this.setState({
-                isLastQuestion: false
-            })
         }
     }
 

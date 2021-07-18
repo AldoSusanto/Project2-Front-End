@@ -292,7 +292,7 @@
         ]
     },
     {
-        "question": "Pilih brand2 yang kamu inginkan",
+        "question": "Pilih brand2 yang kamu inginkan (Pilih multiple)",
         "askIf": "",
         "isMultiple": true,
         "questionLabel": "brand",
@@ -306,6 +306,7 @@
             "Razer",
             "Apple",
             "Microsoft",
+            "Alienware",
             "Tidak Ada Preference"
         ],
         "tags":[
@@ -318,6 +319,7 @@
             "Razer",
             "Apple",
             "Microsoft",
+            "Alienware",
             "noPref"
         ]
     }

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import homeImage from '../assets/woman-laptop.png';
 import Menubar from '../Menubar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import formIcon from '../assets/form-icon-nobg.png';
 
 const Home = () => (
     <Fragment>
@@ -32,7 +33,8 @@ const Home = () => (
                 <div className="col-md-1"></div>
                 <div className="col-md-5 text-center">
                     <p className="">Step 1</p>
-                    <FontAwesomeIcon icon="laptop" className="HIW-icons" />
+                    {/* <FontAwesomeIcon icon="laptop" className="HIW-icons" /> */}
+                    <img className="iconImage" src={formIcon}></img>
                     <h3 className="HIW-title text-center">Isi Quiz</h3>
                     <p>Beri tahu kami kriteria laptop<br></br>yang kamu inginkan</p>
                 </div>
