@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import homeImage from '../assets/woman-laptop.png';
 import Menubar from '../Menubar'
+import Footer from '../Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import formIcon from '../assets/form-icon-nobg.png';
 
+
 const Home = () => (
     <Fragment>
-        <Helmet><title>Quiz App - Home</title></Helmet>
+        <Helmet><title>ProPicks - Home</title></Helmet>
         <Menubar />
+
+        {/* Cover Page */}
         <div id="home" className="row">
             <div className="col-md-8 text-center">
                 <h1>Bingung cari laptop yang tepat ?</h1>
@@ -23,6 +27,7 @@ const Home = () => (
             </div>
         </div>
 
+        {/* How it works Page */}
         <div className="howItWorks" id="howItWorks">
             <div className="row HIW-row ">
                 <div className="col-md-12 text-center">
@@ -33,7 +38,6 @@ const Home = () => (
                 <div className="col-md-1"></div>
                 <div className="col-md-5 text-center">
                     <p className="">Step 1</p>
-                    {/* <FontAwesomeIcon icon="laptop" className="HIW-icons" /> */}
                     <img className="iconImage" src={formIcon}></img>
                     <h3 className="HIW-title text-center">Isi Quiz</h3>
                     <p>Beri tahu kami kriteria laptop<br></br>yang kamu inginkan</p>
@@ -47,6 +51,7 @@ const Home = () => (
                 <div className="col-md-1"></div>
             </div>
         </div>
+        <Footer/>
     </Fragment>
 )
 

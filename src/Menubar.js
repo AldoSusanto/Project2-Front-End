@@ -17,7 +17,6 @@ class Menubar extends React.Component{
         return (
             <Nav className="navbar navbar-expand-md navbar-light menubarStyle fixed-top">
                 <div className="container-fluid">
-                    {/* <a className="navbar-brand logo" href="/">LOGO</a> */}
                     <a href="/">
                         <img href="/" className="logo" src={logoImage} />
                     </a>
@@ -25,7 +24,6 @@ class Menubar extends React.Component{
                         <div className="navbar-nav">
                             <a className="menuBtn" href="/#howItWorks">How It Works</a>
                             <a className="menuBtn" href="/play">Take the Quiz</a>
-                            
                         </div>
                     </div>
                 </div>

@@ -65,7 +65,7 @@ class Play extends Component {
 
         return (
             <Fragment>
-                <Helmet><title>Play</title></Helmet>
+                <Helmet><title>ProPicks - Laptop Quiz</title></Helmet>
                 <div className="questions">
                     <h5>{currentQuestion.question}</h5>
 

@@ -1,10 +1,12 @@
+.navbar{
+  background: $blue;
+}
+
 .container-fluid .navbar-brand {
     font-family: $quicksand;
     font-size: $md;
     color: #13B929;
-    margin-top: 50px;;
-    // margin-left: 70px;
-    // margin-right: 80px;
+    margin-top: 50px;
   }
 
   .logo{

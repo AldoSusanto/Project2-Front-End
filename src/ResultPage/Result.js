@@ -24,7 +24,7 @@ class Result extends React.Component {
     render() {
         return(
             <Fragment>
-                <Helmet><title>Quiz App - Home</title></Helmet>
+                <Helmet><title>ProPicks - Results</title></Helmet>
                 <Menubar />
                 <div id="result" className="row">
                     <Menubar/>
@@ -47,46 +47,6 @@ class Result extends React.Component {
                 </div>
             </Fragment>
         )
-
-
-        // return (
-        //     <Fragment>
-        //             <Helmet><title>Hasil </title></Helmet>
-        //         <div className="quiz-summary">
-        //             <Fragment>
-        //                 <div className="container stats">
-        //                     <h1>Thank you !</h1>
-        //                     <h3>Last step: Silahkan tulis email/nomor kamu di form ini </h3>
-        //                     <p></p>
-        //                     <p>Sampai sekarang, fitur rekomendasi instan masih dalam tahap development.<br></br> 
-        //                     Silahkan masukan email/nomor kamu dan tunggu notifikasi dari kami untuk mendapatkan rekomendasi laptop terbaik !<br></br>
-        //                     Hasil rekomendasi akan terbit sekitar <b>1-2 hari</b> dari sekarang.</p>
-        //                     <button id="prev-button" onClick={this.retryQuiz} className="retry-button"> Retry Quiz </button>
-        //                 </div>
-        //                 <div className="wrapper">
-        //                     <div className="title">Contact Form</div>
-        //                     <form onSubmit={this.handleSubmit} className="form">
-        //                         <div className="input_field">
-        //                             <label className="">Name</label>
-        //                             <input type="text" className="input" name="name" type="text" onChange={this.handleChange}/>
-        //                         </div>
-        //                         <div className="input_field">
-        //                             <label className="">Email</label>
-        //                             <input type="text" className="input" name="email" type="email" onChange={this.handleChange}/>
-        //                         </div>
-        //                         <div className="input_field">
-        //                             <label className="">Whatsapp Number</label>
-        //                             <input type="text" className="input" name="phoneNumber" pattern="[0-9]*" onChange={this.handleChange}/>
-        //                         </div>
-        //                         <div className="input_field">
-        //                             <input type="submit" className="btn" value="Submit"/>
-        //                         </div>
-        //                     </form>
-        //                 </div>     
-        //             </Fragment>
-        //         </div>
-        //     </Fragment>
-        // )
     }
 
     handleChange(event) {
