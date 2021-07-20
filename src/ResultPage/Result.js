@@ -68,7 +68,7 @@ class Result extends React.Component {
     handleSubmit(event) {
         this.sendEmail();
         event.preventDefault();
-        alert("Thank you ! Kami akan memberikan rekomendasi untuk anda dalam 1-2 hari kedepan");
+        // alert("Thank you ! Kami akan memberikan rekomendasi untuk anda dalam 1-2 hari kedepan");
         this.props.history.push("/");
     }
     

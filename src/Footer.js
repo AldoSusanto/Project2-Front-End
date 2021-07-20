@@ -13,7 +13,7 @@ class Footer extends React.Component{
                         <p>ProPicks adalah web application yang bertujuan untuk memberikan rekomendasi laptop yang terbaik untukmu.</p>
                         <p><FontAwesomeIcon icon="phone" className="footer-icons"/>  (+62) 812-9927-5403</p>
                         <p><FontAwesomeIcon icon="envelope" className="footer-icons"/>  aldosusanto@hotmail.com</p>
-                        <p>Copyright &copy; ProPicks | 2020</p>
+                        <p>Copyright &copy; ProPicks | 2021</p>
                     </div>
                     <div className="col-md-2"></div>
                     <div className="col-md-4 text-left footer-mid">

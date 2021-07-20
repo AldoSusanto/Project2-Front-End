@@ -3,6 +3,8 @@ import {Fragment} from 'react';
 import {Helmet} from 'react-helmet';
 import jsonQuestions from '../questions.json';
 import classNames from 'classnames';
+import Menubar from '../Menubar';
+import Footer from '../Footer';
 
 class Play extends Component {
 
@@ -60,29 +62,31 @@ class Play extends Component {
 
     render() {
         const { currentQuestion } = this.state;
-
         const choices = this.generateOptions(currentQuestion);
 
         return (
             <Fragment>
                 <Helmet><title>ProPicks - Laptop Quiz</title></Helmet>
-                <div className="questions">
-                    <h5>{currentQuestion.question}</h5>
+                <Menubar />
+                <div className="quiz-body">
+                    <div className="questions">
+                        <h5>{currentQuestion.question}</h5>
 
-                    {choices}
-                    <div className="button-container">
-                        <button 
-                            id="prev-button"
-                            onClick={this.buttonClick}
-                            className= {classNames('', {'disable': true})}>
-                            Previous
-                        </button>
-                        <button
-                            id="next-button"
-                            onClick={this.buttonClick}
-                            className= {classNames('', {'disable': this.state.currentSelectedTags.length <= 0})}>
-                            Next
-                        </button>
+                        {choices}
+                        <div className="button-container">
+                            <button 
+                                id="prev-button"
+                                onClick={this.buttonClick}
+                                className= {classNames('', {'disable': true})}>
+                                Previous
+                            </button>
+                            <button
+                                id="next-button"
+                                onClick={this.buttonClick}
+                                className= {classNames('', {'disable': this.state.currentSelectedTags.length <= 0})}>
+                                Next
+                            </button>
+                        </div>
                     </div>
                 </div>
             </Fragment>
