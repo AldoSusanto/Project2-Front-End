@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-List of installations:
+List of dependencies:
     - npm install react-bootstrap bootstrap@4.6.0
     - yarn add node-sass react-helmet react-router-dom @mdi/font materialize-css classnames
     - npm i -S reactstrap

@@ -4,7 +4,6 @@ import { Fragment } from 'react';
 import emailjs from 'emailjs-com';
 import homeImage from '../assets/laptop-result.png';
 import Menubar from '../Menubar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Result extends React.Component {
     constructor(props) {
@@ -18,7 +17,6 @@ class Result extends React.Component {
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.retryQuiz = this.retryQuiz.bind(this);
     }
 
     render() {
@@ -68,12 +66,7 @@ class Result extends React.Component {
     handleSubmit(event) {
         this.sendEmail();
         event.preventDefault();
-        // alert("Thank you ! Kami akan memberikan rekomendasi untuk anda dalam 1-2 hari kedepan");
         this.props.history.push("/");
-    }
-    
-    retryQuiz(){
-        this.props.history.push("/play");
     }
 
     sendEmail() {
