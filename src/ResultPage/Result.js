@@ -37,10 +37,10 @@ class Result extends React.Component {
                             </form>
                         </div>  
                         <h3>Silahkan tulis emailmu agar kami bisa <br></br>mengirim rekomendasi laptop yang tepat<br></br>untukmu dalam 1-2 hari</h3>
+                        <p>*Email anda tidak akan digunakan untuk keperluan lain diluar rekomendasi laptop</p>
                     </div>
                     <div className="col-lg-4 position-relative">
-                        {/* <img className="laptop-img position-absolute bottom-10 end-10" src={homeImage} /> */}
-                        <img className="laptop-img" src={homeImage} />
+                        <img className="laptop-img" src={homeImage} alt="Email sent from propicks for laptop recommendation"/>
                     </div>
                 </div>
             </Fragment>

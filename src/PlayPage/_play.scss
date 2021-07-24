@@ -92,22 +92,22 @@
     }
 
     button:first-child{
-        background-color: darken($blue, 10%);
+        background-color: darken($green, 10%);
         box-shadow: $off-black;
         transition: 0.2s linear all;
     }
 
     button:first-child:hover{
-        background-color:darken($blue, 20%);
+        background-color:darken($green, 20%);
     }
 
-    button:nth-child(2){
-        background-color: $green;
-        box-shadow: $off-black;
-        transition: 0.2s linear all;
-    }
+    // button:nth-child(2){
+    //     background-color: $green;
+    //     box-shadow: $off-black;
+    //     transition: 0.2s linear all;
+    // }
 
-    button:nth-child(2):hover{
-        background-color: darken($green, 10%);
-    }
+    // button:nth-child(2):hover{
+    //     background-color: darken($green, 10%);
+    // }
 }

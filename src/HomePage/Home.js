@@ -23,7 +23,7 @@ const Home = () => (
                 <Link to={`/play`}><button type="button" name="button" className="btn btn-success">Mulai Quiz</button></Link>
             </div>
             <div className="col-sm-4 position-relative">
-                <img className="fixed-bottom position-absolute bottom-0 end-0" src={homeImage} />
+                <img className="fixed-bottom position-absolute bottom-0 end-0" src={homeImage} alt="ProPicks welcome cari laptop" />
             </div>
         </div>
 
@@ -31,14 +31,14 @@ const Home = () => (
         <div className="howItWorks" id="howItWorks">
             <div className="row HIW-row ">
                 <div className="col-md-12 text-center">
-                    <h1>How it works</h1> 
+                    <h1>Cara Kerja</h1> 
                 </div>
             </div>
             <div className="row HIW-row">
                 <div className="col-md-1"></div>
                 <div className="col-md-5 text-center">
                     <p className="">Step 1</p>
-                    <img className="iconImage" src={formIcon}></img>
+                    <img className="iconImage" src={formIcon} alt=""></img>
                     <h3 className="HIW-title text-center">Isi Quiz</h3>
                     <p>Beri tahu kami kriteria laptop<br></br>yang kamu inginkan</p>
                 </div>

@@ -4,7 +4,7 @@ import {Helmet} from 'react-helmet';
 import jsonQuestions from '../questions.json';
 import classNames from 'classnames';
 import Menubar from '../Menubar';
-import Footer from '../Footer';
+import emailjs from 'emailjs-com';
 
 class Play extends Component {
 
@@ -74,12 +74,6 @@ class Play extends Component {
 
                         {choices}
                         <div className="button-container">
-                            <button 
-                                id="prev-button"
-                                onClick={this.buttonClick}
-                                className= {classNames('', {'disable': true})}>
-                                Previous
-                            </button>
                             <button
                                 id="next-button"
                                 onClick={this.buttonClick}
@@ -155,6 +149,7 @@ class Play extends Component {
                 }else{
                     // 4) If we reached the end of questions list, we show the result page
                     console.log(JSON.stringify(this.state.result));
+                    this.sendEmail()
                     this.props.history.push({
                         pathname: '/result',
                         state: this.state.result
@@ -363,6 +358,19 @@ class Play extends Component {
             result: currResult
         })
     }
+
+    sendEmail() {
+        var emailBody = {
+            result: JSON.stringify(this.state.result, null, "\t")
+        }
+
+        emailjs.send('service_g809v3k', 'template_tvaokcm', emailBody, 'user_oSPyVlq4AURjfm7xfmjl3')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
 }
 
 
