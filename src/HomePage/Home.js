@@ -18,7 +18,7 @@ const Home = () => (
         {/* Cover Page */}
         <div id="home" className="row">
             <div className="col-md-8 text-center">
-                {/* <h1>Bingung cari laptop yang tepat ?</h1> */}
+                <h1>Bingung cari laptop yang tepat ?</h1>
                 <p>Isi quiz berikut untuk mendapatkan rekomendasi<br></br>laptop yang tepat untukmu</p>
                 <Link to={`/play`}><button type="button" name="button" className="btn btn-success">Mulai Quiz</button></Link>
             </div>
