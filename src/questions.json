@@ -58,7 +58,7 @@
             "videoConference",
             "surfInternet",
             "watchFilm",
-            "microsoftOffice",
+            "Microsoft Office",
             "imageGraphics",
             "programming",
             "gaming",
@@ -108,11 +108,11 @@
             "Corel Paintshop Pro"
         ],
         "tags":[
-            "Photoshop",
-            "Illustrator",
-            "Lightroom",
-            "Coreldraw",
-            "Paintshop"
+            "Adobe Photoshop",
+            "Adobe Illustrator",
+            "Adobe Lightroom",
+            "CorelDraw",
+            "Corel Paintshop Pro"
         ]
     },
     {
@@ -165,16 +165,16 @@
             "Rainbow Six Siege"
         ],
         "tags":[
-            "dota2",
-            "leagueOfLegends",
-            "risingForceOnline",
-            "valorant",
-            "counterStrikeGo",
-            "overwatch",
-            "apexLegends",
-            "fortnite",
-            "pubg",
-            "rainbowSix"
+            "DOTA 2",
+            "League Of Legends",
+            "Rising Force Online",
+            "Valorant",
+            "Counter Strike",
+            "Overwatch",
+            "Apex Legends",
+            "Fortnite",
+            "PUBG",
+            "Rainbow Six Siege"
         ]
     },
     {
@@ -192,13 +192,13 @@
             "Lightworks"
         ],
         "tags":[
-            "premiere",
-            "finalCutProX",
-            "filmora",
-            "iMovie",
-            "movieMaker",
-            "kinemaster",
-            "lightworks"
+            "Adobe Premiere",
+            "Final Cut Pro X",
+            "Filmora",
+            "Imovie",
+            "Windows Movie Maker",
+            "Kinemaster",
+            "Lightworks"
         ]
     },
     {
@@ -241,10 +241,10 @@
             "AutoCAD"
         ],
         "tags":[
-            "blender",
-            "maya",
-            "3dMax",
-            "autoCad"
+            "Blender",
+            "Maya",
+            "3D Max",
+            "AutoCAD"
         ]
     },
     {
