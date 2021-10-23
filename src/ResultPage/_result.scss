@@ -1,71 +1,96 @@
 #result {
-    background-color: $blue;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content:space-around;
-    font-family: 'Poppins', sans-serif;
+  background-color: $blue;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Poppins", sans-serif;
 
-    .laptop-img{
-        position: absolute;
-        left: -290px;
-        bottom: 10px ;
-        width: 150%;
-        height: auto;
-    }
+  .laptop-img {
+    position: absolute;
+    left: -290px;
+    bottom: 10px;
+    width: 150%;
+    height: auto;
+  }
 
-    h1{
-        text-align: left;
-        color: $off-white;
-        font-size: $lg;
-        margin-top: 6rem;
-    }
+  h1 {
+    text-align: left;
+    color: $off-white;
+    font-size: $lg;
+    margin-top: 6rem;
+  }
 
-    h3{
-        text-align: left;
-        color: $off-white;
-        font-size: 1.6rem;
-        margin-top: 2rem;
-        line-height: 2.5rem;
-        font-family: $quicksand;
-    }
+  h3 {
+    text-align: left;
+    color: $off-white;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    line-height: 2.5rem;
+    font-family: $quicksand;
+  }
 
-    p{
-        text-align: left;
-        color: $off-white;
-        font-size: 0.9rem;
-        // margin-top: 8rem;
-        line-height: 2.5rem;
-        font-family: $quicksand;
-        position: absolute;
-        left: 120px;
-        bottom: 10px ;
-    }
+  p {
+    text-align: left;
+    color: $off-white;
+    font-size: 0.9rem;
+    // margin-top: 8rem;
+    line-height: 2.5rem;
+    font-family: $quicksand;
+    position: absolute;
+    left: 120px;
+    bottom: 10px;
+  }
 
-    .result-text{
-        padding: 140px 0px 0px 120px;
-    }
+  .result-text {
+    padding: 140px 0px 0px 120px;
+  }
 }
 
 // -------- Form CSS ---------
 
-.wrapper{
-    margin-top: 20px;
-    margin-left: -15px;
+.wrapper {
+  margin-top: 20px;
+  margin-left: -15px;
 
-    .email-field{
-        width: 400px !important;
-        padding: 15px 10px;
-    }
+  .email-field {
+    width: 400px !important;
+    padding: 15px 10px;
+  }
 }
 
-.form-custom{
-    padding: 0px;
-    margin-left: 0px;
+.form-custom {
+  padding: 0px;
+  margin-left: 0px;
 }
 
-.wrapper .form{
-    width: 100%;
+.wrapper .form {
+  width: 100%;
+}
+
+// Results
+
+.results {
+  width: 100vw;
+  background: #f2f2f2;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-family: $poppins;
+  //   border: 2px solid #000;
+
+  h1 {
+    color: $off-black;
+  }
+
+  p {
+    color: $off-black;
+  }
+}
+
+.result-list {
+  padding-left: auto;
+  padding-right: auto;
+  //   border: 2px solid $blue;
 }

@@ -4,6 +4,8 @@ import { Fragment } from 'react';
 import emailjs from 'emailjs-com';
 import homeImage from '../assets/laptop-result.png';
 import Menubar from '../Menubar';
+import axios from 'axios';
+import { Button, Icon, Image, Item, Label } from 'semantic-ui-react'
 
 class Result extends React.Component {
     constructor(props) {
@@ -13,13 +15,66 @@ class Result extends React.Component {
             email: '',
             number: '',
             result: this.props.location.state,
+
+            recommendations: {}
         };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        var reqBody = this.state.result;
+
+        console.log("calling BE");
+        axios.post('http://localhost:8080/v1/recommendation', reqBody)
+        .then(res => {
+            this.setState({
+                recommendations: res
+            })    
+            console.log("Finished calling BE");
+            console.log(res);
+        })
+    }
+
+
     render() {
+        var recList = this.state.recommendations.data;
+        console.log("Reclist: ")
+        console.log(recList);
+        var itemList = [];
+
+        if(typeof(recList) !== 'undefined'){
+            for(const[index, value] of recList.entries()){
+                itemList.push(
+                    <Item.Group key={index} divided>
+                        <Item>
+                            <Item.Image src={value.imageLink} />
+                            <Item.Content>
+                                <Item.Header as='a'>{value.name}</Item.Header>
+                                <Item.Meta>
+                                <span className='cinema'> Rp. {value.price} </span>
+                                </Item.Meta>
+                                <Item.Description>Processor: {value.processor} <br/> RAM: {value.ram}GB <br /> Graphics Card: {value.graphics} </Item.Description>
+                                <Item.Extra>
+                                {/* <Label icon='gamepad' content='Powerful for gaming' />
+                                <Label icon='briefcase' content='Suitable for Travel' />
+                                <Label icon='users' content='Highly Reviewed' /> */}
+                                <a href={value.link}>
+                                    <Button primary floated='right'>
+                                        Buy
+                                        <Icon name='right chevron' />
+                                    </Button>
+                                </a>
+                                </Item.Extra>
+                            </Item.Content>
+                        </Item>
+                    </Item.Group>
+                )
+            }
+        }
+
+        // console.log(recList[0].imageLink);
         return(
             <Fragment>
                 <Helmet><title>ProPicks - Results</title></Helmet>
@@ -43,6 +98,23 @@ class Result extends React.Component {
                         <img className="laptop-img" src={homeImage} alt="Email sent from propicks for laptop recommendation"/>
                     </div>
                 </div>
+
+                {typeof(recList) !== 'undefined' && 
+                    <div className="results" id="results">
+                        <div className="row HIW-row ">
+                            <div className="col-md-12 text-center">
+                                <h1>Results</h1> 
+                            </div>
+                        </div>
+                        <div className="row HIW-row result-list">
+                            <div className="col-md-3"></div>
+                            <div className="col-md-6">
+                                {itemList}
+                            </div>
+                            <div className="col-md-3"></div>
+                        </div>
+                    </div>
+                }
             </Fragment>
         )
     }

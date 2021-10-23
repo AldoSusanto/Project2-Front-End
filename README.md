@@ -7,6 +7,8 @@ List of dependencies:
     - yarn add @fortawesome/fontawesome-svg-core
     - yarn add @fortawesome/free-solid-svg-icons
     - yarn add @fortawesome/react-fontawesome
+    - yarn add axios
+    - yarn add semantic-ui-react semantic-ui-css
     
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
