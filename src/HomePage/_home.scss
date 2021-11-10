@@ -1,93 +1,93 @@
-#home{
-    // background-image: url(../../assets/background.jpg);
-    background-color: $blue;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content:space-around;
-    font-family: 'Poppins', sans-serif;
+#home {
+  // background-image: url(../../assets/background.jpg);
+  background-color: $blue;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Poppins", sans-serif;
 
-    h1{
-        text-align: center;
-        color: $off-white;
-        font-size: $lg;
-        margin-top: 16.5rem;
-        font-weight: 500;
-    }
+  h1 {
+    text-align: center;
+    color: $off-white;
+    font-size: $lg;
+    margin-top: 16.5rem;
+    font-weight: 500;
+  }
 
-    p{
-        text-align: center;
-        color: $off-white;
-        font-size: $sm;
-        margin-top: 2rem;
-        font-weight: 500;
-    }
+  p {
+    text-align: center;
+    color: $off-white;
+    font-size: $sm;
+    margin-top: 2rem;
+    font-weight: 500;
+  }
 
-    button{
-        padding: 8px 80px;
-        margin-top: 50px;
-        border-radius: 15px;
-        letter-spacing: 1.5px;
-        border: none;
-        background-color: #2db94b;
-        transition: 0.3s linear all;
-    }
-    
-    button:hover{
-        background-color: darken($color: $green, $amount: 5%);
-    }
+  button {
+    padding: 8px 100px;
+    margin-top: 50px;
+    border-radius: 15px;
+    letter-spacing: 1.5px;
+    border: none;
+    background-color: #2db94b;
+    transition: 0.3s linear all;
+    font-size: 1.2rem;
+  }
+
+  button:hover {
+    background-color: darken($color: $green, $amount: 5%);
+  }
 }
 
-.img-container{
-    position: relative;
-    bottom: 0;
-    right: 0;
+.img-container {
+  position: relative;
+  bottom: 0;
+  right: 0;
 }
 
-img{
-    height: 75%;
+img {
+  height: 75%;
 }
 
-.howItWorks{
-    width: 100vw;
-    background: #f2f2f2;
-    padding-top: 50px;
-    padding-bottom: 30px;
-    font-family: $poppins;
+.howItWorks {
+  width: 100vw;
+  background: #f2f2f2;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-family: $poppins;
 
-    h1{
-        color: $off-black;
-    }
+  h1 {
+    color: $off-black;
+  }
 
-    p{
-        color: $off-black;
-    }
+  p {
+    color: $off-black;
+  }
 }
 
-.HIW-row{
-    color: $blue;
-    margin-bottom: 80px;
-    
-    .iconImage{
-        margin-left: 20px;
-        margin-top: 0px;
-        width:90px;
-        height:auto;
-    }
+.HIW-row {
+  color: $blue;
+  margin-bottom: 80px;
+
+  .iconImage {
+    margin-left: 20px;
+    margin-top: 0px;
+    width: 90px;
+    height: auto;
+  }
 }
 
-.HIW-icons{
-    color: $blue;
-    font-size: 80px;
+.HIW-icons {
+  color: $blue;
+  font-size: 80px;
 }
 
-.HIW-title{
-    font-size: 1.8rem;
-    margin-top: 30px;
+.HIW-title {
+  font-size: 1.8rem;
+  margin-top: 30px;
 }
 
-.HIW-desc{
-    font-size: 1rem;
-    font-weight: 300;
+.HIW-desc {
+  font-size: 1rem;
+  font-weight: 300;
 }
-

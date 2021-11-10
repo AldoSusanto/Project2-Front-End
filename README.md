@@ -9,6 +9,8 @@ List of dependencies:
     - yarn add @fortawesome/react-fontawesome
     - yarn add axios
     - yarn add semantic-ui-react semantic-ui-css
+    - yarn add react-currency-format
+    - yarn add react-loader-spinner
     
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

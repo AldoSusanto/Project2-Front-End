@@ -2,12 +2,15 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import { Fragment } from 'react';
 import emailjs from 'emailjs-com';
-import homeImage from '../assets/laptop-result.png';
 import Menubar from '../Menubar';
 import axios from 'axios';
-import { Button, Icon, Image, Item, Label } from 'semantic-ui-react'
+import { Button, Icon, Item } from 'semantic-ui-react'
+import CurrencyFormat from 'react-currency-format';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 class Result extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -15,8 +18,9 @@ class Result extends React.Component {
             email: '',
             number: '',
             result: this.props.location.state,
-
-            recommendations: {}
+            highlight: this.highlightDefault,
+            recommendations: {},
+            highlightedIndex: 0,
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -26,95 +30,124 @@ class Result extends React.Component {
     componentDidMount() {
         var reqBody = this.state.result;
 
-        console.log("calling BE");
-        axios.post('http://localhost:8080/v1/recommendation', reqBody)
+        axios.post('http://52.77.224.177:8080/v1/recommendation', reqBody)
         .then(res => {
             this.setState({
                 recommendations: res
             })    
-            console.log("Finished calling BE");
-            console.log(res);
+            // console.log(res);
         })
     }
 
+    changeHighlight(event, index) {
+        console.log("Index clicked: " + index);
+        this.setState({
+            highlightedIndex: index
+        })
+    }
 
     render() {
         var recList = this.state.recommendations.data;
-        console.log("Reclist: ")
-        console.log(recList);
         var itemList = [];
+        var itemDescription = [];
+        var itemImage = [];
+        var highlightedItem = {};
+        var resultsPage = [];
 
         if(typeof(recList) !== 'undefined'){
             for(const[index, value] of recList.entries()){
                 itemList.push(
-                    <Item.Group key={index} divided>
-                        <Item>
+                    <Item.Group divided >
+                        <Item className={`itemList ${index == this.state.highlightedIndex ? "selectedItem" : "" }`} onClick={(e) => this.changeHighlight(e, index)}>
                             <Item.Image src={value.imageLink} />
                             <Item.Content>
-                                <Item.Header as='a'>{value.name}</Item.Header>
+                                <Item.Header as='string'>{value.name}</Item.Header>
                                 <Item.Meta>
-                                <span className='cinema'> Rp. {value.price} </span>
+                                <span className='price'><CurrencyFormat value={value.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></span>
                                 </Item.Meta>
-                                <Item.Description>Processor: {value.processor} <br/> RAM: {value.ram}GB <br /> Graphics Card: {value.graphics} </Item.Description>
+                                {/* <Item.Description>Processor: {value.processor} <br/> RAM: {value.ram}GB <br /> Graphics Card: {value.graphics} </Item.Description> */}
                                 <Item.Extra>
                                 {/* <Label icon='gamepad' content='Powerful for gaming' />
                                 <Label icon='briefcase' content='Suitable for Travel' />
                                 <Label icon='users' content='Highly Reviewed' /> */}
-                                <a href={value.link}>
+                                {/* <a href={value.link}>
                                     <Button primary floated='right'>
                                         Buy
                                         <Icon name='right chevron' />
                                     </Button>
-                                </a>
+                                </a> */}
                                 </Item.Extra>
                             </Item.Content>
                         </Item>
                     </Item.Group>
                 )
             }
+
+            highlightedItem = recList[this.state.highlightedIndex];
+            console.log(highlightedItem);
+
+            itemDescription.push(
+                <Item.Group divided className="itemDesc">
+                    <Item>
+                        <Item.Content>
+                            <Item.Header as='a' className="title">{highlightedItem.name}</Item.Header>
+                            <Item.Meta>
+                                <span className='price'><CurrencyFormat value={highlightedItem.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></span>
+                            </Item.Meta>
+                            <Item.Description className="item-desc-box"><b>Processor: </b> {highlightedItem.processor} <br/> <b>RAM: </b> {highlightedItem.ram}GB <br /> <b>Graphics Card:</b> {highlightedItem.graphics} </Item.Description>
+                            <Item.Extra>
+                            {/* <Label icon='gamepad' content='Powerful for gaming' />
+                            <Label icon='briefcase' content='Suitable for Travel' />
+                            <Label icon='users' content='Highly Reviewed' /> */}
+                            <a href={highlightedItem.link} target="_blank">
+                                <Button positive floated='right' className='item-desc-btn'>
+                                    Visit Shop
+                                    <Icon name='right chevron' />
+                                </Button>
+                            </a>
+                            </Item.Extra>
+                        </Item.Content>
+                    </Item>
+                </Item.Group>
+            )
+
+            itemImage.push(
+                <img className="laptop-img" src={highlightedItem.imageLink} alt="Highlighted Laptop"/>    
+            )
+
+            resultsPage.push(
+                <div id="result" className="row result-home">
+                    <div className="col-lg-5 panel">
+                        <h1>Here are <br />Our top 10 picks for you</h1>
+                        <hr className="hr-line"/>
+                        <div className="result-text">
+                            {itemList}
+                        </div>
+                    </div>
+                    <div className="col-lg-7">
+                        <div className="row">
+                            {itemImage}
+                        </div>
+                        <div className="row">
+                            {itemDescription}
+                        </div>
+                    </div>
+                </div>
+            )
+        }else {
+            resultsPage.push(
+                <div className="row loading-page">
+                    <h1>Mohon menunggu <br/> Sedang mencari hasil yang terbaik untukmu...</h1>
+                    <Loader className="loader" type="TailSpin" color="#fff" height={100} width={100} timeout={100000} />
+                </div>
+            )
         }
 
-        // console.log(recList[0].imageLink);
         return(
             <Fragment>
                 <Helmet><title>ProPicks - Results</title></Helmet>
                 <Menubar />
-                <div id="result" className="row">
-                    <Menubar/>
-                    <div className="col-lg-8 result-text">
-                        <h1>Last step !</h1>
-                        <div className="wrapper">
-                            <form onSubmit={this.handleSubmit} class="form-inline form-custom">
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <input type="email" name="email" class="form-control email-field" placeholder="Enter your email address" onChange={this.handleChange} />
-                                </div>
-                                <button type="submit" class="btn btn-outline-light mb-2">Send</button>
-                            </form>
-                        </div>  
-                        <h3>Silahkan tulis emailmu agar kami bisa <br></br>mengirim rekomendasi laptop yang tepat<br></br>untukmu dalam 1-2 hari</h3>
-                        <p>*Email anda tidak akan digunakan untuk keperluan lain diluar rekomendasi laptop</p>
-                    </div>
-                    <div className="col-lg-4 position-relative">
-                        <img className="laptop-img" src={homeImage} alt="Email sent from propicks for laptop recommendation"/>
-                    </div>
-                </div>
-
-                {typeof(recList) !== 'undefined' && 
-                    <div className="results" id="results">
-                        <div className="row HIW-row ">
-                            <div className="col-md-12 text-center">
-                                <h1>Results</h1> 
-                            </div>
-                        </div>
-                        <div className="row HIW-row result-list">
-                            <div className="col-md-3"></div>
-                            <div className="col-md-6">
-                                {itemList}
-                            </div>
-                            <div className="col-md-3"></div>
-                        </div>
-                    </div>
-                }
+                {resultsPage}
             </Fragment>
         )
     }

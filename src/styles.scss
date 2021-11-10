@@ -1,12 +1,10 @@
-
 // colors
 $orange: #ffa500;
 $off-white: #f8f8f8;
 $green: #57b846;
 $blue: #1da1f2;
+$light-blue: #cfebfc;
 $off-black: #333;
-
-
 
 // sizes
 $xs: 0.5rem;
@@ -21,33 +19,33 @@ $button-radius: 30px;
 
 $md-breakpoint: 768px;
 
-$quicksand: 'Quicksand', sans-serif;
-$poppins: 'Poppins', sans-serif;
+$quicksand: "Quicksand", sans-serif;
+$poppins: "Poppins", sans-serif;
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import './HomePage/home';
-@import './PlayPage/play';
-@import './ResultPage/result';
-@import './menubar';
-@import './footer';
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import "./HomePage/home";
+@import "./PlayPage/play";
+@import "./ResultPage/result";
+@import "./menubar";
+@import "./footer";
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    font-family: $quicksand;
+  font-family: $quicksand;
 }
 
-.disable{
-    background-color: #ccc !important;
-    box-shadow: none;
-    opacity: 0.8;
-    pointer-events: none;
+.disable {
+  background-color: #ccc !important;
+  box-shadow: none;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
-.disable-span{
-    display:none;
+.disable-span {
+  display: none;
 }

@@ -19,8 +19,8 @@ const Home = () => (
         <div id="home" className="row">
             <div className="col-md-8 text-center">
                 <h1>Bingung cari laptop yang tepat ?</h1>
-                <p>Isi quiz berikut untuk mendapatkan rekomendasi<br></br>laptop yang tepat untukmu</p>
-                <Link to={`/play`}><button type="button" name="button" className="btn btn-success">Mulai Quiz</button></Link>
+                <p>Isi pertanyaan berikut untuk mendapatkan rekomendasi<br></br>laptop yang tepat untukmu</p>
+                <Link to={`/play`}><button type="button" name="button" className="btn btn-success">Cari Tahu</button></Link>
             </div>
             <div className="col-sm-4 position-relative">
                 <img className="fixed-bottom position-absolute bottom-0 end-0" src={homeImage} alt="ProPicks welcome cari laptop" />

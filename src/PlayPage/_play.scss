@@ -1,113 +1,110 @@
-.quiz-body{
+.quiz-body {
+  background-color: $blue;
+  height: auto;
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+}
+
+.questions {
+  background-color: #f2f2f2;
+  border-left: 5px solid $blue;
+  width: 88%;
+  margin: 0px auto 0 auto;
+  padding: $sm $md;
+
+  h5 {
+    font-size: 2.3rem;
+    margin-top: $sm;
+    margin-bottom: $md;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .options-container {
+    display: inline-block;
+    width: 50%;
+  }
+
+  .option {
     background-color: $blue;
-    height: auto;
-    min-height: 100vh;
-    width: 100vw;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
+    color: $off-white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.125);
+    border-radius: $button-radius;
+    margin: $md auto $sm auto;
+
+    font-size: 16px;
+    cursor: pointer;
+    padding: $normal;
+    transition: 0.2s linear all;
+    text-align: center;
+    width: 90%;
+  }
+
+  .option:hover {
+    background-color: darken($blue, 15%);
+  }
+
+  .option-multiple {
+    border-radius: $button-radius;
+    background-color: $blue;
+    margin: $md auto $sm auto;
+    color: $off-white;
+    cursor: pointer;
+    padding: $normal;
+    transition: 0.2s linear all;
+    text-align: center;
+    width: 90%;
+  }
+
+  .option-multiple:hover {
+    background-color: darken($blue, 15%);
+  }
+
+  .selected {
+    background-color: darken($green, 8%) !important;
+  }
 }
 
-.questions{
-    background-color: #f2f2f2;
-    border-left: 5px solid $blue;
-    width: 88%;
-    margin: 0px auto 0 auto;
-    padding: $sm $md;
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px auto $sm 10px;
+  padding: $md;
+  width: 80%;
 
-    h5{
-        font-size: 2.3rem;
-        margin-top: $sm;
-        margin-bottom: $md;
-        line-height: 1.5;
-        text-align: center;
-    }
+  button {
+    border: none;
+    color: $off-white;
+    cursor: pointer;
+    font-family: $quicksand;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-right: $md;
+    padding: $xs $xxlg;
+    border-radius: 15px;
+  }
 
-    .options-container{
-        display: inline-block;
-        width: 50%;
-    }
+  button:first-child {
+    background-color: darken($green, 0%);
+    box-shadow: $off-black;
+    transition: 0.2s linear all;
+    padding: 1rem 10rem 1rem 10rem;
+  }
 
-    .option{
-        background-color: $blue;
-        color: $off-white;
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.125);
+  button:first-child:hover {
+    background-color: darken($green, 5%);
+  }
 
-        // background-color: #fff;
-        // color: $blue;
-        // border: 2px solid $blue;
-        // font-weight: 700;
-        
+  // button:nth-child(2){
+  //     background-color: $green;
+  //     box-shadow: $off-black;
+  //     transition: 0.2s linear all;
+  // }
 
-        border-radius: $button-radius;
-        margin: $md auto $sm auto;
-        
-        font-size: 16px;
-        cursor: pointer;
-        padding: $normal;
-        transition: 0.2s linear all;
-        text-align: center;
-        width: 90%;
-    }
-
-    .option:hover{
-        background-color: darken($blue, 15%);
-    }
-
-    .option-multiple{
-        border-radius: $button-radius;
-        background-color: $blue;
-        margin: $md auto $sm auto;
-        color: $off-white;
-        cursor: pointer;
-        padding: $normal;
-        transition: 0.2s linear all;
-        text-align: center;
-        width: 90%;
-    }
-
-    .option-multiple:hover{
-        background-color: darken($blue, 15%);
-    }
-
-    .selected{
-        background-color: darken($green, 0%) !important;
-    }
-}
-
-.button-container{
-    display: flex;
-    justify-content: flex-start;
-    margin: 20px auto $sm 10px;
-    padding: $md;
-    width: 80%;
-
-    button {
-        border: none;
-        color: $off-white;
-        cursor: pointer;
-        font-family: $quicksand;
-        margin-right: $md;
-        padding: $xs $xxlg;
-        border-radius: 15px;
-    }
-
-    button:first-child{
-        background-color: darken($green, 10%);
-        box-shadow: $off-black;
-        transition: 0.2s linear all;
-    }
-
-    button:first-child:hover{
-        background-color:darken($green, 20%);
-    }
-
-    // button:nth-child(2){
-    //     background-color: $green;
-    //     box-shadow: $off-black;
-    //     transition: 0.2s linear all;
-    // }
-
-    // button:nth-child(2):hover{
-    //     background-color: darken($green, 10%);
-    // }
+  // button:nth-child(2):hover{
+  //     background-color: darken($green, 10%);
+  // }
 }

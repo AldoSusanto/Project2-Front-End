@@ -78,7 +78,7 @@ class Play extends Component {
                                 id="next-button"
                                 onClick={this.buttonClick}
                                 className= {classNames('', {'disable': this.state.currentSelectedTags.length <= 0})}>
-                                Next
+                                NEXT
                             </button>
                         </div>
                     </div>
