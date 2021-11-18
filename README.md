@@ -2,7 +2,7 @@
 
 List of dependencies:
     - npm install react-bootstrap bootstrap@4.6.0
-    - yarn add node-sass react-helmet react-router-dom @mdi/font materialize-css classnames
+    - yarn add node-sass react-helmet react-router-dom@5.3.0 @mdi/font materialize-css classnames
     - npm i -S reactstrap
     - yarn add @fortawesome/fontawesome-svg-core
     - yarn add @fortawesome/free-solid-svg-icons

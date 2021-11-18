@@ -134,7 +134,6 @@ class Play extends Component {
                 
                 //2) For each of the choices, map them to the correct result
                 for(const [_, value] of currentTagList.entries()){
-                    console.log("value " + value );
                     this.mapAnswerToResult(questionLabel, value);
                 }
 
@@ -155,7 +154,7 @@ class Play extends Component {
                         state: this.state.result
                     });
                 }
-                console.log("CollectedTags: " + JSON.stringify(tagArray));
+                // console.log("CollectedTags: " + JSON.stringify(tagArray));
                 this.disableButtonIfNeeded(index+1);
                 break;
             default:
@@ -258,7 +257,7 @@ class Play extends Component {
         var findTagIndex = tagArray.findIndex(tagExists) 
 
         if(findTagIndex >= 0 ){
-            console.log(selectedTag + " has already been selected, removing element from index: " + findTagIndex);
+            // console.log(selectedTag + " has already been selected, removing element from index: " + findTagIndex);
             tagArray.splice(findTagIndex, 1)
         }else{
             tagArray = tagArray.concat(selectedTag);
@@ -275,7 +274,6 @@ class Play extends Component {
         var findChoicesIndex = choicesArray.findIndex(choiceExists) // We check whether the choice selected already exists in our array or not. (-1 if not found)
         
         if(findChoicesIndex >= 0){
-            console.log(indexAndQuestionLabel + " has already been selected, removing element from index: " + findChoicesIndex);
             choicesArray.splice(findChoicesIndex, 1)
         }else{
             choicesArray = choicesArray.concat(indexAndQuestionLabel);

@@ -30,7 +30,8 @@ class Result extends React.Component {
     componentDidMount() {
         var reqBody = this.state.result;
 
-        axios.post('http://52.77.224.177:8080/v1/recommendation', reqBody)
+        axios.post('https://api.propicks.id/v1/recommendation', reqBody)
+        // axios.post('http://127.0.0.1:8080/v1/recommendation', reqBody)
         .then(res => {
             this.setState({
                 recommendations: res
@@ -40,7 +41,6 @@ class Result extends React.Component {
     }
 
     changeHighlight(event, index) {
-        console.log("Index clicked: " + index);
         this.setState({
             highlightedIndex: index
         })
