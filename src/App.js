@@ -4,12 +4,12 @@ import Result from  './ResultPage/Result';
 import Play from  './PlayPage/Play';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faUserTie, faTags , faLaptop, faPlay, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faUserTie, faTags , faLaptop, faPlay, faPhone, faSearchDollar, faSmileBeam } from '@fortawesome/free-solid-svg-icons'
 import 'semantic-ui-css/semantic.min.css';
 
 
 function App() {
-  library.add(fab, faEnvelope, faUserTie, faTags, faLaptop, faPlay, faPhone); 
+  library.add(fab, faEnvelope, faUserTie, faTags, faLaptop, faPlay, faPhone, faSearchDollar, faSmileBeam); 
   return (
     <Router>
       <Route path="/" exact component={Home} />

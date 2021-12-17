@@ -36,7 +36,7 @@ class Result extends React.Component {
             this.setState({
                 recommendations: res
             })    
-            // console.log(res);
+            // console.log(res.data);
         })
     }
 
@@ -53,29 +53,20 @@ class Result extends React.Component {
         var itemImage = [];
         var highlightedItem = {};
         var resultsPage = [];
+        var itemLinks = [];
 
         if(typeof(recList) !== 'undefined'){
             for(const[index, value] of recList.entries()){
                 itemList.push(
                     <Item.Group divided >
                         <Item className={`itemList ${index == this.state.highlightedIndex ? "selectedItem" : "" }`} onClick={(e) => this.changeHighlight(e, index)}>
-                            <Item.Image src={value.imageLink} />
+                            <Item.Image src={value.imageLink[0]} />
                             <Item.Content>
                                 <Item.Header as='string'>{value.name}</Item.Header>
                                 <Item.Meta>
                                 <span className='price'><CurrencyFormat value={value.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></span>
                                 </Item.Meta>
-                                {/* <Item.Description>Processor: {value.processor} <br/> RAM: {value.ram}GB <br /> Graphics Card: {value.graphics} </Item.Description> */}
                                 <Item.Extra>
-                                {/* <Label icon='gamepad' content='Powerful for gaming' />
-                                <Label icon='briefcase' content='Suitable for Travel' />
-                                <Label icon='users' content='Highly Reviewed' /> */}
-                                {/* <a href={value.link}>
-                                    <Button primary floated='right'>
-                                        Buy
-                                        <Icon name='right chevron' />
-                                    </Button>
-                                </a> */}
                                 </Item.Extra>
                             </Item.Content>
                         </Item>
@@ -84,7 +75,21 @@ class Result extends React.Component {
             }
 
             highlightedItem = recList[this.state.highlightedIndex];
-            console.log(highlightedItem);
+
+            // Populate the links(button) for the highlightedItem
+            for(const[index, value] of highlightedItem.link.entries()){
+                if(value.link.trim() != "" ){ //if link is empty
+                    console.log("linkfrom", value.linkFrom);
+                    itemLinks.push(
+                        <a href={value.link} target="_blank">
+                        <Button floated='right' className={`item-desc-btn ${value.linkFrom}`}>
+                            {`Visit ${value.linkFrom}`}
+                            <Icon name='right chevron' />
+                        </Button>
+                    </a>
+                    );
+                }
+            }
 
             itemDescription.push(
                 <Item.Group divided className="itemDesc">
@@ -99,12 +104,7 @@ class Result extends React.Component {
                             {/* <Label icon='gamepad' content='Powerful for gaming' />
                             <Label icon='briefcase' content='Suitable for Travel' />
                             <Label icon='users' content='Highly Reviewed' /> */}
-                            <a href={highlightedItem.link} target="_blank">
-                                <Button positive floated='right' className='item-desc-btn'>
-                                    Visit Shop
-                                    <Icon name='right chevron' />
-                                </Button>
-                            </a>
+                            {itemLinks}
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -112,7 +112,7 @@ class Result extends React.Component {
             )
 
             itemImage.push(
-                <img className="laptop-img" src={highlightedItem.imageLink} alt="Highlighted Laptop"/>    
+                <img className="laptop-img" src={highlightedItem.imageLink[0]} alt="Highlighted Laptop"/>    
             )
 
             resultsPage.push(

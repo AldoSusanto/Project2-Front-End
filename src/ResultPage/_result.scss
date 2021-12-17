@@ -93,6 +93,10 @@
     }
   }
 
+  .itemList:hover {
+    background-color: darken($blue, 8%);
+  }
+
   .selectedItem {
     background-color: $light-blue;
     padding: 0px 20px 0px 30px;
@@ -104,6 +108,10 @@
     .price {
       color: #27a4f1;
     }
+  }
+
+  .selectedItem:hover {
+    background-color: darken($light-blue, 5%);
   }
 
   .itemDesc {
@@ -136,6 +144,7 @@
       width: 300px;
       transition: 0.2s linear all;
       background-color: $green;
+      color: $off-white;
     }
 
     .item-desc-btn:hover {

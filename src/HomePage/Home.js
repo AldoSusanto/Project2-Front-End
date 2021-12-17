@@ -8,6 +8,7 @@ import Menubar from '../Menubar'
 import Footer from '../Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import formIcon from '../assets/form-icon-nobg.png';
+import smileIcon from '../assets/smile-nobg.png';
 
 
 const Home = () => (
@@ -36,17 +37,20 @@ const Home = () => (
             </div>
             <div className="row HIW-row">
                 <div className="col-md-1"></div>
-                <div className="col-md-5 text-center">
-                    <p className="">Step 1</p>
+                <div className="col-md-3 text-center">
+                    <h3 className="text-ce">Step 1</h3>
                     <img className="iconImage" src={formIcon} alt=""></img>
-                    <h3 className="HIW-title text-center">Isi Quiz</h3>
-                    <p>Beri tahu kami kriteria laptop<br></br>yang kamu inginkan</p>
+                    <h3 className="HIW-title text-center">Beritahu kebutuhan <br /> laptop kamu</h3>
                 </div>
-                <div className="col-md-5 text-center">
-                    <p className="text-center">Step 2</p>
-                    <FontAwesomeIcon icon="laptop" className="HIW-icons"/>
-                    <h3 className="HIW-title text-center">Cek Email</h3>
-                    <p>Dapatkan rekomendasi laptop<br></br> yang terbaik untukmu</p>
+                <div className="col-md-4 text-center">
+                    <h3 className="text-center">Step 2</h3>
+                    <FontAwesomeIcon icon="search-dollar" className="HIW-icons"/>
+                    <h3 className="HIW-title text-center">Kami rekomendasikan <br /> laptop terbaik untukmu</h3>
+                </div>
+                <div className="col-md-3 text-center">
+                    <h3 className="text-center">Step 3</h3>
+                    <img className="iconImage" src={smileIcon} alt=""></img>
+                    <h3 className="HIW-title text-center">Explore dan pilih <br /> laptop kesukaanmu</h3>
                 </div>
                 <div className="col-md-1"></div>
             </div>
