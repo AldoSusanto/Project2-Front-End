@@ -16,7 +16,6 @@ const Home = () => (
         <Helmet><title>ProPicks - Home</title></Helmet>
         <Menubar />
 
-
         {/* Cover Page */}
         <div id="home" className="row">
             <div className="col-md-8 text-center">
