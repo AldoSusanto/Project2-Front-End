@@ -27,6 +27,7 @@ class Result extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // Call Backend for recommendations
     componentDidMount() {
         var reqBody = this.state.result;
 
@@ -40,6 +41,7 @@ class Result extends React.Component {
         })
     }
 
+    // When user clicks on a laptop, we highlight that laptop
     changeHighlight(event, index) {
         this.setState({
             highlightedIndex: index
@@ -56,6 +58,7 @@ class Result extends React.Component {
         var itemLinks = [];
 
         if(typeof(recList) !== 'undefined'){
+            // Populate Laptop List on left side of page
             for(const[index, value] of recList.entries()){
                 itemList.push(
                     <Item.Group divided >
@@ -76,10 +79,10 @@ class Result extends React.Component {
 
             highlightedItem = recList[this.state.highlightedIndex];
 
-            // Populate the links(button) for the highlightedItem
+            // Populate the links(green button) for the highlightedItem
             for(const[index, value] of highlightedItem.link.entries()){
                 if(value.link.trim() != "" ){ //if link is empty
-                    console.log("linkfrom", value.linkFrom);
+                    // console.log("linkfrom", value.linkFrom);
                     itemLinks.push(
                         <a href={value.link} target="_blank">
                         <Button floated='right' className={`item-desc-btn ${value.linkFrom}`}>
@@ -91,6 +94,7 @@ class Result extends React.Component {
                 }
             }
 
+            // Populate Laptop Description on right side of page
             itemDescription.push(
                 <Item.Group divided className="itemDesc">
                     <Item>
@@ -114,7 +118,8 @@ class Result extends React.Component {
             itemImage.push(
                 <img className="laptop-img" src={highlightedItem.imageLink[0]} alt="Highlighted Laptop"/>    
             )
-
+            
+            // Compile all components 
             resultsPage.push(
                 <div id="result" className="row result-home">
                     <div className="col-lg-5 panel">
@@ -152,6 +157,7 @@ class Result extends React.Component {
         )
     }
 
+    // Deprecated
     handleChange(event) {
         switch (event.target.name){
             case 'name':
@@ -168,12 +174,14 @@ class Result extends React.Component {
         }
     }
     
+    // Deprecated
     handleSubmit(event) {
         this.sendEmail();
         event.preventDefault();
         this.props.history.push("/");
     }
 
+    // Deprecated
     sendEmail() {
         var emailBody = {
             result: JSON.stringify(this.state, null, "\t")
