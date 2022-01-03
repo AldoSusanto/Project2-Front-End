@@ -197,3 +197,4 @@ class Result extends React.Component {
 }
 
 export default Result;
+
