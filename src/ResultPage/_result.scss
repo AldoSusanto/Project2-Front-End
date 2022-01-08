@@ -176,6 +176,30 @@
     margin-top: 1.8rem;
   }
 
+  h2 {
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $off-white;
+    font-size: 1.6rem;
+    margin-top: 1.8rem;
+  }
+
+  p {
+    margin: 0;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $off-white;
+    // font-size: 1.5rem;
+    margin-top: 1.8rem;
+  }
+
   .loader {
     margin: 0;
     position: absolute;
