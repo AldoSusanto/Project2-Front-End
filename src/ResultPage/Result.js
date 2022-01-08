@@ -58,7 +58,6 @@ class Result extends React.Component {
         var itemLinks = [];
 
         if(typeof(recList) !== 'undefined'){
-            console.log("reclist: " + recList.length);
             if(recList.length > 0){
                 // Populate Laptop List on left side of page
                 for(const[index, value] of recList.entries()){
