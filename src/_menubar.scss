@@ -1,50 +1,127 @@
-.navbar{
+.navbar {
   background: $blue;
+  width: 100vw;
 }
 
 .container-fluid .navbar-brand {
-    font-family: $quicksand;
-    font-size: $md;
-    color: #13B929;
-    margin-top: 50px;
+  font-family: $quicksand;
+  font-size: $md;
+  color: #13b929;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+}
+
+.container-fluid .menuBtn {
+  margin-left: 70px;
+  padding: 8px 10px;
+  color: $off-white;
+  background: $blue;
+  font-family: $poppins;
+  font-size: 1.2rem;
+  position: relative;
+  border: none;
+  text-decoration: none;
+}
+
+.container-fluid .menuBtn::after {
+  content: "";
+  width: 100%;
+  height: 0.2rem;
+  background: $off-white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: scale(0, 1);
+  transition: transform 0.3s ease;
+}
+
+.container-fluid .menuBtn:hover::after {
+  transform: scale(1, 1);
+}
+
+.menubarStyle {
+  height: 80px;
+}
+
+.menu-icons {
+  color: #ffffff;
+  width: calc(2.8rem + 0.8vw);
+  height: auto;
+  margin-right: 1.5rem;
+}
+
+.menu-icons:hover {
+  color: #d8d8d8;
+}
+
+.show-nav {
+  right: 0rem;
+}
+
+.hidden-nav {
+  right: -40vw;
+}
+
+.offcanvas {
+  position: fixed;
+  top: 0;
+  width: 40vw;
+  height: 110vh;
+  background-color: $blue;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.7s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+  .close-icons {
+    color: #ffffff;
+    width: calc(2.8rem + 0.8vw);
+    height: auto;
   }
 
-  .logo{
-    max-width: 180px;
-    margin-left: 90px;
-    margin-right: 45%;
-    height:auto;
+  &__nav {
+    height: 30vh;
   }
-  
-  .container-fluid .menuBtn{
-    margin-left: 70px;
+
+  &__close {
+    margin: 2.4rem 2.4rem 0 0;
     padding: 8px 10px;
     color: $off-white;
-    background: $blue;
     font-family: $poppins;
-    font-size: 1.2rem;
-    position: relative;
+    font-size: 1.4rem;
     border: none;
     text-decoration: none;
   }
 
-  .container-fluid .menuBtn::after{
-      content: '';
-      width: 100%;
-      height: 0.2rem;
-      background: $off-white;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      transform: scale(0,1);
-      transition: transform 0.3s ease;
+  &__close:hover {
+    color: #dadada;
   }
-  
-  .container-fluid .menuBtn:hover::after{
-    transform: scale(1,1);
+
+  &__link {
+    margin: 1.2rem 0 1.2rem 0;
+    padding: 8px 10px;
+    color: $off-white;
+    font-family: $poppins;
+    font-size: calc(1.1rem + 0.6vw);
+    border: none;
+    text-decoration: none;
   }
-  
-  .menubarStyle {
-    height: 80px;
-    padding: 20px;
+
+  &__link:hover {
+    background-color: $off-white;
+    color: #007bff;
   }
+}
+
+@media screen and (min-width: 500px) {
+  .offcanvas {
+    &__link {
+      padding-left: 30px;
+    }
+  }
+}
