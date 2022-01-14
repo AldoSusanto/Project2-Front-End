@@ -161,12 +161,16 @@
   }
 
   .button-container {
-    margin: 20px 0 $sm 0;
+    margin: 10px 0 $normal 0;
     padding: $md;
     width: 100%;
 
     button {
       font-size: 1.1rem;
+    }
+
+    button:first-child {
+      padding: 1rem 8rem;
     }
   }
 }
