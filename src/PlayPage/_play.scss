@@ -123,7 +123,7 @@
   // }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 767px) {
   .questions {
     width: 90%;
     margin: 0px auto 0 auto;
@@ -141,18 +141,18 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: $sm 0;
+      margin: 0;
     }
 
     .option {
-      margin: 0.4rem auto 0.4rem auto;
+      margin: $normal auto;
       font-size: calc(11px + 1vw);
       padding: $normal;
       width: 100%;
     }
 
     .option-multiple {
-      margin: 0.4rem auto 0.4rem auto;
+      margin: $normal auto;
       padding: $normal 0;
       text-align: center;
       width: 100%;
@@ -166,19 +166,7 @@
     width: 100%;
 
     button {
-      border: none;
-      color: $off-white;
-      cursor: pointer;
-      font-family: $quicksand;
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      padding: $xs $xxlg;
-      border-radius: 11px;
-    }
-
-    button:first-child {
-      padding: 0.8rem 5rem 0.8rem 5rem;
+      font-size: 1.1rem;
     }
   }
 }

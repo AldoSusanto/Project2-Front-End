@@ -6,9 +6,9 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div className="footer-content row d-flex flex-column-reverse flex-md-row">
+        <div className="footer-content row d-flex flex-column flex-md-row">
           <div className="col-md-1"></div>
-          <div className="col-md-4 text-left footer-left">
+          <div className="col-md-5 col-lg-4 text-left footer-left">
             <img
               src={logoImage}
               className="logo-footer"
@@ -19,14 +19,14 @@ class Footer extends React.Component {
               rekomendasi laptop yang terbaik untukmu.
             </p>
             {/* <p><FontAwesomeIcon icon="phone" className="footer-icons"/>  (+62) 812-9927-5403</p> */}
-            <p>
+            <p className="footer-email">
               <FontAwesomeIcon icon="envelope" className="footer-icons" />{" "}
               aldosusanto@hotmail.com
             </p>
             <p>Copyright &copy; ProPicks | 2021</p>
           </div>
-          <div className="col-md-2"></div>
-          <div className="col-md-4 text-left footer-mid">
+          <div className="col-md-1 col-lg-2"></div>
+          <div className="col-md-5 col-lg-4 text-left footer-mid">
             <h2>Links:</h2>
             <ul>
               <a className="menuBtn" href="/play">
