@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import emailjs from 'emailjs-com';
 import Menubar from '../Menubar';
 import axios from 'axios';
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Button, Icon, Item, Label, Popup } from 'semantic-ui-react'
 import CurrencyFormat from 'react-currency-format';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -31,8 +31,8 @@ class Result extends React.Component {
     componentDidMount() {
         var reqBody = this.state.result;
 
-        axios.post('https://api.propicks.id/v1/recommendation', reqBody)
-        // axios.post('http://127.0.0.1:8080/v1/recommendation', reqBody)
+        // axios.post('https://api.propicks.id/v1/recommendation', reqBody)
+        axios.post('http://127.0.0.1:8080/v1/recommendation', reqBody)
         .then(res => {
             this.setState({
                 recommendations: res
@@ -85,7 +85,7 @@ class Result extends React.Component {
                     if(value.link.trim() != "" ){ //if link is empty
                         // console.log("linkfrom", value.linkFrom);
                         itemLinks.push(
-                            <a href={value.link} target="_blank">
+                            <a href={value.link} target="_blank" rel="noopener noreferrer">
                             <Button floated='right' className={`item-desc-btn ${value.linkFrom}`}>
                                 {`Visit ${value.linkFrom}`}
                                 <Icon name='right chevron' />
@@ -105,11 +105,11 @@ class Result extends React.Component {
                                     <span className='price'><CurrencyFormat value={highlightedItem.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></span>
                                 </Item.Meta>
                                 <Item.Description className="item-desc-box"><b>Processor: </b> {highlightedItem.processor} <br/> <b>RAM: </b> {highlightedItem.ram}GB <br /> <b>Graphics Card:</b> {highlightedItem.graphics} </Item.Description>
-                                <Item.Extra>
+                                {/* <Item.Extra>
                                 <Label icon='gamepad' content='Powerful for gaming' />
                                 <Label icon='briefcase' content='Suitable for Travel' />
+                                </Item.Extra> */}
                                 {itemLinks}
-                                </Item.Extra>
                             </Item.Content>
                         </Item>
                     </Item.Group>
@@ -132,9 +132,14 @@ class Result extends React.Component {
                         <div className="col-lg-7">
                             <div className="row">
                                 {itemImage}
+                                {itemDescription}
                             </div>
                             <div className="row">
-                                {itemDescription}
+                                {/* TODO: Add Insights Here */}
+                                <Popup inverted content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !" trigger={
+                                    <a href="https://wa.me/6287868572240" class="whatsapp_float" target="_blank" rel="noopener noreferrer" >
+                                        <i class="fa fa-whatsapp whatsapp-icon"></i>
+                                    </a>} />
                             </div>
                         </div>
                     </div>
