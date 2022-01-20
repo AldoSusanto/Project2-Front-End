@@ -61,7 +61,7 @@ img {
 }
 
 .howItWorks {
-  width: 100vw;
+  width: auto;
   background: #f2f2f2;
   padding-top: 50px;
   padding-bottom: 30px;
@@ -114,7 +114,7 @@ img {
     }
 
     p {
-      font-size: $normal;
+      font-size: calc(1rem + 0.7vw);
       margin-top: 2rem;
       margin-left: 1.2rem;
       margin-right: 1.2rem;
@@ -138,9 +138,6 @@ img {
   }
 
   .HIW-row {
-    color: $blue;
-    margin-bottom: 80px;
-
     .iconImage {
       width: 75px;
       height: auto;

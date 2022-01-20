@@ -20,7 +20,7 @@ const Home = () => (
     {/* Cover Page */}
     <div className="main">
       <div id="home" className="row">
-        <div className="col-md-8 text-center">
+        <div className="col-12 col-md-8 text-center">
           <h1>Bingung cari laptop yang tepat?</h1>
           <p>
             Isi pertanyaan berikut untuk mendapatkan rekomendasi
