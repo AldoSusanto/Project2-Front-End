@@ -36,6 +36,7 @@ const Home = () => (
                 </div>
             </div>
             <div className="row HIW-row">
+                
                 <div className="col-md-1"></div>
                 <div className="col-md-3 text-center">
                     <h3 className="text-ce">Step 1</h3>
