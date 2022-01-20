@@ -8,11 +8,14 @@
 }
 
 .questions {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   background-color: #f2f2f2;
-  border-left: 5px solid $blue;
   width: 88%;
   margin: 0px auto 0 auto;
   padding: $sm $md;
+  border-radius: 6px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) all;
 
   h5 {
     font-size: 2.3rem;
@@ -35,17 +38,19 @@
     border-radius: $button-radius;
     margin: $md auto $sm auto;
 
-    font-size: 16px;
+    font-size: calc(6px + 0.7vw);
     font-family: $quicksand;
     cursor: pointer;
     padding: $normal;
-    transition: 0.2s linear all;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1) all;
     text-align: center;
     width: 90%;
   }
 
   .option:hover {
     background-color: darken($blue, 15%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
 
   .option-multiple {
@@ -55,13 +60,16 @@
     color: $off-white;
     cursor: pointer;
     padding: $normal;
-    transition: 0.2s linear all;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1) all;
     text-align: center;
     width: 90%;
+    font-size: calc(6px + 0.7vw);
   }
 
   .option-multiple:hover {
     background-color: darken($blue, 15%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
 
   .selected {
@@ -69,12 +77,15 @@
   }
 }
 
+.questions:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
 .button-container {
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px auto $sm 10px;
+  margin: 20px 0 $sm 0;
   padding: $md;
-  width: 80%;
+  width: 100%;
 
   button {
     border: none;
@@ -84,7 +95,6 @@
     font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: 3px;
-    margin-right: $md;
     padding: $xs $xxlg;
     border-radius: 15px;
   }
@@ -92,12 +102,14 @@
   button:first-child {
     background-color: darken($green, 0%);
     box-shadow: $off-black;
-    transition: 0.2s linear all;
+    transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1) all;
     padding: 1rem 10rem 1rem 10rem;
   }
 
   button:first-child:hover {
     background-color: darken($green, 5%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
 
   // button:nth-child(2){
@@ -109,4 +121,75 @@
   // button:nth-child(2):hover{
   //     background-color: darken($green, 10%);
   // }
+}
+
+@media screen and (max-width: 767px) {
+  .questions {
+    width: 90%;
+    margin: 0px auto 0 auto;
+    padding: $sm $md;
+
+    h5 {
+      font-size: calc(1.2rem + 0.9vw);
+      margin-top: $sm !important;
+      margin-bottom: $md;
+    }
+
+    .options-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .option {
+      margin: $normal auto;
+      font-size: calc(11px + 1vw);
+      padding: $normal;
+      width: 100%;
+    }
+
+    .option-multiple {
+      margin: $normal auto;
+      padding: $normal 0;
+      text-align: center;
+      width: 100%;
+      font-size: calc(9px + 0.8vw);
+    }
+  }
+
+  .button-container {
+    margin: 10px 0 $normal 0;
+    padding: $md;
+    width: 100%;
+
+    button {
+      font-size: 1.1rem;
+    }
+
+    button:first-child {
+      padding: 1rem 8rem;
+    }
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .questions {
+    h5 {
+      font-size: calc(1rem + 0.8vw);
+      margin-top: $sm !important;
+      margin-bottom: $md;
+    }
+
+    .option-multiple {
+      font-size: calc(7px + 0.8vw);
+    }
+
+    .option {
+      margin: $md auto $sm auto;
+      font-size: calc(9px + 0.8vw);
+    }
+  }
 }
