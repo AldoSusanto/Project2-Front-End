@@ -4,10 +4,11 @@ import { Fragment } from 'react';
 import emailjs from 'emailjs-com';
 import Menubar from '../Menubar';
 import axios from 'axios';
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Button, Icon, Item, Label, Popup } from 'semantic-ui-react'
 import CurrencyFormat from 'react-currency-format';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Result extends React.Component {
 
@@ -56,6 +57,7 @@ class Result extends React.Component {
         var highlightedItem = {};
         var resultsPage = [];
         var itemLinks = [];
+        var insightsList = [];
 
         if(typeof(recList) !== 'undefined'){
             if(recList.length > 0){
@@ -95,6 +97,12 @@ class Result extends React.Component {
                     }
                 }
 
+                for(const[index, value] of highlightedItem.insights.entries()){
+                    insightsList.push(
+                        <Popup inverted content={value.description} trigger={<Label size='large' color={value.type == 'Positive' ? 'green' : 'red'}><FontAwesomeIcon icon={value.icon}/>{" " + value.title}</Label>} /> 
+                    )
+                }
+
                 // Populate Laptop Description on right side of page
                 itemDescription.push(
                     <Item.Group divided className="itemDesc">
@@ -105,10 +113,11 @@ class Result extends React.Component {
                                     <span className='price'><CurrencyFormat value={highlightedItem.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></span>
                                 </Item.Meta>
                                 <Item.Description className="item-desc-box"><b>Processor: </b> {highlightedItem.processor} <br/> <b>RAM: </b> {highlightedItem.ram}GB <br /> <b>Graphics Card:</b> {highlightedItem.graphics} </Item.Description>
+                                <Item.Extra className="insights-container">
+                                    {insightsList} 
+                                </Item.Extra>
                                 <Item.Extra>
-                                <Label icon='gamepad' content='Powerful for gaming' />
-                                <Label icon='briefcase' content='Suitable for Travel' />
-                                {itemLinks}
+                                    {itemLinks}
                                 </Item.Extra>
                             </Item.Content>
                         </Item>
@@ -145,7 +154,7 @@ class Result extends React.Component {
                         <h1>Oops, ini memalukan :(</h1>
                         <h2>Kami tidak berhasil menemukan laptop yang cocok dengan pilihanmu<br /> Coba mengulang quiznya lagi</h2>
                         <p>Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan kamu</p>
-                    </div>
+                    </div> 
                 )
             }
         }else {
