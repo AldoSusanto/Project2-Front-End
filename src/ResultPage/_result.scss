@@ -157,8 +157,25 @@
   }
 
   .item-desc-btn:hover {
-    width: 260px;
+    width: 320px;
     background-color: #79c76b;
+  }
+
+  .insights-container {
+    width: 100%;
+    max-width: 500px;
+    max-height: 350px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 0px;
+  }
+
+  .insights-item {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 0px;
   }
 }
 
@@ -263,17 +280,17 @@
   //   border: 2px solid $blue;
 }
 
-.whatsapp_float {
+.whatsapp-float {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 40px;
-  right: 40px;
+  width: 70px;
+  height: 70px;
+  bottom: 50px;
+  right: 50px;
   background-color: #25d366;
   color: #fff;
   border-radius: 50px;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
 }

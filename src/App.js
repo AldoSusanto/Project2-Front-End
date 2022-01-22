@@ -14,6 +14,7 @@ const iconList = Object.keys(Icons)
 
 function App() {
   library.add(...iconList);
+
   return (
     <Router>
       <Route path="/" exact component={Home} />

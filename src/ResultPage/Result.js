@@ -133,7 +133,7 @@ class Result extends React.Component {
               inverted
               content={value.description}
               trigger={
-                <Label
+                <Label className="insights-item"
                   size="large"
                   color={value.type == "Positive" ? "green" : "red"}
                 >
@@ -208,7 +208,7 @@ class Result extends React.Component {
                   trigger={
                     <a
                       href="https://wa.me/6287868572240"
-                      class="whatsapp_float"
+                      class="whatsapp-float"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
