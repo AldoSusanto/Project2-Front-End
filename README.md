@@ -11,6 +11,8 @@ List of dependencies:
     - yarn add semantic-ui-react semantic-ui-css
     - yarn add react-currency-format
     - yarn add react-loader-spinner
+    - yarn add react-icons
+    - yarn add crypto-js
     
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -8,6 +8,8 @@ import { Button, Icon, Item, Label, Popup } from "semantic-ui-react";
 import CurrencyFormat from "react-currency-format";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CryptoJS from "crypto-js";
 
 class Result extends React.Component {
   constructor(props) {
@@ -29,10 +31,24 @@ class Result extends React.Component {
   // Call Backend for recommendations
   componentDidMount() {
     var reqBody = this.state.result;
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(
+      JSON.stringify(reqBody),
+      "ppid"
+    ).toString();
+    console.log("encrypt:");
+    console.log(ciphertext);
 
-    // axios.post('https://api.propicks.id/v1/recommendation', reqBody)
+    // Decrypt
+    var bytes = CryptoJS.AES.decrypt(ciphertext, "ppid");
+    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    console.log("decrypt:");
+    console.log(decryptedData);
+
     axios
-      .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      .post("https://api.propicks.id/v1/recommendation", reqBody)
+      // axios
+      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
@@ -56,6 +72,7 @@ class Result extends React.Component {
     var highlightedItem = {};
     var resultsPage = [];
     var itemLinks = [];
+    var insightsList = [];
 
     if (typeof recList !== "undefined") {
       if (recList.length > 0) {
@@ -110,6 +127,24 @@ class Result extends React.Component {
           }
         }
 
+        for (const [index, value] of highlightedItem.insights.entries()) {
+          insightsList.push(
+            <Popup
+              inverted
+              content={value.description}
+              trigger={
+                <Label
+                  size="large"
+                  color={value.type == "Positive" ? "green" : "red"}
+                >
+                  <FontAwesomeIcon icon={value.icon} />
+                  {" " + value.title}
+                </Label>
+              }
+            />
+          );
+        }
+
         // Populate Laptop Description on right side of page
         itemDescription.push(
           <Item.Group divided className="itemDesc">
@@ -133,11 +168,7 @@ class Result extends React.Component {
                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
                 </Item.Description>
-                {/* <Item.Extra>
-                                <Label icon='gamepad' content='Powerful for gaming' />
-                                <Label icon='briefcase' content='Suitable for Travel' />
-                                </Item.Extra> */}
-                {itemLinks}
+                <Item.Extra>{itemLinks}</Item.Extra>
               </Item.Content>
             </Item>
           </Item.Group>
@@ -168,7 +199,9 @@ class Result extends React.Component {
                 {itemDescription}
               </div>
               <div className="row">
-                {/* TODO: Add Insights Here */}
+                <Item.Extra className="insights-container">
+                  {insightsList}
+                </Item.Extra>
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
@@ -255,6 +288,152 @@ class Result extends React.Component {
     this.props.history.push("/");
   }
 
+  // =======
+
+  //         for (const [index, value] of highlightedItem.insights.entries()) {
+  //           insightsList.push(
+  //             <Popup
+  //               inverted
+  //               content={value.description}
+  //               trigger={
+  //                 <Label
+  //                   size="large"
+  //                   color={value.type == "Positive" ? "green" : "red"}
+  //                 >
+  //                   <FontAwesomeIcon icon={value.icon} />
+  //                   {" " + value.title}
+  //                 </Label>
+  //               }
+  //             />
+  //           );
+  //         }
+
+  //         // Populate Laptop Description on right side of page
+  //         itemDescription.push(
+  //           <Item.Group divided className="itemDesc">
+  //             <Item>
+  //               <Item.Content>
+  //                 <Item.Header as="a" className="title">
+  //                   {highlightedItem.name}
+  //                 </Item.Header>
+  //                 <Item.Meta>
+  //                   <span className="price">
+  //                     <CurrencyFormat
+  //                       value={highlightedItem.price}
+  //                       displayType={"text"}
+  //                       thousandSeparator={true}
+  //                       prefix={"Rp. "}
+  //                     />
+  //                   </span>
+  //                 </Item.Meta>
+  //                 <Item.Description className="item-desc-box">
+  //                   <b>Processor: </b> {highlightedItem.processor} <br />{" "}
+  //                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
+  //                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
+  //                 </Item.Description>
+  //                 <Item.Extra className="insights-container">
+  //                   {insightsList}
+  //                 </Item.Extra>
+  //                 <Item.Extra>{itemLinks}</Item.Extra>
+  //               </Item.Content>
+  //             </Item>
+  //           </Item.Group>
+  //         );
+
+  //         itemImage.push(
+  //           <img
+  //             className="laptop-img"
+  //             src={highlightedItem.imageLink[0]}
+  //             alt="Highlighted Laptop"
+  //           />
+  //         );
+
+  //         // Compile all components
+  //         resultsPage.push(
+  //           <div id="result" className="row result-home">
+  //             <div className="col-lg-5 panel">
+  //               <h1>
+  //                 Here are <br />
+  //                 Our top 10 picks for you
+  //               </h1>
+  //               <hr className="hr-line" />
+  //               <div className="result-text">{itemList}</div>
+  //             </div>
+  //             <div className="col-lg-7">
+  //               <div className="row">{itemImage}</div>
+  //               <div className="row">{itemDescription}</div>
+  //             </div>
+  //           </div>
+  //         );
+  //       } else {
+  //         // If BE returns empty list
+  //         resultsPage.push(
+  //           <div className="row loading-page">
+  //             <h1>Oops, ini memalukan :(</h1>
+  //             <h2>
+  //               Kami tidak berhasil menemukan laptop yang cocok dengan pilihanmu
+  //               <br /> Coba mengulang quiznya lagi
+  //             </h2>
+  //             <p>
+  //               Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan kamu
+  //             </p>
+  //           </div>
+  //         );
+  //       }
+  //     } else {
+  //       resultsPage.push(
+  //         <div className="row loading-page">
+  //           <h1>
+  //             Mohon menunggu <br /> Sedang mencari hasil yang terbaik untukmu...
+  //           </h1>
+  //           <Loader
+  //             className="loader"
+  //             type="TailSpin"
+  //             color="#fff"
+  //             height={100}
+  //             width={100}
+  //             timeout={100000}
+  //           />
+  //         </div>
+  //       );
+  //     }
+
+  //     return (
+  //       <Fragment>
+  //         <Helmet>
+  //           <title>ProPicks - Results</title>
+  //         </Helmet>
+  //         <Menubar />
+  //         {resultsPage}
+  //       </Fragment>
+  //     );
+  //   }
+
+  //   // Deprecated
+  //   handleChange(event) {
+  //     switch (event.target.name) {
+  //       case "name":
+  //         this.setState({ name: event.target.value });
+  //         break;
+  //       case "email":
+  //         this.setState({ email: event.target.value });
+  //         break;
+  //       case "phoneNumber":
+  //         this.setState({ number: event.target.value });
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   }
+
+  //   // Deprecated
+  //   handleSubmit(event) {
+  //     this.sendEmail();
+  //     event.preventDefault();
+  //     this.props.history.push("/");
+  //   }
+
+  // >>>>>>> Stashed changes
   // Deprecated
   sendEmail() {
     var emailBody = {
