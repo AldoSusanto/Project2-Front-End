@@ -31,29 +31,15 @@ class Result extends React.Component {
   // Call Backend for recommendations
   componentDidMount() {
     var reqBody = this.state.result;
-    // Encrypt
-    var ciphertext = CryptoJS.AES.encrypt(
-      JSON.stringify(reqBody),
-      "ppid"
-    ).toString();
-    console.log("encrypt:");
-    console.log(ciphertext);
 
-    // Decrypt
-    var bytes = CryptoJS.AES.decrypt(ciphertext, "ppid");
-    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    console.log("decrypt:");
-    console.log(decryptedData);
-
+    // axios
+    //   .post("https://api.propicks.id/v1/recommendation", reqBody)
     axios
-      .post("https://api.propicks.id/v1/recommendation", reqBody)
-      // axios
-      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
         });
-        // console.log(res.data);
       });
   }
 
@@ -66,6 +52,7 @@ class Result extends React.Component {
 
   render() {
     var recList = this.state.recommendations.data;
+    var reqBody = this.state.result;
     var itemList = [];
     var itemDescription = [];
     var itemImage = [];
@@ -73,8 +60,21 @@ class Result extends React.Component {
     var resultsPage = [];
     var itemLinks = [];
     var insightsList = [];
+    var prefix_wa =
+      "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
+    var prefix_url = "https://wa.me/6287868572240?text=";
 
     if (typeof recList !== "undefined") {
+      // Encrypt
+      var ciphertext = CryptoJS.AES.encrypt(
+        JSON.stringify(reqBody),
+        "ppid"
+      ).toString();
+
+      prefix_url =
+        "https://wa.me/6287868572240?text=" +
+        encodeURIComponent(prefix_wa + ciphertext);
+
       if (recList.length > 0) {
         // Populate Laptop List on left side of page
         for (const [index, value] of recList.entries()) {
@@ -88,7 +88,7 @@ class Result extends React.Component {
               >
                 <Item.Image src={value.imageLink[0]} />
                 <Item.Content>
-                  <Item.Header as="string">{value.name}</Item.Header>
+                  <Item.Header>{value.name}</Item.Header>
                   <Item.Meta>
                     <span className="price">
                       <CurrencyFormat
@@ -133,7 +133,8 @@ class Result extends React.Component {
               inverted
               content={value.description}
               trigger={
-                <Label className="insights-item"
+                <Label
+                  className="insights-item"
                   size="large"
                   color={value.type == "Positive" ? "green" : "red"}
                 >
@@ -207,12 +208,12 @@ class Result extends React.Component {
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
                   trigger={
                     <a
-                      href="https://wa.me/6287868572240"
-                      class="whatsapp-float"
+                      href={prefix_url}
+                      className="whatsapp-float"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <i class="fa fa-whatsapp whatsapp-icon"></i>
+                      <i className="fa fa-whatsapp whatsapp-icon"></i>
                     </a>
                   }
                 />
