@@ -10,11 +10,12 @@
   margin-top: 80px;
 
   .laptop-img {
-    width: 100%;
+    width: 50%;
     height: 100%;
     max-width: 350px;
     max-height: 350px;
-    margin: auto;
+    // margin: auto;
+    margin-left: 40px;
     margin-bottom: 40px;
     margin-top: 30px;
   }
@@ -116,7 +117,9 @@
 
   .itemDesc {
     margin: auto;
-    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 100px;
+    width: 50%;
     transition: 0.2s linear all;
 
     .title {
@@ -139,28 +142,40 @@
       margin-left: 50px;
       margin-right: 70px;
     }
+  }
 
-    .item-desc-btn {
-      width: 300px;
-      transition: 0.2s linear all;
-      background-color: $green;
-      color: $off-white;
-    }
+  .item-desc-btn {
+    margin-left: 20px;
+    margin-top: 80px;
+    width: 250px;
+    height: 45px;
+    transition: 0.2s linear all;
+    background-color: $green;
+    color: $off-white;
+    font-size: 1.2rem;
+    border-radius: 15px;
+  }
 
-    .item-desc-btn:hover {
-      width: 320px;
-      background-color: #79c76b;
-    }
+  .item-desc-btn:hover {
+    width: 320px;
+    background-color: #79c76b;
+  }
 
-    .insights-container {
-      width: 50%;
-      max-width: 500px;
-      max-height: 350px;
-      margin-bottom: 30px;
-      margin-top: 30px;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
+  .insights-container {
+    width: 100%;
+    max-width: 500px;
+    max-height: 350px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 0px;
+  }
+
+  .insights-item {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 0px;
   }
 }
 
@@ -263,4 +278,38 @@
   padding-left: auto;
   padding-right: auto;
   //   border: 2px solid $blue;
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 50px;
+  right: 50px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 40px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.whatsapp-icon {
+  margin-top: 16px;
+}
+
+/* for mobile */
+@media screen and (max-width: 767px) {
+  .whatsapp-icon {
+    margin-top: 10px;
+  }
+
+  .whatsapp_float {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 10px;
+    font-size: 22px;
+  }
 }
