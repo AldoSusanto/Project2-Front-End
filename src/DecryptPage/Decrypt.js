@@ -107,7 +107,7 @@ class Decrypt extends Component {
   };
 
   testForProblems = () => {
-    for (const i = 0; i < 20000; i++) {
+    for (let i = 0; i < 20000; i++) {
       setTimeout(() => {
         const key = "123";
         const passphrase =
