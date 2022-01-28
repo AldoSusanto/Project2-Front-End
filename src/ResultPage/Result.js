@@ -9,6 +9,7 @@ import CurrencyFormat from "react-currency-format";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CryptoJS from "crypto-js";
 
 class Result extends React.Component {
   constructor(props) {
@@ -33,12 +34,12 @@ class Result extends React.Component {
 
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
-      // axios.post('http://127.0.0.1:8080/v1/recommendation', reqBody)
+    // axios
+    //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
         });
-        // console.log(res.data);
       });
   }
 
@@ -49,17 +50,31 @@ class Result extends React.Component {
     });
   }
 
-  render() {
-    var recList = this.state.recommendations.data;
-    var itemList = [];
-    var itemDescription = [];
-    var itemImage = [];
-    var highlightedItem = {};
-    var resultsPage = [];
-    var itemLinks = [];
-    var insightsList = [];
+    render() {
+        var recList = this.state.recommendations.data;
+        var reqBody = this.state.result;
+        var itemList = [];
+        var itemDescription = [];
+        var itemImage = [];
+        var highlightedItem = {};
+        var resultsPage = [];
+        var itemLinks = [];
+        var insightsList = [];
+        var prefix_wa =
+              "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
+        var prefix_url = "https://wa.me/6287868572240?text=";
 
     if (typeof recList !== "undefined") {
+      // Encrypt
+      var ciphertext = CryptoJS.AES.encrypt(
+        JSON.stringify(reqBody),
+        "ppid"
+      ).toString();
+
+      prefix_url =
+        "https://wa.me/6287868572240?text=" +
+        encodeURIComponent(prefix_wa + ciphertext);
+
       if (recList.length > 0) {
         // Populate Laptop List on left side of page
         for (const [index, value] of recList.entries()) {
@@ -73,7 +88,7 @@ class Result extends React.Component {
               >
                 <Item.Image src={value.imageLink[0]} />
                 <Item.Content>
-                  <Item.Header as="string">{value.name}</Item.Header>
+                  <Item.Header  as="string">{value.name}</Item.Header>
                   <Item.Meta>
                     <span className="price">
                       <CurrencyFormat
@@ -99,7 +114,7 @@ class Result extends React.Component {
             //if link is empty
             // console.log("linkfrom", value.linkFrom);
             itemLinks.push(
-              <a href={value.link} target="_blank">
+              <a href={value.link} target="_blank" rel="noopener noreferrer">
                 <Button
                   floated="right"
                   className={`item-desc-btn ${value.linkFrom}`}
@@ -119,7 +134,7 @@ class Result extends React.Component {
               content={value.description}
               trigger={
                 <Label
-                  className="insights-label mb-2 mr-2"
+                  className="insights-item insights-label mb-2 mr-2"
                   size="large"
                   color={value.type == "Positive" ? "green" : "red"}
                 >
@@ -154,9 +169,6 @@ class Result extends React.Component {
                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
                 </Item.Description>
-                <Item.Extra className="d-none d-lg-block insights-container">
-                  {insightsList}
-                </Item.Extra>
                 <Item.Extra>{itemLinks}</Item.Extra>
               </Item.Content>
             </Item>
@@ -173,7 +185,6 @@ class Result extends React.Component {
 
         // Compile all components
         resultsPage.push(
-          // <div></div>
           <div id="result" className="row result-home">
             <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
               <h1 className="d-none d-lg-block">
@@ -184,17 +195,28 @@ class Result extends React.Component {
               <div className="result-text">{itemList}</div>
             </div>
             <div className="my-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
-              {/* <div className="row p-2">{itemImage}</div>
-              <div className="row p-2">{itemDescription}</div>
-              <div className="row pl-2 pt-4">{insightsList}</div> */}
+              <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
+                {itemImage}
+                {itemDescription}
+              </div>
               <div className="row">
-                <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
-                  {itemImage}
-                </div>
-                <div className="col-6 col-lg-12">{itemDescription}</div>
                 <div className="col-12 pt-4 justify-content-start d-flex flex-wrap d-lg-none">
                   {insightsList}
                 </div>
+                <Popup
+                  inverted
+                  content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
+                  trigger={
+                    <a
+                      href={prefix_url}
+                      className="whatsapp-float"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-whatsapp whatsapp-icon"></i>
+                    </a>
+                  }
+                />
               </div>
             </div>
           </div>
@@ -216,7 +238,7 @@ class Result extends React.Component {
       }
     } else {
       resultsPage.push(
-        <div className="loading-page">
+        <div className="row loading-page">
           <h1>
             Mohon menunggu <br /> Sedang mencari hasil yang terbaik untukmu...
           </h1>
