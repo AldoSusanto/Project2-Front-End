@@ -34,8 +34,8 @@ class Result extends React.Component {
 
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
-    // axios
-    //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      // axios
+      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
@@ -50,19 +50,19 @@ class Result extends React.Component {
     });
   }
 
-    render() {
-        var recList = this.state.recommendations.data;
-        var reqBody = this.state.result;
-        var itemList = [];
-        var itemDescription = [];
-        var itemImage = [];
-        var highlightedItem = {};
-        var resultsPage = [];
-        var itemLinks = [];
-        var insightsList = [];
-        var prefix_wa =
-              "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
-        var prefix_url = "https://wa.me/6287868572240?text=";
+  render() {
+    var recList = this.state.recommendations.data;
+    var reqBody = this.state.result;
+    var itemList = [];
+    var itemDescription = [];
+    var itemImage = [];
+    var highlightedItem = {};
+    var resultsPage = [];
+    var itemLinks = [];
+    var insightsList = [];
+    var prefix_wa =
+      "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
+    var prefix_url = "https://wa.me/6287868572240?text=";
 
     if (typeof recList !== "undefined") {
       // Encrypt
@@ -88,7 +88,7 @@ class Result extends React.Component {
               >
                 <Item.Image src={value.imageLink[0]} />
                 <Item.Content>
-                  <Item.Header  as="string">{value.name}</Item.Header>
+                  <Item.Header as="string">{value.name}</Item.Header>
                   <Item.Meta>
                     <span className="price">
                       <CurrencyFormat
@@ -115,10 +115,7 @@ class Result extends React.Component {
             // console.log("linkfrom", value.linkFrom);
             itemLinks.push(
               <a href={value.link} target="_blank" rel="noopener noreferrer">
-                <Button
-                  floated="right"
-                  className={`item-desc-btn ${value.linkFrom}`}
-                >
+                <Button className={`item-desc-btn ${value.linkFrom}`}>
                   {`Visit ${value.linkFrom}`}
                   <Icon name="right chevron" />
                 </Button>
@@ -169,7 +166,9 @@ class Result extends React.Component {
                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
                 </Item.Description>
-                <Item.Extra>{itemLinks}</Item.Extra>
+                <Item.Extra className="d-flex align-items-center justify-content-center">
+                  {itemLinks}
+                </Item.Extra>
               </Item.Content>
             </Item>
           </Item.Group>
@@ -195,12 +194,21 @@ class Result extends React.Component {
               <div className="result-text">{itemList}</div>
             </div>
             <div className="my-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
-              <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
+              {/* <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
                 {itemImage}
                 {itemDescription}
+              </div> */}
+              <div className="row mt-lg-5">
+                <div className="col-6 d-flex justify-content-center align-items-center">
+                  {itemImage}
+                </div>
+                <div className="itemDesc-container col-6 d-flex justify-content-center align-items-center">
+                  {itemDescription}
+                </div>
               </div>
+
               <div className="row">
-                <div className="col-12 pt-4 justify-content-start d-flex flex-wrap d-lg-none">
+                <div className="insights-container col-12 col-md-9 col-lg-7 ml-0 ml-xl-4 pt-4 justify-content-start d-flex flex-wrap">
                   {insightsList}
                 </div>
                 <Popup
