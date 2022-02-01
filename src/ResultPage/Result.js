@@ -34,8 +34,8 @@ class Result extends React.Component {
 
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
-    // axios
-    //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      // axios
+      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
@@ -88,7 +88,7 @@ class Result extends React.Component {
               >
                 <Item.Image src={value.imageLink[0]} />
                 <Item.Content>
-                  <Item.Header>{value.name}</Item.Header>
+                  <Item.Header as="string">{value.name}</Item.Header>
                   <Item.Meta>
                     <span className="price">
                       <CurrencyFormat
@@ -115,10 +115,7 @@ class Result extends React.Component {
             // console.log("linkfrom", value.linkFrom);
             itemLinks.push(
               <a href={value.link} target="_blank" rel="noopener noreferrer">
-                <Button
-                  floated="right"
-                  className={`item-desc-btn ${value.linkFrom}`}
-                >
+                <Button className={`item-desc-btn ${value.linkFrom}`}>
                   {`Visit ${value.linkFrom}`}
                   <Icon name="right chevron" />
                 </Button>
@@ -134,7 +131,7 @@ class Result extends React.Component {
               content={value.description}
               trigger={
                 <Label
-                  className="insights-item"
+                  className="insights-item insights-label mb-2 mr-2"
                   size="large"
                   color={value.type == "Positive" ? "green" : "red"}
                 >
@@ -169,7 +166,9 @@ class Result extends React.Component {
                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
                 </Item.Description>
-                <Item.Extra>{itemLinks}</Item.Extra>
+                <Item.Extra className="d-flex align-items-center justify-content-center">
+                  {itemLinks}
+                </Item.Extra>
               </Item.Content>
             </Item>
           </Item.Group>
@@ -186,23 +185,32 @@ class Result extends React.Component {
         // Compile all components
         resultsPage.push(
           <div id="result" className="row result-home">
-            <div className="col-lg-5 panel">
-              <h1>
+            <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
+              <h1 className="d-none d-lg-block">
                 Here are <br />
                 Our top 10 picks for you
               </h1>
-              <hr className="hr-line" />
+              <hr className="hr-line d-none d-lg-block" />
               <div className="result-text">{itemList}</div>
             </div>
-            <div className="col-lg-7">
-              <div className="row">
+            <div className="my-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
+              {/* <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
                 {itemImage}
                 {itemDescription}
+              </div> */}
+              <div className="row mt-lg-5">
+                <div className="col-6 d-flex justify-content-center align-items-center">
+                  {itemImage}
+                </div>
+                <div className="itemDesc-container col-6 d-flex justify-content-center align-items-center">
+                  {itemDescription}
+                </div>
               </div>
+
               <div className="row">
-                <Item.Extra className="insights-container">
+                <div className="insights-container col-12 col-md-9 col-lg-7 ml-0 ml-xl-4 pt-4 justify-content-start d-flex flex-wrap">
                   {insightsList}
-                </Item.Extra>
+                </div>
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
@@ -289,152 +297,6 @@ class Result extends React.Component {
     this.props.history.push("/");
   }
 
-  // =======
-
-  //         for (const [index, value] of highlightedItem.insights.entries()) {
-  //           insightsList.push(
-  //             <Popup
-  //               inverted
-  //               content={value.description}
-  //               trigger={
-  //                 <Label
-  //                   size="large"
-  //                   color={value.type == "Positive" ? "green" : "red"}
-  //                 >
-  //                   <FontAwesomeIcon icon={value.icon} />
-  //                   {" " + value.title}
-  //                 </Label>
-  //               }
-  //             />
-  //           );
-  //         }
-
-  //         // Populate Laptop Description on right side of page
-  //         itemDescription.push(
-  //           <Item.Group divided className="itemDesc">
-  //             <Item>
-  //               <Item.Content>
-  //                 <Item.Header as="a" className="title">
-  //                   {highlightedItem.name}
-  //                 </Item.Header>
-  //                 <Item.Meta>
-  //                   <span className="price">
-  //                     <CurrencyFormat
-  //                       value={highlightedItem.price}
-  //                       displayType={"text"}
-  //                       thousandSeparator={true}
-  //                       prefix={"Rp. "}
-  //                     />
-  //                   </span>
-  //                 </Item.Meta>
-  //                 <Item.Description className="item-desc-box">
-  //                   <b>Processor: </b> {highlightedItem.processor} <br />{" "}
-  //                   <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
-  //                   <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
-  //                 </Item.Description>
-  //                 <Item.Extra className="insights-container">
-  //                   {insightsList}
-  //                 </Item.Extra>
-  //                 <Item.Extra>{itemLinks}</Item.Extra>
-  //               </Item.Content>
-  //             </Item>
-  //           </Item.Group>
-  //         );
-
-  //         itemImage.push(
-  //           <img
-  //             className="laptop-img"
-  //             src={highlightedItem.imageLink[0]}
-  //             alt="Highlighted Laptop"
-  //           />
-  //         );
-
-  //         // Compile all components
-  //         resultsPage.push(
-  //           <div id="result" className="row result-home">
-  //             <div className="col-lg-5 panel">
-  //               <h1>
-  //                 Here are <br />
-  //                 Our top 10 picks for you
-  //               </h1>
-  //               <hr className="hr-line" />
-  //               <div className="result-text">{itemList}</div>
-  //             </div>
-  //             <div className="col-lg-7">
-  //               <div className="row">{itemImage}</div>
-  //               <div className="row">{itemDescription}</div>
-  //             </div>
-  //           </div>
-  //         );
-  //       } else {
-  //         // If BE returns empty list
-  //         resultsPage.push(
-  //           <div className="row loading-page">
-  //             <h1>Oops, ini memalukan :(</h1>
-  //             <h2>
-  //               Kami tidak berhasil menemukan laptop yang cocok dengan pilihanmu
-  //               <br /> Coba mengulang quiznya lagi
-  //             </h2>
-  //             <p>
-  //               Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan kamu
-  //             </p>
-  //           </div>
-  //         );
-  //       }
-  //     } else {
-  //       resultsPage.push(
-  //         <div className="row loading-page">
-  //           <h1>
-  //             Mohon menunggu <br /> Sedang mencari hasil yang terbaik untukmu...
-  //           </h1>
-  //           <Loader
-  //             className="loader"
-  //             type="TailSpin"
-  //             color="#fff"
-  //             height={100}
-  //             width={100}
-  //             timeout={100000}
-  //           />
-  //         </div>
-  //       );
-  //     }
-
-  //     return (
-  //       <Fragment>
-  //         <Helmet>
-  //           <title>ProPicks - Results</title>
-  //         </Helmet>
-  //         <Menubar />
-  //         {resultsPage}
-  //       </Fragment>
-  //     );
-  //   }
-
-  //   // Deprecated
-  //   handleChange(event) {
-  //     switch (event.target.name) {
-  //       case "name":
-  //         this.setState({ name: event.target.value });
-  //         break;
-  //       case "email":
-  //         this.setState({ email: event.target.value });
-  //         break;
-  //       case "phoneNumber":
-  //         this.setState({ number: event.target.value });
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   }
-
-  //   // Deprecated
-  //   handleSubmit(event) {
-  //     this.sendEmail();
-  //     event.preventDefault();
-  //     this.props.history.push("/");
-  //   }
-
-  // >>>>>>> Stashed changes
   // Deprecated
   sendEmail() {
     var emailBody = {

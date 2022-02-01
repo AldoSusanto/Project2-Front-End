@@ -10,12 +10,10 @@
   margin-top: 80px;
 
   .laptop-img {
-    width: 50%;
-    height: 100%;
+    width: 27vw;
+    height: auto;
     max-width: 350px;
-    max-height: 350px;
-    // margin: auto;
-    margin-left: 40px;
+    margin: auto;
     margin-bottom: 40px;
     margin-top: 30px;
   }
@@ -116,10 +114,7 @@
   }
 
   .itemDesc {
-    margin: auto;
-    margin-bottom: 40px;
-    margin-top: 100px;
-    width: 50%;
+    width: 100%;
     transition: 0.2s linear all;
 
     .title {
@@ -139,13 +134,12 @@
     }
 
     .content {
-      margin-left: 50px;
-      margin-right: 70px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   }
 
   .item-desc-btn {
-    margin-left: 20px;
     margin-top: 80px;
     width: 250px;
     height: 45px;
@@ -157,18 +151,13 @@
   }
 
   .item-desc-btn:hover {
-    width: 320px;
+    width: 265px;
     background-color: #79c76b;
   }
 
   .insights-container {
-    width: 100%;
-    max-width: 500px;
-    max-height: 350px;
     margin-bottom: 30px;
     margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 0px;
   }
 
   .insights-item {
@@ -185,11 +174,14 @@
   background-position: center;
   height: 100vh;
   width: 100vw;
-  display: flex;
   justify-content: space-around;
   margin-top: 80px;
+  padding: 0 20px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 
   h1 {
+    width: 100%;
     margin: 0;
     position: absolute;
     top: 40%;
@@ -293,23 +285,205 @@
   font-size: 40px;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
-}
-
-.whatsapp-icon {
-  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* for mobile */
 @media screen and (max-width: 767px) {
-  .whatsapp-icon {
-    margin-top: 10px;
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+    bottom: 24px;
+    right: 24px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #result {
+    margin: 70px 0 0 0;
+
+    .laptop-img {
+      width: 46vw;
+      height: auto;
+      max-width: 250px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    .itemList {
+      padding: 0px 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: auto;
+
+      .header {
+        width: auto;
+        font-size: calc(1rem + 0.6vw);
+      }
+
+      .price {
+        font-size: calc(0.8rem + 0.6vw);
+      }
+
+      .image {
+        width: 100%;
+        height: auto;
+        max-width: 150px !important;
+        max-height: 150px !important;
+      }
+
+      .content {
+        text-align: center;
+        padding-top: 0;
+      }
+    }
+
+    .selectedItem {
+      padding: 0px 13px;
+    }
+
+    .itemDesc {
+      .title {
+        font-size: calc(1.2rem + 1vw);
+        margin-bottom: 15px;
+      }
+
+      .price {
+        font-size: calc(0.8rem + 1vw);
+      }
+
+      .item-desc-box {
+        line-height: 1.9;
+        font-size: calc(0.7rem + 0.8vw);
+      }
+
+      .content {
+        margin: 0 8px 0 0;
+      }
+
+      .item-desc-btn {
+        margin-top: 40px;
+        width: 215px;
+        height: 40px;
+        font-size: calc(0.8rem + 0.8vw);
+      }
+
+      .item-desc-btn:hover {
+        width: 220px;
+      }
+    }
+
+    .insights-container {
+      margin-bottom: 10px;
+      margin-top: 15px;
+    }
   }
 
-  .whatsapp_float {
-    width: 40px;
-    height: 40px;
-    bottom: 20px;
-    right: 10px;
-    font-size: 22px;
+  .panel {
+    margin-top: -1.6rem;
+    padding-bottom: 30px;
+  }
+
+  .result-text {
+    height: 60vh;
+  }
+
+  .insights-label {
+    font-size: calc(8px + 0.7vw) !important;
+  }
+
+  .loading-page {
+    h1 {
+      width: 100%;
+      padding: 0 2rem;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: calc(1.4rem + 1vw);
+      margin: 1.8rem 0;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      margin-top: 1.8rem;
+    }
+
+    .loader {
+      margin: 1.8rem 0 0 0;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #result {
+    margin: 65px 0 0 0;
+
+    .itemList {
+      .header {
+        width: auto;
+        font-size: calc(1rem + 0.6vw);
+      }
+
+      .price {
+        font-size: calc(0.8rem + 0.6vw);
+      }
+
+      .image {
+        width: 100%;
+        height: auto;
+        max-width: 120px !important;
+        max-height: 120px !important;
+      }
+    }
+
+    .itemDesc-container {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+
+    .itemDesc {
+      .title {
+        font-size: calc(0.9rem + 1vw);
+      }
+
+      .price {
+        font-size: calc(0.75rem + 0.8vw);
+      }
+
+      .item-desc-btn {
+        margin-top: 10px;
+        width: 100%;
+        height: 35px;
+        font-size: calc(0.7rem + 0.8vw);
+      }
+
+      .item-desc-btn:hover {
+        width: 102%;
+      }
+
+      .content {
+        margin: 0 4px 0 0;
+      }
+    }
+
+    .insights-container {
+      margin-bottom: 0;
+      margin-top: 10px;
+    }
+
+    .insights-item {
+      margin-left: 5px;
+    }
+  }
+
+  .result-text {
+    height: 50vh;
   }
 }
