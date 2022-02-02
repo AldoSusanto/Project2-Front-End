@@ -131,7 +131,7 @@ class Result extends React.Component {
               content={value.description}
               trigger={
                 <Label
-                  className="insights-item insights-label mb-2 mr-2"
+                  className="insights-item insights-label"
                   size="large"
                   color={value.type == "Positive" ? "green" : "red"}
                 >
@@ -207,8 +207,11 @@ class Result extends React.Component {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="insights-container col-12 col-md-9 col-lg-7 ml-0 ml-xl-4 pt-4 justify-content-start d-flex flex-wrap">
+              <div className="row insights-parent">
+                <div
+                  //  className="insights-container flex-nowrap flex-md-wrap col-12 col-md-9 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-md-4 justify-content-start d-flex"
+                  className="insights-container col-12 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-xl-4 justify-content-start d-flex flex-wrap"
+                >
                   {insightsList}
                 </div>
                 <Popup

@@ -332,8 +332,8 @@
       .image {
         width: 100%;
         height: auto;
-        max-width: 150px !important;
-        max-height: 150px !important;
+        max-width: 140px !important;
+        max-height: 140px !important;
       }
 
       .content {
@@ -378,13 +378,17 @@
     }
 
     .insights-container {
-      margin-bottom: 10px;
-      margin-top: 15px;
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
+
+    .insights-label {
+      font-size: calc(8px + 0.7vw) !important;
     }
   }
 
   .panel {
-    margin-top: -1.6rem;
+    margin-top: -2rem;
     padding-bottom: 30px;
   }
 
@@ -392,11 +396,9 @@
     height: 60vh;
   }
 
-  .insights-label {
-    font-size: calc(8px + 0.7vw) !important;
-  }
-
   .loading-page {
+    margin-top: 56px;
+
     h1 {
       width: 100%;
       padding: 0 2rem;
@@ -423,7 +425,7 @@
 
 @media screen and (max-width: 576px) {
   #result {
-    margin: 65px 0 0 0;
+    margin: 38px 0 0 0;
 
     .itemList {
       .header {
@@ -438,8 +440,8 @@
       .image {
         width: 100%;
         height: auto;
-        max-width: 120px !important;
-        max-height: 120px !important;
+        max-width: 90px !important;
+        max-height: 90px !important;
       }
     }
 
@@ -460,7 +462,7 @@
       .item-desc-btn {
         margin-top: 10px;
         width: 100%;
-        height: 35px;
+        height: 32px;
         font-size: calc(0.7rem + 0.8vw);
       }
 
@@ -473,14 +475,43 @@
       }
     }
 
-    .insights-container {
-      margin-bottom: 0;
-      margin-top: 10px;
+    .insights-parent {
+      margin-left: -6px !important;
+      margin-right: 6px !important;
     }
 
-    .insights-item {
-      margin-left: 5px;
+    .insights-container {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      margin-bottom: 0;
+      margin-top: 10px;
+      // overflow-x: scroll;
     }
+
+    // .insights-container::-webkit-scrollbar {
+    //   height: 6px;
+    // }
+
+    // .insights-container::-webkit-scrollbar-thumb {
+    //   background-color: #6bc3fa;
+    // }
+
+    .insights-item {
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+      margin-bottom: 5px;
+      margin-top: 0;
+      margin-left: 5px;
+      margin-right: 0px;
+    }
+
+    .insights-label {
+      font-size: calc(6px + 0.6vw) !important;
+    }
+  }
+
+  .panel {
+    margin-top: -2rem;
   }
 
   .result-text {

@@ -96,7 +96,7 @@
 
   &__close {
     margin-right: 1.2rem;
-    padding: 8px 10px;
+    padding: 0px 10px 12px 10px;
     font-family: $poppins;
     font-size: 1.4rem;
     border: none;
@@ -121,7 +121,27 @@
 }
 
 @media screen and (max-width: 576px) {
+  .logoSm {
+    width: calc(34px + 1vw);
+    height: auto;
+  }
+
+  .menubarStyle {
+    height: 60px;
+  }
+
+  .menu-icons {
+    width: calc(2.5rem + 0.8vw);
+    height: auto;
+  }
+
   .offcanvas {
+    .close-icons {
+      color: $off-white;
+      width: calc(2.5rem + 0.8vw);
+      height: auto;
+    }
+
     &__link {
       padding: 8px 10px;
     }
