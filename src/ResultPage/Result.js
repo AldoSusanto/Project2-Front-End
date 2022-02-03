@@ -194,10 +194,6 @@ class Result extends React.Component {
               <div className="result-text">{itemList}</div>
             </div>
             <div className="my-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
-              {/* <div className="col-6 d-flex justify-content-center align-items-center col-lg-12">
-                {itemImage}
-                {itemDescription}
-              </div> */}
               <div className="row mt-lg-5">
                 <div className="col-6 d-flex justify-content-center align-items-center">
                   {itemImage}
@@ -208,10 +204,7 @@ class Result extends React.Component {
               </div>
 
               <div className="row insights-parent">
-                <div
-                  //  className="insights-container flex-nowrap flex-md-wrap col-12 col-md-9 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-md-4 justify-content-start d-flex"
-                  className="insights-container col-12 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-xl-4 justify-content-start d-flex flex-wrap"
-                >
+                <div className="insights-container col-12 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-xl-4 justify-content-start d-flex flex-wrap">
                   {insightsList}
                 </div>
                 <Popup
