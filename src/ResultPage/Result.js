@@ -33,7 +33,7 @@ class Result extends React.Component {
     var reqBody = this.state.result;
 
     axios
-      .post("https://api.propicks.id/v1/recommendatiosn", reqBody)
+      .post("https://api.propicks.id/v1/recommendation", reqBody)
       // axios
       //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
