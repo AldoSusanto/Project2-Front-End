@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-around;
   font-family: "Poppins", sans-serif;
-  margin-top: 70px;
+  margin-top: 0px;
 
   .laptop-img {
     width: 25vw;
@@ -166,6 +166,12 @@
     margin-left: 10px;
     margin-right: 0px;
   }
+}
+
+.promo-banner {
+  margin-top: 80px;
+  margin-bottom: 0px !important;
+  font-size: 1.1rem;
 }
 
 .loading-page {
@@ -425,7 +431,7 @@
 
 @media screen and (max-width: 576px) {
   #result {
-    margin: 38px 0 0 0;
+    margin: 0px 0 0 0;
 
     .itemList {
       .header {
@@ -497,6 +503,12 @@
     .insights-label {
       font-size: calc(6px + 0.6vw) !important;
     }
+  }
+
+  .promo-banner {
+    margin-top: 60px;
+    margin-bottom: 0px;
+    font-size: 0.9rem;
   }
 
   .panel {
