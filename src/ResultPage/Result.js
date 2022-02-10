@@ -187,8 +187,8 @@ class Result extends React.Component {
           <div id="result" className="row result-home">
             <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
               <h1 className="d-none d-lg-block">
-                Here are <br />
-                Our top 10 picks for you
+                Top 10 Laptops <br />
+                Yang Sesuai Denganmu
               </h1>
               <hr className="hr-line d-none d-lg-block" />
               <div className="result-text">{itemList}</div>
@@ -261,9 +261,17 @@ class Result extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>ProPicks - Results</title>
+          <title>ProPicks - Top 10 Laptop khusus untukmu</title>
         </Helmet>
         <Menubar />
+        <div
+          class="alert alert-success promo-banner col-xs-1 text-center"
+          role="alert"
+        >
+          Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
+          <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
+          <strong> Rp. 300,000 !! </strong>
+        </div>
         {resultsPage}
       </Fragment>
     );

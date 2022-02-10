@@ -27,10 +27,10 @@
         "isMultiple": false,
         "questionLabel": "pricePref",
         "options": [
-            "Pilihkan aku laptop dengan spesifikasi yang budget friendly",
-            "Pilihkan aku laptop dengan spesifikasi yang recommended",
-            "Pilihkan aku laptop dengan spesifikasi yang terbaik",
-            "Aku tidak ada preferensi untuk sekarang"
+            "Pilihkan laptop dengan spesifikasi budget friendly",
+            "Pilihkan laptop dengan spesifikasi recommended",
+            "Pilihkan laptop dengan spesifikasi maximal",
+            "Tidak ada preferensi"
         ],
         "tags":[
             "LOW",
