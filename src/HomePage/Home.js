@@ -9,6 +9,10 @@ import Footer from "../Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import formIcon from "../assets/form-icon-nobg.png";
 import smileIcon from "../assets/smile-nobg.png";
+import { Popup } from "semantic-ui-react";
+
+var prefix_url =
+  "https://wa.me/6287868572240?text=Hello%20Propicks%2C%20saya%20ingin%20mencari%20laptop%20yang%20tepat%20untuk%20saya%20%21%20%3AD";
 
 const Home = () => (
   <Fragment>
@@ -19,6 +23,14 @@ const Home = () => (
 
     {/* Cover Page */}
     <div className="main">
+      <div
+        class="alert alert-success promo-banner col-xs-1 text-center"
+        role="alert"
+      >
+        Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
+        <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
+        <strong> Rp. 300,000 !! </strong>
+      </div>
       <div id="home" className="row">
         <div className="col-12 col-md-8 text-center">
           <h1>Bingung cari laptop yang tepat?</h1>
@@ -75,6 +87,20 @@ const Home = () => (
         </div>
       </div>
       <Footer />
+      <Popup
+        inverted
+        content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
+        trigger={
+          <a
+            href={prefix_url}
+            className="whatsapp-float"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa fa-whatsapp whatsapp-icon"></i>
+          </a>
+        }
+      />
     </div>
   </Fragment>
 );
