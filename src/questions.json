@@ -30,7 +30,7 @@
             "Pilihkan laptop dengan spesifikasi budget friendly",
             "Pilihkan laptop dengan spesifikasi recommended",
             "Pilihkan laptop dengan spesifikasi maximal",
-            "Tidak ada preferensi"
+            "Tidak Tahu"
         ],
         "tags":[
             "LOW",
@@ -255,14 +255,20 @@
         "isMultiple": false,
         "questionLabel": "size",
         "options": [
-            "13-inch -- Portable & Kecil. Cocok untuk berpergian",
-            "15-inch -- Paling populer. Balance antara ukuran dan berat laptop",
-            "17-inch -- Ukuran terbesar untuk hasil yang maksimal"
+            "13-inch",
+            "14-inch",
+            "15-inch",
+            "16-inch",
+            "17-inch",
+            "Tidak Tahu"
         ],
         "tags":[
             "13",
+            "14",
             "15",
-            "17"
+            "16",
+            "17",
+            "15"
         ]
     },
     {
