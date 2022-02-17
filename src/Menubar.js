@@ -1,39 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Nav } from "reactstrap";
 import logoImage from "./assets/Logo/Original-Transparent.png";
 import logoSm from "./assets/Logo/Symbol.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MdOutlineMenu, MdOutlineClose } from "react-icons/md";
 
 const Menubar = (props) => {
   const [showNav, setShowNav] = useState(false);
-  const [navbar, setNavbar] = useState(false);
-
-  const isBrowser = typeof window !== "undefined";
-
-  useEffect(() => {
-    const changeBgNavbar = () => {
-      if (isBrowser) {
-        if (window.scrollY >= 5) {
-          setNavbar(true);
-        } else {
-          setNavbar(false);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", changeBgNavbar);
-
-    return () => {
-      window.removeEventListener("scroll", changeBgNavbar);
-    };
-  }, [isBrowser]);
 
   return (
     <Nav
-      className={`navbar navbar-expand-md navbar-light menubarStyle fixed-top ${
-        props.featuredNav ? (navbar ? "bgBlue" : "bgTransparent") : "bgBlue"
-      }`}
+      className={`navbar navbar-expand-md navbar-light menubarStyle fixed-top bgBlue`}
     >
       <div className="container-fluid">
         <a href="/">

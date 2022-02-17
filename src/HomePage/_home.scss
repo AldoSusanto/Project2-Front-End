@@ -1,6 +1,10 @@
 .main {
   width: 100vw;
   overflow-x: hidden;
+
+  .promo-banner {
+    position: absolute;
+  }
 }
 
 #home {
@@ -8,12 +12,13 @@
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-color: $blue;
   height: 100vh;
   width: auto;
   display: flex;
   justify-content: space-around;
   font-family: "Poppins", sans-serif;
+  margin-left: 0;
+  margin-right: 0;
 
   .headline {
     font-size: calc(2rem + 1vw);
@@ -23,7 +28,7 @@
 
     color: $off-white;
     font-size: calc(2rem + 1vw);
-    margin-top: 16.5rem;
+    margin-top: 20rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     margin-bottom: 10rem;
@@ -36,7 +41,7 @@
       right: 4.1vw;
       text-align: left;
       vertical-align: top;
-      overflow: hidden; /* hide the text outside the slider div area */
+      overflow: hidden;
 
       .is-hidden {
         -webkit-animation: slide-out 0.6s;
@@ -79,6 +84,10 @@
 
       .slide-5 {
         left: -3vw;
+      }
+
+      .slide-6 {
+        left: -0.6vw;
       }
     }
   }
@@ -288,6 +297,10 @@
       .slide-5 {
         left: -3.8vw !important;
       }
+
+      .slide-6 {
+        left: -0.8vw !important;
+      }
     }
   }
 
@@ -343,6 +356,7 @@
     background-image: url(../assets/bgHeroSm.png);
     background-position: left top;
     background-size: cover;
+    height: 105vh;
 
     p {
       font-size: calc(1rem + 0.7vw);
@@ -359,19 +373,19 @@
   }
 
   .headline {
-    font-size: calc(1.8rem + 1vw);
-    margin-top: 7rem !important;
+    font-size: calc(2.1rem + 0.8vw) !important;
+    margin-top: 10rem !important;
     margin-bottom: 5rem !important;
 
     &-highlight {
-      right: 3.8rem !important;
+      right: 4rem !important;
 
       .slide-2 {
         left: -1.2vw !important;
       }
 
       .slide-3 {
-        left: -6.9vw !important;
+        left: -7.3vw !important;
       }
 
       .slide-4 {
@@ -379,7 +393,11 @@
       }
 
       .slide-5 {
-        left: -6.2vw !important;
+        left: -6.7vw !important;
+      }
+
+      .slide-6 {
+        left: -2.6vw !important;
       }
     }
   }
@@ -411,6 +429,10 @@
 
       .slide-5 {
         left: -3.5rem !important;
+      }
+
+      .slide-6 {
+        left: -1.4rem !important;
       }
     }
   }

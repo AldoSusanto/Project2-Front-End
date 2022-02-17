@@ -14,12 +14,16 @@ import programmingPng from "../assets/programming.png";
 import checkingBoxesPng from "../assets/checking-boxes.png";
 import partnersPng from "../assets/partners.png";
 import homeImg from "../assets/image-1.png";
+import { Popup } from "semantic-ui-react";
+
+var prefix_url =
+  "https://wa.me/6287868572240?text=Hello%20Propicks%2C%20saya%20ingin%20mencari%20laptop%20yang%20tepat%20untuk%20saya%20%21%20%3AD";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(0);
 
   useEffect(() => {
-    if (isVisible >= 0 && isVisible !== 4) {
+    if (isVisible >= 0 && isVisible !== 5) {
       setTimeout(() => {
         setIsVisible(isVisible + 1);
       }, 2000);
@@ -35,10 +39,18 @@ const Home = () => {
       <Helmet>
         <title>ProPicks - Home</title>
       </Helmet>
-      <Menubar featuredNav />
+      <Menubar />
 
       {/* Cover Page */}
       <div className="main">
+        <div
+          className="alert alert-success promo-banner col-12 text-center"
+          role="alert"
+        >
+          Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
+          <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
+          <strong> Rp. 300,000 !! </strong>
+        </div>
         <div id="home" className="row">
           <div className="col-12 col-md-6 col-xl-8 text-center">
             <h1 className="headline">
@@ -74,6 +86,13 @@ const Home = () => {
                   }`}
                 >
                   Video Editing
+                </span>
+                <span
+                  class={`slide-6 ${
+                    isVisible === 5 ? "is-visible" : "is-hidden"
+                  }`}
+                >
+                  Desainer
                 </span>
               </span>
             </h1>
@@ -231,8 +250,21 @@ const Home = () => {
             </div>
           </div>
         </div>
-
         <Footer />
+        <Popup
+          inverted
+          content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
+          trigger={
+            <a
+              href={prefix_url}
+              className="whatsapp-float"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa fa-whatsapp whatsapp-icon"></i>
+            </a>
+          }
+        />
       </div>
     </Fragment>
   );

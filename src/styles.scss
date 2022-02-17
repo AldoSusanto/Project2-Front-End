@@ -55,3 +55,43 @@ body {
 .disable-span {
   display: none;
 }
+
+.promo-banner {
+  margin-top: 80px;
+  margin-bottom: 0px !important;
+  font-size: 1.1rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 50px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 35px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+  .promo-banner {
+    margin-top: 60px;
+    margin-bottom: 0px;
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 24px;
+    right: 24px;
+    font-size: 30px;
+  }
+}
