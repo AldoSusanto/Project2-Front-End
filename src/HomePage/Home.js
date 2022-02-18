@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Menubar from "../Menubar";
 import Footer from "../Footer";
-import { MdSearch } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import formIcon from "../assets/form-icon-nobg.png";
 import smileIcon from "../assets/smile-nobg.png";
@@ -15,6 +14,7 @@ import checkingBoxesPng from "../assets/checking-boxes.png";
 import partnersPng from "../assets/partners.png";
 import homeImg from "../assets/image-1.png";
 import { Popup } from "semantic-ui-react";
+import HeadlineHighlight from "../components/HeadlineHighlight";
 
 var prefix_url =
   "https://wa.me/6287868572240?text=Hello%20Propicks%2C%20saya%20ingin%20mencari%20laptop%20yang%20tepat%20untuk%20saya%20%21%20%3AD";
@@ -44,7 +44,7 @@ const Home = () => {
       {/* Cover Page */}
       <div className="main">
         <div
-          className="alert alert-success promo-banner col-12 text-center"
+          className="alert alert-success position-absolute promo-banner col-12 text-center"
           role="alert"
         >
           Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
@@ -55,46 +55,7 @@ const Home = () => {
           <div className="col-12 col-md-6 col-xl-8 text-center">
             <h1 className="headline">
               Cari Laptop Untuk <br />
-              <span className="headline-highlight">
-                <span class={`${isVisible === 0 ? "is-visible" : "is-hidden"}`}>
-                  Pelajar
-                </span>
-                <span
-                  class={`slide-2 ${
-                    isVisible === 1 ? "is-visible" : "is-hidden"
-                  }`}
-                >
-                  Gaming
-                </span>
-                <span
-                  class={`slide-3 ${
-                    isVisible === 2 ? "is-visible" : "is-hidden"
-                  }`}
-                >
-                  Programming
-                </span>
-                <span
-                  class={`slide-4 ${
-                    isVisible === 3 ? "is-visible" : "is-hidden"
-                  }`}
-                >
-                  Streaming
-                </span>
-                <span
-                  class={`slide-5 ${
-                    isVisible === 4 ? "is-visible" : "is-hidden"
-                  }`}
-                >
-                  Video Editing
-                </span>
-                <span
-                  class={`slide-6 ${
-                    isVisible === 5 ? "is-visible" : "is-hidden"
-                  }`}
-                >
-                  Desainer
-                </span>
-              </span>
+              <HeadlineHighlight />
             </h1>
             <div className="d-block d-md-none">
               <img
@@ -177,18 +138,15 @@ const Home = () => {
         {/* About Page */}
         <div className="about">
           <h5 className="">
-            <MdSearch className="icon-search" />
+            <FontAwesomeIcon icon="search" className="icon-search" />
             Yuk mengenal lebih dalam tentang Propicks
           </h5>
           <div className="row about-row">
-            <div className="col-12 col-lg-6 about-header d-flex flex-column justify-content-center align-items-center">
-              <h4 className="d-none d-sm-block">
+            <div className="col-12 col-lg-6 about-header d-flex flex-column-reverse flex-lg-column justify-content-center align-items-center">
+              <h4>
                 Apa itu <span className="border-blue">Propicks?</span>
               </h4>
               <img src={addInformationPng} alt="" />
-              <h4 className="d-block d-sm-none">
-                Apa itu <span className="border-blue">Propicks?</span>
-              </h4>
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
@@ -215,27 +173,20 @@ const Home = () => {
                 lain-lain.
               </p>
             </div>
-            <div className="col-12 col-lg-6 about-header d-flex flex-column justify-content-center align-items-center">
-              <h4 className="d-none d-sm-block">
+            <div className="col-12 col-lg-6 about-header d-flex flex-column-reverse flex-lg-column justify-content-center align-items-center">
+              <h4>
                 Visi <span className="border-red">Propicks</span>
               </h4>
               <img src={programmingPng} alt="" />
-              <h4 className="d-block d-sm-none">
-                Visi <span className="border-red">Propicks</span>
-              </h4>
             </div>
           </div>
           <div className="row about-row">
-            <div className="col-12 col-lg-6 about-header d-flex flex-column justify-content-center align-items-center">
-              <h4 className="d-none d-sm-block">
+            <div className="col-12 col-lg-6 about-header d-flex flex-column-reverse flex-lg-column justify-content-center align-items-center">
+              <h4 className="text-center">
                 Rekomendasi & Review{" "}
                 <span className="border-green">Propicks</span>
               </h4>
               <img src={checkingBoxesPng} alt="" />
-              <h4 className="d-block d-sm-none text-center">
-                Rekomendasi & Review{" "}
-                <span className="border-green">Propicks</span>
-              </h4>
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
