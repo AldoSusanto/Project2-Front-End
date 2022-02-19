@@ -269,7 +269,7 @@ class Result extends React.Component {
           role="alert"
         >
           Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
-          <strong> Rp. 300,000 !! </strong>
+          <strong> Rp. 500,000 !! </strong>
         </div>
         {resultsPage}
       </Fragment>

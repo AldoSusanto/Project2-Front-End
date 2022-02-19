@@ -48,7 +48,7 @@ const Home = () => {
           role="alert"
         >
           Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
-          <strong> Rp. 300,000 !! </strong>
+          <strong> Rp. 500,000 !! </strong>
         </div>
         <div id="home" className="row">
           <div className="col-12 col-md-6 col-xl-8 text-center">
