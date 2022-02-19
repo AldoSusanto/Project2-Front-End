@@ -82,7 +82,7 @@ class Result extends React.Component {
             <Item.Group divided>
               <Item
                 className={`itemList ${
-                  index == this.state.highlightedIndex ? "selectedItem" : ""
+                  index === this.state.highlightedIndex ? "selectedItem" : ""
                 }`}
                 onClick={(e) => this.changeHighlight(e, index)}
               >
@@ -110,7 +110,7 @@ class Result extends React.Component {
 
         // Populate the links(green button) for the highlightedItem
         for (const [index, value] of highlightedItem.link.entries()) {
-          if (value.link.trim() != "") {
+          if (value.link.trim() !== "") {
             //if link is empty
             // console.log("linkfrom", value.linkFrom);
             itemLinks.push(
@@ -133,7 +133,7 @@ class Result extends React.Component {
                 <Label
                   className="insights-item insights-label"
                   size="large"
-                  color={value.type == "Positive" ? "green" : "red"}
+                  color={value.type === "Positive" ? "green" : "red"}
                 >
                   <FontAwesomeIcon icon={value.icon} />
                   {" " + value.title}
@@ -268,9 +268,8 @@ class Result extends React.Component {
           class="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
         >
-          Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
-          <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
-          <strong> Rp. 300,000 !! </strong>
+          Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
+          <strong> Rp. 500,000 !! </strong>
         </div>
         {resultsPage}
       </Fragment>
