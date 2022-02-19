@@ -63,11 +63,11 @@
 }
 
 .hero-img {
-  width: 42vw;
+  width: 43vw;
   height: auto;
   z-index: 6 !important;
-  bottom: 28%;
-  left: -32%;
+  bottom: 12%;
+  left: -42%;
 }
 
 .howItWorks {
@@ -117,7 +117,6 @@
 
 // Partner Propicks Page
 .partner-propicks {
-  margin: 2rem 0;
   padding: 8rem 10rem;
   height: 80vh;
   background: $light-blue-variant;
@@ -245,7 +244,6 @@
   }
 
   .partner-propicks {
-    margin: 2rem 0;
     padding: 6rem 5rem 6rem 6rem;
 
     &-info {
@@ -383,7 +381,6 @@
   }
 
   .partner-propicks {
-    margin: 2rem 0;
     padding: 4rem;
 
     &-info {

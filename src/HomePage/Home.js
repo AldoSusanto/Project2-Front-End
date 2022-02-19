@@ -15,6 +15,7 @@ import partnersPng from "../assets/partners.png";
 import homeImg from "../assets/image-1.png";
 import { Popup } from "semantic-ui-react";
 import HeadlineHighlight from "../components/HeadlineHighlight";
+import { TiShoppingCart } from "react-icons/ti";
 
 var prefix_url =
   "https://wa.me/6287868572240?text=Hello%20Propicks%2C%20saya%20ingin%20mencari%20laptop%20yang%20tepat%20untuk%20saya%20%21%20%3AD";
@@ -47,9 +48,8 @@ const Home = () => {
           className="alert alert-success position-absolute promo-banner col-12 text-center"
           role="alert"
         >
-          Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
-          <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
-          <strong> Rp. 300,000 !! </strong>
+          Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
+          <strong> Rp. 500,000 !! </strong>
         </div>
         <div id="home" className="row">
           <div className="col-12 col-md-6 col-xl-8 text-center">
@@ -61,7 +61,7 @@ const Home = () => {
               <img
                 className="hero-img"
                 src={homeImg}
-                alt="ProPicks welcome cari laptop"
+                alt="Rekomendasi Laptop dari Propicks"
               />
             </div>
             <p>
@@ -78,7 +78,7 @@ const Home = () => {
             <img
               className="hero-img position-absolute"
               src={homeImg}
-              alt="ProPicks welcome cari laptop"
+              alt="Rekomendasi Laptop dari Propicks"
             />
           </div>
         </div>
@@ -91,7 +91,6 @@ const Home = () => {
             </div>
           </div>
           <div className="row HIW-row">
-            <div className="col-md-1"></div>
             <div className="col-12 col-md-3 text-center mb-2 mb-md-0">
               <h3 className="text-ce">Step 1</h3>
               <img
@@ -103,35 +102,42 @@ const Home = () => {
                 Beritahu kebutuhan <br /> laptop kamu
               </h3>
             </div>
-            <div className="col-12 col-md-4 text-center my-5 my-md-0">
+            <div className="col-12 col-md-3 text-center my-5 my-md-0">
               <h3 className="text-center">Step 2</h3>
               <FontAwesomeIcon icon="search-dollar" className="HIW-icons" />
               <h3 className="HIW-title text-center">
                 Kami rekomendasikan <br /> laptop terbaik untukmu
               </h3>
             </div>
-            <div className="col-12 col-md-3 text-center mt-2 mt-md-0">
+            <div className="col-12 col-md-3 text-center mt-2 mb-5 mt-md-0">
               <h3 className="text-center">Step 3</h3>
-              <img className="iconImage" src={smileIcon} alt=""></img>
+              <TiShoppingCart className="HIW-icons" />
               <h3 className="HIW-title text-center">
-                Explore dan pilih <br /> laptop kesukaanmu
+                Tambahkan laptop <br /> di keranjang
               </h3>
             </div>
-            <div className="col-md-1"></div>
+            <div className="col-12 col-md-3 text-center mt-2 mt-md-0">
+              <h3 className="text-center">Step 4</h3>
+              <img className="iconImage" src={smileIcon} alt=""></img>
+              <h3 className="HIW-title text-center">
+                Beli laptop impianmu <br /> dan enjoy !
+              </h3>
+            </div>
           </div>
         </div>
 
         {/* Partner Propicks Page */}
         <div className="partner-propicks row">
           <div className="col-12 col-lg-6 partner-propicks-info">
-            <h5>Partner Propicks</h5>
+            <h5>Affiliate Partner Propicks</h5>
             <p>
-              Propicks telah membangun kerja sama dengan beberapa partner
-              terpercaya agar kamu dapat mencari laptop dengan aman dan nyaman.
+              Propicks telah membangun kerja sama affiliate dengan beberapa
+              partner terpercaya agar kamu dapat mencari laptop dengan aman dan
+              nyaman.
             </p>
           </div>
           <div className="col-12 col-lg-6 partner-propicks-img">
-            <img src={partnersPng} alt="" />
+            <img src={partnersPng} alt="Rekomendasi Laptop terbaik untukmu" />
           </div>
         </div>
 
@@ -146,7 +152,10 @@ const Home = () => {
               <h4>
                 Apa itu <span className="border-blue">Propicks?</span>
               </h4>
-              <img src={addInformationPng} alt="" />
+              <img
+                src={addInformationPng}
+                alt="Pelajar, gamers, desainer, editor cari laptop"
+              />
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
@@ -186,7 +195,10 @@ const Home = () => {
                 Rekomendasi & Review{" "}
                 <span className="border-green">Propicks</span>
               </h4>
-              <img src={checkingBoxesPng} alt="" />
+              <img
+                src={checkingBoxesPng}
+                alt="Rekomendasi Laptop terbaik 2022"
+              />
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
