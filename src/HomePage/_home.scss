@@ -210,6 +210,32 @@
   }
 }
 
+// Call to Action
+.call-to-action {
+  margin: 4rem 0;
+  h5 {
+    color: $dark;
+    font-weight: 600;
+    margin: 0 1rem;
+    font-size: calc(1.1rem + 0.5vw);
+  }
+  button {
+    padding: 5px 50px;
+    margin: 0 20px;
+    border-radius: 15px;
+    letter-spacing: 1.5px;
+    border: none;
+    background-color: $green;
+    transition: 0.3s linear all;
+    font-size: calc(0.8rem + 0.5vw);
+    font-weight: 600;
+  }
+
+  button:hover {
+    background-color: darken($color: $green, $amount: 10%);
+  }
+}
+
 @media screen and (max-width: 1366px) {
   .headline {
     font-size: calc(1.8rem + 1vw);
@@ -308,6 +334,19 @@
     width: calc(54vw + 5rem);
     bottom: 0;
     left: 11%;
+  }
+
+  // Call to Action
+  .call-to-action {
+    h5 {
+      margin: 1.5rem 1rem;
+      font-size: calc(1.1rem + 0.5vw);
+      text-align: center;
+    }
+    button {
+      padding: 8px 60px;
+      font-size: calc(0.9rem + 0.5vw);
+    }
   }
 }
 

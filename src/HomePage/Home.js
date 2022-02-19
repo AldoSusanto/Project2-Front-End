@@ -201,6 +201,16 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        {/* Call To Action */}
+        <div className="call-to-action d-flex flex-column flex-md-row justify-content-center align-items-center">
+          <h5>Sudah siap mencari laptop impianmu?</h5>
+          <Link to={`/play`}>
+            <button type="button" name="button" className="btn btn-success">
+              Mulai Quiz
+            </button>
+          </Link>
+        </div>
         <Footer />
         <Popup
           inverted
