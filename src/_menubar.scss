@@ -1,6 +1,8 @@
 .navbar {
-  background: $blue;
+  // background: $blue;
   width: 100vw;
+  transition: all 400ms ease;
+  z-index: 8;
 }
 
 .container-fluid .navbar-brand {
@@ -8,6 +10,14 @@
   font-size: $md;
   color: #13b929;
   margin-top: 50px;
+}
+
+.bgBlue {
+  background-color: $blue;
+}
+
+.bgTransparent {
+  background-color: transparent;
 }
 
 .logo {
@@ -24,7 +34,7 @@
   margin-left: 70px;
   padding: 8px 10px;
   color: $off-white;
-  background: $blue;
+  // background: $blue;
   font-family: $poppins;
   font-size: 1.2rem;
   position: relative;
