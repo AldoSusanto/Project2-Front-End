@@ -16,8 +16,8 @@ const HeadlineHighlight = () => {
   }, [isVisible]);
 
   return (
-    <span className="headline-highlight">
-      <span class={`${isVisible === 0 ? "is-visible" : "is-hidden"}`}>
+    <div className="headline-highlight">
+      <span class={`slide-1 ${isVisible === 0 ? "is-visible" : "is-hidden"}`}>
         Gaming
       </span>
       <span class={`slide-2 ${isVisible === 1 ? "is-visible" : "is-hidden"}`}>
@@ -32,7 +32,7 @@ const HeadlineHighlight = () => {
       <span class={`slide-5 ${isVisible === 4 ? "is-visible" : "is-hidden"}`}>
         Entrepreneur
       </span>
-    </span>
+    </div>
   );
 };
 

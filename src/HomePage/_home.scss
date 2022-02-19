@@ -17,6 +17,7 @@
   margin-right: 0;
 
   .headline {
+    position: relative;
     font-size: calc(2rem + 1vw);
     color: $off-white;
     font-weight: 500;
@@ -307,7 +308,7 @@
     background-image: url(../assets/bgHeroSm.png);
     background-position: left top;
     background-size: cover;
-    height: 105vh;
+    height: 110vh;
 
     p {
       font-size: calc(1rem + 0.7vw);
