@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
 import "./decrypt.css";
 import * as CryptoJS from "crypto-js";
-
-const cfg = {
-  mode: CryptoJS.mode.CBC,
-  padding: CryptoJS.pad.Pkcs7,
-};
 
 class Decrypt extends Component {
   constructor() {
@@ -124,7 +118,7 @@ class Decrypt extends Component {
   };
 
   render() {
-    const { error, transactions, isLoading } = this.state;
+    const { error } = this.state;
     if (error) {
       return <h3>{error}</h3>;
     }
@@ -177,6 +171,7 @@ class Decrypt extends Component {
           <a
             href="https://stackblitz.com/edit/cryptojs-aes-encrypt-decrypt"
             target="_blank"
+            rel="noreferrer"
           >
             (View source code)
           </a>

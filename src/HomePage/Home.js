@@ -47,21 +47,22 @@ const Home = () => {
           className="alert alert-success position-absolute promo-banner col-12 text-center"
           role="alert"
         >
-          Konsultasi dengan kami via WA dan dapatkan cashback dari &nbsp;
-          <strong> Rp. 50,000 </strong> &nbsp; hingga &nbsp;
+          Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
           <strong> Rp. 300,000 !! </strong>
         </div>
         <div id="home" className="row">
           <div className="col-12 col-md-6 col-xl-8 text-center">
-            <h1 className="headline">
-              Cari Laptop Untuk <br />
-              <HeadlineHighlight />
-            </h1>
+            <div className="">
+              <h1 className="headline">
+                Cari Laptop Untuk <br />
+                <HeadlineHighlight />
+              </h1>
+            </div>
             <div className="d-block d-md-none">
               <img
                 className="hero-img"
                 src={homeImg}
-                alt="ProPicks welcome cari laptop"
+                alt="Rekomendasi Laptop dari Propicks"
               />
             </div>
             <p>
@@ -78,7 +79,7 @@ const Home = () => {
             <img
               className="hero-img position-absolute"
               src={homeImg}
-              alt="ProPicks welcome cari laptop"
+              alt="Rekomendasi Laptop dari Propicks"
             />
           </div>
         </div>
@@ -131,7 +132,7 @@ const Home = () => {
             </p>
           </div>
           <div className="col-12 col-lg-6 partner-propicks-img">
-            <img src={partnersPng} alt="" />
+            <img src={partnersPng} alt="Rekomendasi Laptop terbaik untukmu" />
           </div>
         </div>
 
@@ -146,7 +147,10 @@ const Home = () => {
               <h4>
                 Apa itu <span className="border-blue">Propicks?</span>
               </h4>
-              <img src={addInformationPng} alt="" />
+              <img
+                src={addInformationPng}
+                alt="Pelajar, gamers, desainer, editor cari laptop"
+              />
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
@@ -186,7 +190,10 @@ const Home = () => {
                 Rekomendasi & Review{" "}
                 <span className="border-green">Propicks</span>
               </h4>
-              <img src={checkingBoxesPng} alt="" />
+              <img
+                src={checkingBoxesPng}
+                alt="Rekomendasi Laptop terbaik 2022"
+              />
             </div>
             <div className="col-12 col-lg-6 about-description">
               <p>
