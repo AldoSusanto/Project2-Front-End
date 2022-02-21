@@ -21,7 +21,7 @@ class Footer extends React.Component {
             {/* <p><FontAwesomeIcon icon="phone" className="footer-icons"/>  (+62) 812-9927-5403</p> */}
             <p className="footer-email">
               <FontAwesomeIcon icon="envelope" className="footer-icons" />{" "}
-              aldosusanto@hotmail.com
+              propicksid@gmail.com
             </p>
             <p>Copyright &copy; ProPicks | 2021</p>
           </div>
