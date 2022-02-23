@@ -54,6 +54,7 @@
   }
 
   .option-multiple {
+    position: relative;
     border-radius: $button-radius;
     background-color: $blue;
     margin: $md auto $sm auto;
@@ -74,6 +75,32 @@
 
   .selected {
     background-color: darken($green, 8%) !important;
+  }
+
+  .icon-check {
+    opacity: 1;
+    position: absolute;
+    left: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1) all;
+  }
+
+  .icon-check-hidden {
+    opacity: 0;
+    position: absolute;
+    left: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1) all;
+  }
+
+  &-multiple {
+    padding-top: 2rem !important;
+    border-bottom: 3px solid $green;
+    font-size: calc(2.3rem);
   }
 }
 
@@ -123,6 +150,19 @@
   // }
 }
 
+@media screen and (max-width: 1366px) {
+  .questions {
+    .icon-check {
+      left: 0.3rem;
+      font-size: 2.6rem;
+    }
+
+    .icon-check-hidden {
+      font-size: 2.6rem;
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   .questions {
     width: 90%;
@@ -158,6 +198,18 @@
       width: 100%;
       font-size: calc(9px + 0.8vw);
     }
+
+    .icon-check {
+      font-size: 2.4rem;
+    }
+
+    .icon-check-hidden {
+      font-size: 2.4rem;
+    }
+
+    &-multiple {
+      font-size: calc(1.2rem + 0.9vw);
+    }
   }
 
   .button-container {
@@ -190,6 +242,10 @@
     .option {
       margin: $md auto $sm auto;
       font-size: calc(9px + 0.8vw);
+    }
+
+    &-multiple {
+      font-size: calc(1rem + 0.8vw);
     }
   }
 }
