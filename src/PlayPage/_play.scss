@@ -187,24 +187,26 @@
     .option {
       margin: $normal auto;
       font-size: calc(11px + 1vw);
-      padding: $normal;
+      padding: $normal $lg;
       width: 100%;
     }
 
     .option-multiple {
       margin: $normal auto;
-      padding: $normal 0;
+      padding: $normal $lg;
       text-align: center;
       width: 100%;
       font-size: calc(9px + 0.8vw);
     }
 
     .icon-check {
-      font-size: 2.4rem;
+      left: 0.2rem;
+      font-size: 2.3rem;
     }
 
     .icon-check-hidden {
-      font-size: 2.4rem;
+      left: 0.2rem;
+      font-size: 2.3rem;
     }
 
     &-multiple {
