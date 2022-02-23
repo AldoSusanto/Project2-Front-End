@@ -3,6 +3,7 @@
     "question": "Apakah kamu tahu berapa budget laptop kamu?",
     "askIf": "",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "priceRange",
     "options": [
       "0 - 8 Juta",
@@ -10,14 +11,25 @@
       "15 - 22 Juta",
       "22 - 30 Juta",
       "30++ Juta",
-      "Belum Tahu"
+      "Belum Tahu",
+      "Budget Custom"
     ],
-    "tags": ["0-8", "8-15", "15-22", "22-30", "30-55", "budgetUnknown"]
+    "tags": ["0-8", "8-15", "15-22", "22-30", "30-55", "budgetUnknown","customBudget"]
+  },
+  {
+    "question": "Apakah kamu tahu berapa budget laptop kamu?",
+    "askIf": "customBudget",
+    "isMultiple": false,
+    "isSlider": true,
+    "questionLabel": "priceRange",
+    "options": ["test"],
+    "tags": ["0-10"]
   },
   {
     "question": "Pilih tipe budget yang kamu inginkan",
     "askIf": "budgetUnknown",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "pricePref",
     "options": [
       "Pilihkan laptop dengan spesifikasi budget friendly",
@@ -31,6 +43,7 @@
     "question": "Aktivitas apa saja yang biasa kamu lakukan dengan laptop kamu?",
     "askIf": "",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "activities",
     "options": [
       "Video Conference (Zoom, Google Meet, dll)",
@@ -61,6 +74,7 @@
     "question": "Bagaimanakah cara yang biasa kamu lakukan untuk menonton film?",
     "askIf": "watchFilm",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "filmMethod",
     "options": [
       "Lewat Internet (Youtube, Netflix, dll)",
@@ -72,6 +86,7 @@
     "question": "Apakah kamu menyimpan film2mu di hard disk external?",
     "askIf": "filmOffline",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "filmHd",
     "options": ["Ya", "Tidak"],
     "tags": ["external", "internal"]
@@ -80,6 +95,7 @@
     "question": "Software apa saja yang kamu pakai untuk image editing / graphic design?",
     "askIf": "imageGraphics",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "imageGraphicsSoftware",
     "options": [
       "Adobe Photoshop",
@@ -100,6 +116,7 @@
     "question": "Apakah foto2 yang biasa kamu edit adalah foto2 high definition (HD)?",
     "askIf": "imageGraphics",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "imageGraphicsImageQuality",
     "options": ["Ya", "Tidak", "Saya tidak melakukan image editing"],
     "tags": ["picHigh", "picMed", "picMed"]
@@ -108,6 +125,7 @@
     "question": "Apakah kamu menyimpan foto2 itu di hard disk external?",
     "askIf": "picHigh",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "imageGraphicsImageHD",
     "options": ["Ya", "Tidak", "Saya tidak melakukan image editing"],
     "tags": ["external", "internal", "internal"]
@@ -116,6 +134,7 @@
     "question": "Pilihlah game2 yang biasa kamu mainkan",
     "askIf": "gaming",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "gamingSoftware",
     "options": [
       "Dota 2",
@@ -146,6 +165,7 @@
     "question": "Software apa saja yang akan kamu pakai untuk video editing ?",
     "askIf": "videoEdit",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "videoEditingSoftware",
     "options": [
       "Adobe Premiere",
@@ -170,6 +190,7 @@
     "question": "Filmora atau Final Cut Pro X hanya bisa digunakan oleh laptop dari Apple (Mac). Apakah kamu ingin mencari laptop Mac atau Windows?",
     "askIf": "finalCut",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "operatingSystem",
     "options": ["MacBook", "Windows"],
     "tags": ["mac", "windows"]
@@ -178,6 +199,7 @@
     "question": "Apakah kamu menyimpan video2 yang kamu edit di hard disk external?",
     "askIf": "videoEdit",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "videoEditingHd",
     "options": ["Ya", "Tidak"],
     "tags": ["external", "internal"]
@@ -186,6 +208,7 @@
     "question": "Software apa saja yang akan kamu pakai untuk 3D Graphics?",
     "askIf": "3dGraphics",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "3dGraphicsSoftware",
     "options": ["Blender", "Maya", "3D Max", "AutoCAD"],
     "tags": ["Blender", "Maya", "3D Max", "AutoCAD"]
@@ -194,6 +217,7 @@
     "question": "Pilih ukuran laptop yang kamu inginkan",
     "askIf": "",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "size",
     "options": [
       "13-inch",
@@ -209,6 +233,7 @@
     "question": "Apakah kamu sering memakai laptopmu saat traveling?",
     "askIf": "",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "weightOne",
     "options": ["Ya", "Tidak"],
     "tags": ["light", "medium"]
@@ -217,6 +242,7 @@
     "question": "Apakah kamu sering menggunakan laptopmu diluar rumah? (Cafe, Kantor, dll)",
     "askIf": "",
     "isMultiple": false,
+    "isSlider": false,
     "questionLabel": "weightTwo",
     "options": ["Ya", "Tidak"],
     "tags": ["light", "medium"]
@@ -225,6 +251,7 @@
     "question": "Pilih brand2 yang kamu inginkan",
     "askIf": "",
     "isMultiple": true,
+    "isSlider": false,
     "questionLabel": "brand",
     "options": [
       "Dell",
