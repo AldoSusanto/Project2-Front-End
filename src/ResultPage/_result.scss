@@ -395,6 +395,11 @@
 }
 
 @media screen and (max-width: 576px) {
+  .promo-banner {
+    font-size: 0.8rem !important;
+    padding: 0.3rem 1.25rem !important;
+  }
+
   #result {
     margin: 0px 0 0 0;
 
