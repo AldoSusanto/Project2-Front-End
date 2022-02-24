@@ -193,7 +193,7 @@ class Result extends React.Component {
               <hr className="hr-line d-none d-lg-block" />
               <div className="result-text">{itemList}</div>
             </div>
-            <div className="my-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
+            <div className="mt-4 mb-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
               <div className="row mt-lg-5">
                 <div className="col-6 d-flex justify-content-center align-items-center">
                   {itemImage}
