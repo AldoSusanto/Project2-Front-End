@@ -46,6 +46,10 @@ const Play = (props) => {
   const [currentSelectedChoices, setCurrentSelectedChoices] = useState([]);
   const [result, setResult] = useState(resultJson);
 
+  // Slider State
+  let [minValue, setMinValue] = useState(0);
+  let [maxValue, setMaxValue] = useState(8);
+
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
@@ -255,6 +259,44 @@ const Play = (props) => {
     disableButtonIfNeeded(currentQuestionIndex + 1);
   };
 
+  function handleMaxValue(e) {
+    let lowerSlider = document.querySelector("#lower");
+    setMaxValue(parseInt(e.target.value));
+
+    if (maxValue === minValue + 3) {
+      if (minValue == lowerSlider.min) {
+        setMaxValue(parseInt(lowerSlider.min) + 3);
+      }
+
+      setMinValue(minValue - 1);
+    }
+    if (minValue < lowerSlider.min) {
+      setMinValue(parseInt(lowerSlider.min));
+    }
+
+    setCurrentSelectedTags([minValue + "-" + e.target.value]);
+    setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
+  }
+
+  function handleMinValue(e) {
+    let upperSlider = document.querySelector("#upper");
+    setMinValue(parseInt(e.target.value));
+
+    if (minValue === maxValue - 3) {
+      if (maxValue == upperSlider.max) {
+        setMinValue(parseInt(upperSlider.max) - 3);
+      }
+
+      setMaxValue(maxValue + 1);
+    }
+    if (maxValue > upperSlider.max) {
+      setMaxValue(parseInt(upperSlider.max));
+    }
+
+    setCurrentSelectedTags([e.target.value + "-" + maxValue]);
+    setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
+  }
+
   useEffect(() => {
     setCurrentQuestion(jsonQuestions[currentQuestionIndex]);
     setAnswer(jsonQuestions[currentQuestionIndex].answer);
@@ -277,24 +319,53 @@ const Play = (props) => {
           </h5>
 
           {!currentQuestion.isMultiple ? (
-            // currentQuestion.askIf ===
             <>
-              {currentQuestion.options.map((option, i) => {
-                let optionSelected = currentSelectedChoices.includes(
-                  currentQuestion.questionLabel + i
-                );
+              {!currentQuestion.isSlider ? (
+                currentQuestion.options.map((option, i) => {
+                  let optionSelected = currentSelectedChoices.includes(
+                    currentQuestion.questionLabel + i
+                  );
 
-                return (
-                  <div key={i} className="options-container">
-                    <p
-                      onClick={(e) => userAnswered(e, i)}
-                      className={optionSelected ? "option selected" : "option"}
-                    >
-                      {option}
-                    </p>
-                  </div>
-                );
-              })}
+                  return (
+                    <div key={i} className="options-container">
+                      <p
+                        onClick={(e) => userAnswered(e, i)}
+                        className={
+                          optionSelected ? "option selected" : "option"
+                        }
+                      >
+                        {option}
+                      </p>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="slider">
+                  <span className="multi-range">
+                    <input
+                      onChange={(e) => handleMinValue(e)}
+                      type="range"
+                      min="0"
+                      max="40"
+                      value={minValue}
+                      id="lower"
+                    />
+                    <input
+                      onChange={(e) => handleMaxValue(e)}
+                      type="range"
+                      min="0"
+                      max="40"
+                      value={maxValue}
+                      id="upper"
+                    />
+                    <span className="min-value">{minValue}</span>
+                    <span className="max-value">{maxValue}</span>
+                  </span>
+                  <span className="range-price">
+                    <h5>{`${minValue} - ${maxValue} Juta`}</h5>
+                  </span>
+                </div>
+              )}
             </>
           ) : (
             <>

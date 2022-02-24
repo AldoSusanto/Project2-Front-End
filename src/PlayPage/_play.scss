@@ -150,6 +150,105 @@
   // }
 }
 
+// Multi Slider
+.slider {
+  margin: 4rem 0;
+}
+
+input[type="range"] {
+  box-sizing: border-box;
+  appearance: none;
+  width: 100%;
+  margin: 0;
+  padding: 0 2px;
+  /* Add some L/R padding to ensure box shadow of handle is shown */
+  overflow: hidden;
+  border: 0;
+  border-radius: 1px;
+  outline: none;
+  background: linear-gradient(grey, grey) no-repeat center;
+  /* Use a linear gradient to generate only the 2px height background */
+  background-size: 100% 2px;
+  pointer-events: none;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-thumb {
+    height: 28px;
+    width: 28px;
+    border-radius: 28px;
+    background-color: $blue;
+    position: relative;
+    margin: 5px 0;
+    /* Add some margin to ensure box shadow is shown */
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+    box-shadow: 0 1px 4px 0.5px rgba(0, 0, 0, 0.25);
+    &::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 13px;
+      left: 100%;
+      width: 2000px;
+      height: 2px;
+    }
+  }
+}
+
+.multi-range {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 50px;
+  margin: 20px 0 $sm 0;
+  display: flex;
+
+  input[type="range"] {
+    position: absolute;
+
+    &:nth-child(2) {
+      background: none;
+    }
+  }
+
+  .min-value {
+    position: absolute;
+    font-size: calc(12px + 0.5vw);
+    left: 0;
+    top: -2rem;
+  }
+
+  .max-value {
+    position: absolute;
+    font-size: calc(12px + 0.5vw);
+    right: 0;
+    top: -2rem;
+  }
+}
+
+.range-price {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+
+  h5 {
+    margin: 0 !important;
+    font-size: calc(14px + 0.5vw);
+    border-radius: $button-radius;
+    vertical-align: middle;
+    width: 20%;
+    padding: 6px 0;
+    background-color: $blue;
+    color: $off-white;
+  }
+}
+
 @media screen and (max-width: 1366px) {
   .questions {
     .icon-check {
@@ -159,6 +258,16 @@
 
     .icon-check-hidden {
       font-size: 2.6rem;
+    }
+  }
+
+  .multi-range {
+    .min-value {
+      top: -1.4rem;
+    }
+
+    .max-value {
+      top: -1.4rem;
     }
   }
 }
@@ -227,6 +336,42 @@
       padding: 1rem 8rem;
     }
   }
+
+  // Multi Slider
+  .slider {
+    margin: 4rem 0 0;
+  }
+
+  input[type="range"] {
+    &::-webkit-slider-thumb {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .multi-range {
+    width: 80%;
+    height: 50px;
+
+    .min-value {
+      font-size: calc(11px + 0.9vw);
+    }
+
+    .max-value {
+      font-size: calc(11px + 0.9vw);
+    }
+  }
+
+  .range-price {
+    margin: 1rem 0;
+
+    h5 {
+      margin: 0 !important;
+      font-size: calc(12px + 0.9vw);
+      width: 40%;
+      padding: 8px 0;
+    }
+  }
 }
 
 @media screen and (max-width: 349px) {
@@ -248,6 +393,12 @@
 
     &-multiple {
       font-size: calc(1rem + 0.8vw);
+    }
+  }
+
+  .range-price {
+    h5 {
+      width: 80%;
     }
   }
 }
