@@ -118,8 +118,8 @@
     "isMultiple": false,
     "isSlider": false,
     "questionLabel": "imageGraphicsImageQuality",
-    "options": ["Ya", "Tidak", "Saya tidak melakukan image editing"],
-    "tags": ["picHigh", "picMed", "picMed"]
+    "options": ["Ya", "Tidak"],
+    "tags": ["picHigh", "picMed"]
   },
   {
     "question": "Apakah kamu menyimpan foto2 itu di hard disk external?",
@@ -127,8 +127,8 @@
     "isMultiple": false,
     "isSlider": false,
     "questionLabel": "imageGraphicsImageHD",
-    "options": ["Ya", "Tidak", "Saya tidak melakukan image editing"],
-    "tags": ["external", "internal", "internal"]
+    "options": ["Ya", "Tidak"],
+    "tags": ["external", "internal"]
   },
   {
     "question": "Pilihlah game2 yang biasa kamu mainkan",
@@ -254,6 +254,7 @@
     "isSlider": false,
     "questionLabel": "brand",
     "options": [
+      "Brand apa saja",
       "Dell",
       "Asus",
       "Acer",
@@ -263,10 +264,10 @@
       "Razer",
       "Avita",
       "Microsoft",
-      "Toshiba",
-      "Tidak Ada Preference"
+      "Toshiba"
     ],
     "tags": [
+      "noPref",
       "Dell",
       "Asus",
       "Acer",
@@ -276,8 +277,7 @@
       "Razer",
       "Avita",
       "Microsoft",
-      "Toshiba",
-      "noPref"
+      "Toshiba"      
     ]
   }
 ]
