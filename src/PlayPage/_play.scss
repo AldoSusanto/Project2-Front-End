@@ -164,11 +164,11 @@ input[type="range"] {
   /* Add some L/R padding to ensure box shadow of handle is shown */
   overflow: hidden;
   border: 0;
-  border-radius: 1px;
+  border-radius: 20px;
   outline: none;
   background: linear-gradient(grey, grey) no-repeat center;
   /* Use a linear gradient to generate only the 2px height background */
-  background-size: 100% 2px;
+  background-size: 100% 7px;
   pointer-events: none;
 
   &:active,
@@ -177,8 +177,8 @@ input[type="range"] {
   }
 
   &::-webkit-slider-thumb {
-    height: 28px;
-    width: 28px;
+    height: 30px;
+    width: 30px;
     border-radius: 28px;
     background-color: $blue;
     position: relative;
@@ -204,7 +204,7 @@ input[type="range"] {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
+  width: 55%;
   height: 50px;
   margin: 20px 0 $sm 0;
   display: flex;
@@ -240,12 +240,8 @@ input[type="range"] {
   h5 {
     margin: 0 !important;
     font-size: calc(14px + 0.5vw);
-    border-radius: $button-radius;
     vertical-align: middle;
     width: 20%;
-    padding: 6px 0;
-    background-color: $blue;
-    color: $off-white;
   }
 }
 
@@ -350,7 +346,7 @@ input[type="range"] {
   }
 
   .multi-range {
-    width: 80%;
+    width: 95%;
     height: 50px;
 
     .min-value {
@@ -368,8 +364,7 @@ input[type="range"] {
     h5 {
       margin: 0 !important;
       font-size: calc(12px + 0.9vw);
-      width: 40%;
-      padding: 8px 0;
+      width: 100%;
     }
   }
 }
@@ -395,10 +390,7 @@ input[type="range"] {
       font-size: calc(1rem + 0.8vw);
     }
   }
-
-  .range-price {
-    h5 {
-      width: 80%;
-    }
+  .multi-range {
+    width: 100%;
   }
 }

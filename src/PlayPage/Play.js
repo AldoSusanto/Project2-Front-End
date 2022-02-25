@@ -47,8 +47,8 @@ const Play = (props) => {
   const [result, setResult] = useState(resultJson);
 
   // Slider State
-  let [minValue, setMinValue] = useState(0);
-  let [maxValue, setMaxValue] = useState(8);
+  let [minValue, setMinValue] = useState(12);
+  let [maxValue, setMaxValue] = useState(17);
 
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
@@ -261,9 +261,8 @@ const Play = (props) => {
 
   function handleMaxValue(e) {
     let lowerSlider = document.querySelector("#lower");
-    setMaxValue(parseInt(e.target.value));
 
-    if (maxValue === minValue + 3) {
+    if (maxValue <= minValue + 3) {
       if (minValue == lowerSlider.min) {
         setMaxValue(parseInt(lowerSlider.min) + 3);
       }
@@ -273,6 +272,7 @@ const Play = (props) => {
     if (minValue < lowerSlider.min) {
       setMinValue(parseInt(lowerSlider.min));
     }
+    setMaxValue(parseInt(e.target.value));
 
     setCurrentSelectedTags([minValue + "-" + e.target.value]);
     setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
@@ -280,9 +280,8 @@ const Play = (props) => {
 
   function handleMinValue(e) {
     let upperSlider = document.querySelector("#upper");
-    setMinValue(parseInt(e.target.value));
 
-    if (minValue === maxValue - 3) {
+    if (minValue >= maxValue - 3) {
       if (maxValue == upperSlider.max) {
         setMinValue(parseInt(upperSlider.max) - 3);
       }
@@ -292,6 +291,7 @@ const Play = (props) => {
     if (maxValue > upperSlider.max) {
       setMaxValue(parseInt(upperSlider.max));
     }
+    setMinValue(parseInt(e.target.value));
 
     setCurrentSelectedTags([e.target.value + "-" + maxValue]);
     setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
@@ -346,7 +346,7 @@ const Play = (props) => {
                       onChange={(e) => handleMinValue(e)}
                       type="range"
                       min="0"
-                      max="40"
+                      max="50"
                       value={minValue}
                       id="lower"
                     />
@@ -354,12 +354,12 @@ const Play = (props) => {
                       onChange={(e) => handleMaxValue(e)}
                       type="range"
                       min="0"
-                      max="40"
+                      max="50"
                       value={maxValue}
                       id="upper"
                     />
-                    <span className="min-value">{minValue}</span>
-                    <span className="max-value">{maxValue}</span>
+                    <span className="min-value">0</span>
+                    <span className="max-value">50</span>
                   </span>
                   <span className="range-price">
                     <h5>{`${minValue} - ${maxValue} Juta`}</h5>
