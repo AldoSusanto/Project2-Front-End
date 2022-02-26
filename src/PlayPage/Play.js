@@ -5,6 +5,7 @@ import jsonQuestions from "../questions.json";
 import classNames from "classnames";
 import emailjs from "emailjs-com";
 import { MdCheckCircleOutline } from "react-icons/md";
+import Slider from "@mui/material/Slider";
 
 const Play = (props) => {
   let resultJson = {
@@ -47,8 +48,7 @@ const Play = (props) => {
   const [result, setResult] = useState(resultJson);
 
   // Slider State
-  let [minValue, setMinValue] = useState(12);
-  let [maxValue, setMaxValue] = useState(17);
+  let [value, setValue] = useState([12, 17]);
 
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
@@ -259,48 +259,29 @@ const Play = (props) => {
     disableButtonIfNeeded(currentQuestionIndex + 1);
   };
 
-  function handleMaxValue(e) {
-    let lowerSlider = document.querySelector("#lower");
-
-    if (maxValue <= minValue + 3) {
-      if (minValue == lowerSlider.min) {
-        setMaxValue(parseInt(lowerSlider.min) + 3);
-      }
-
-      setMinValue(minValue - 1);
-    }
-    if (minValue < lowerSlider.min) {
-      setMinValue(parseInt(lowerSlider.min));
-    }
-    setMaxValue(parseInt(e.target.value));
-
-    setCurrentSelectedTags([minValue + "-" + e.target.value]);
-    setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
+  function valuetext(value) {
+    return `${value} Juta`;
   }
 
-  function handleMinValue(e) {
-    let upperSlider = document.querySelector("#upper");
+  const handleChange = (event, newValue, activeThumb) => {
+    setValue(newValue);
 
-    if (minValue >= maxValue - 3) {
-      if (maxValue == upperSlider.max) {
-        setMinValue(parseInt(upperSlider.max) - 3);
-      }
-
-      setMaxValue(maxValue + 1);
+    if (activeThumb === 0) {
+      setValue([Math.min(newValue[0], value[1] - 3), value[1]]);
+    } else {
+      setValue([value[0], Math.max(newValue[1], value[0] + 3)]);
     }
-    if (maxValue > upperSlider.max) {
-      setMaxValue(parseInt(upperSlider.max));
-    }
-    setMinValue(parseInt(e.target.value));
 
-    setCurrentSelectedTags([e.target.value + "-" + maxValue]);
+    setCurrentSelectedTags([value[0] + "-" + value[1]]);
     setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
-  }
+  };
 
   useEffect(() => {
     setCurrentQuestion(jsonQuestions[currentQuestionIndex]);
     setAnswer(jsonQuestions[currentQuestionIndex].answer);
   }, [currentQuestionIndex]);
+
+  console.log(result);
 
   return (
     <Fragment>
@@ -341,28 +322,22 @@ const Play = (props) => {
                 })
               ) : (
                 <div className="slider">
-                  <span className="multi-range">
-                    <input
-                      onChange={(e) => handleMinValue(e)}
-                      type="range"
-                      min="0"
-                      max="50"
-                      value={minValue}
-                      id="lower"
-                    />
-                    <input
-                      onChange={(e) => handleMaxValue(e)}
-                      type="range"
-                      min="0"
-                      max="50"
-                      value={maxValue}
-                      id="upper"
+                  <div className="multi-range">
+                    <Slider
+                      getAriaLabel={() => "Temperature range"}
+                      value={value}
+                      onChange={handleChange}
+                      valueLabelDisplay="auto"
+                      getAriaValueText={valuetext}
+                      disableSwap
+                      min={0}
+                      max={50}
                     />
                     <span className="min-value">0</span>
                     <span className="max-value">50</span>
-                  </span>
+                  </div>
                   <span className="range-price">
-                    <h5>{`${minValue} - ${maxValue} Juta`}</h5>
+                    <h5>{`${value[0]} - ${value[1]} Juta`}</h5>
                   </span>
                 </div>
               )}
