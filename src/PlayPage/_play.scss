@@ -191,13 +191,16 @@
 .range-price {
   margin: 3rem 0;
   display: flex;
-  justify-content: center;
 
   h5 {
-    margin: 0 !important;
+    margin: 0 auto !important;
+    padding: 0.3rem 0;
     font-size: calc(14px + 0.5vw);
     vertical-align: middle;
     width: 20%;
+    justify-content: center;
+    border: 2px solid $green;
+    border-radius: 20px;
   }
 }
 
@@ -220,6 +223,12 @@
 
     .max-value {
       top: 2.8rem;
+    }
+  }
+
+  .range-price {
+    h5 {
+      width: 25%;
     }
   }
 }
@@ -322,9 +331,8 @@
     margin: 1rem 0;
 
     h5 {
-      margin: 0 !important;
       font-size: calc(12px + 0.9vw);
-      width: 100%;
+      width: 55%;
     }
   }
 }
@@ -352,5 +360,11 @@
   }
   .multi-range {
     width: 100%;
+  }
+
+  .range-price {
+    h5 {
+      width: 80%;
+    }
   }
 }

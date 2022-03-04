@@ -1,19 +1,6 @@
 # Getting Started with Create React App
 
-List of dependencies:
-    - npm install react-bootstrap bootstrap@4.6.0
-    - yarn add node-sass react-helmet react-router-dom@5.3.0 @mdi/font materialize-css classnames
-    - npm i -S reactstrap
-    - yarn add @fortawesome/fontawesome-svg-core
-    - yarn add @fortawesome/free-solid-svg-icons
-    - yarn add @fortawesome/react-fontawesome
-    - yarn add axios
-    - yarn add semantic-ui-react semantic-ui-css
-    - yarn add react-currency-format
-    - yarn add react-loader-spinner
-    - yarn add react-icons
-    - yarn add crypto-js
-    
+List of dependencies: - npm install react-bootstrap bootstrap@4.6.0 - yarn add node-sass react-helmet react-router-dom@5.3.0 @mdi/font materialize-css classnames - npm i -S reactstrap - yarn add @fortawesome/fontawesome-svg-core - yarn add @fortawesome/free-solid-svg-icons - yarn add @fortawesome/react-fontawesome - yarn add axios - yarn add semantic-ui-react semantic-ui-css - yarn add react-currency-format - yarn add react-loader-spinner - yarn add react-icons - yarn add crypto-js - yarn add @mui/material @emotion/react @emotion/styled
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
