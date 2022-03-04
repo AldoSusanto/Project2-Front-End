@@ -150,6 +150,60 @@
   // }
 }
 
+// Multi Slider
+.slider {
+  margin: 4rem 0;
+}
+
+.multi-range {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 50px;
+  margin: 20px 0 $sm 0;
+  display: flex;
+
+  .min-value {
+    position: absolute;
+    font-size: calc(15px + 0.5vw);
+    left: 0;
+    top: 3.2rem;
+  }
+
+  .max-value {
+    position: absolute;
+    font-size: calc(15px + 0.5vw);
+    right: 0;
+    top: 3.2rem;
+  }
+
+  .MuiSlider-root {
+    height: 6px;
+
+    .MuiSlider-thumb {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.range-price {
+  margin: 3rem 0;
+  display: flex;
+
+  h5 {
+    margin: 0 auto !important;
+    padding: 0.3rem 0;
+    font-size: calc(14px + 0.5vw);
+    vertical-align: middle;
+    width: 20%;
+    justify-content: center;
+    border: 2px solid $green;
+    border-radius: 20px;
+  }
+}
+
 @media screen and (max-width: 1366px) {
   .questions {
     .icon-check {
@@ -159,6 +213,22 @@
 
     .icon-check-hidden {
       font-size: 2.6rem;
+    }
+  }
+
+  .multi-range {
+    .min-value {
+      top: 2.8rem;
+    }
+
+    .max-value {
+      top: 2.8rem;
+    }
+  }
+
+  .range-price {
+    h5 {
+      width: 25%;
     }
   }
 }
@@ -227,6 +297,44 @@
       padding: 1rem 8rem;
     }
   }
+
+  // Multi Slider
+  .slider {
+    margin: 4rem 0 0;
+  }
+
+  .multi-range {
+    width: 95%;
+    height: 50px;
+
+    .min-value {
+      font-size: calc(11px + 0.9vw);
+      top: 2.4rem;
+    }
+
+    .max-value {
+      font-size: calc(11px + 0.9vw);
+      top: 2.4rem;
+    }
+
+    .MuiSlider-root {
+      height: 6px;
+
+      .MuiSlider-thumb {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  }
+
+  .range-price {
+    margin: 1rem 0;
+
+    h5 {
+      font-size: calc(12px + 0.9vw);
+      width: 55%;
+    }
+  }
 }
 
 @media screen and (max-width: 349px) {
@@ -248,6 +356,15 @@
 
     &-multiple {
       font-size: calc(1rem + 0.8vw);
+    }
+  }
+  .multi-range {
+    width: 100%;
+  }
+
+  .range-price {
+    h5 {
+      width: 80%;
     }
   }
 }

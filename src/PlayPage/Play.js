@@ -5,6 +5,7 @@ import jsonQuestions from "../questions.json";
 import classNames from "classnames";
 import emailjs from "emailjs-com";
 import { MdCheckCircleOutline } from "react-icons/md";
+import Slider from "@mui/material/Slider";
 
 const Play = (props) => {
   let resultJson = {
@@ -45,6 +46,9 @@ const Play = (props) => {
   const [currentSelectedTags, setCurrentSelectedTags] = useState([]);
   const [currentSelectedChoices, setCurrentSelectedChoices] = useState([]);
   const [result, setResult] = useState(resultJson);
+
+  // Slider State
+  let [value, setValue] = useState([12, 17]);
 
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
@@ -255,10 +259,29 @@ const Play = (props) => {
     disableButtonIfNeeded(currentQuestionIndex + 1);
   };
 
+  function valuetext(value) {
+    return `${value} Juta`;
+  }
+
+  const handleChange = (event, newValue, activeThumb) => {
+    setValue(newValue);
+
+    if (activeThumb === 0) {
+      setValue([Math.min(newValue[0], value[1] - 3), value[1]]);
+    } else {
+      setValue([value[0], Math.max(newValue[1], value[0] + 3)]);
+    }
+
+    setCurrentSelectedTags([value[0] + "-" + value[1]]);
+    setCurrentSelectedChoices([currentQuestion.questionLabel + 1]);
+  };
+
   useEffect(() => {
     setCurrentQuestion(jsonQuestions[currentQuestionIndex]);
     setAnswer(jsonQuestions[currentQuestionIndex].answer);
   }, [currentQuestionIndex]);
+
+  console.log(result);
 
   return (
     <Fragment>
@@ -277,24 +300,47 @@ const Play = (props) => {
           </h5>
 
           {!currentQuestion.isMultiple ? (
-            // currentQuestion.askIf ===
             <>
-              {currentQuestion.options.map((option, i) => {
-                let optionSelected = currentSelectedChoices.includes(
-                  currentQuestion.questionLabel + i
-                );
+              {!currentQuestion.isSlider ? (
+                currentQuestion.options.map((option, i) => {
+                  let optionSelected = currentSelectedChoices.includes(
+                    currentQuestion.questionLabel + i
+                  );
 
-                return (
-                  <div key={i} className="options-container">
-                    <p
-                      onClick={(e) => userAnswered(e, i)}
-                      className={optionSelected ? "option selected" : "option"}
-                    >
-                      {option}
-                    </p>
+                  return (
+                    <div key={i} className="options-container">
+                      <p
+                        onClick={(e) => userAnswered(e, i)}
+                        className={
+                          optionSelected ? "option selected" : "option"
+                        }
+                      >
+                        {option}
+                      </p>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="slider">
+                  <div className="multi-range">
+                    <Slider
+                      getAriaLabel={() => "Temperature range"}
+                      value={value}
+                      onChange={handleChange}
+                      valueLabelDisplay="auto"
+                      getAriaValueText={valuetext}
+                      disableSwap
+                      min={0}
+                      max={50}
+                    />
+                    <span className="min-value">0</span>
+                    <span className="max-value">50</span>
                   </div>
-                );
-              })}
+                  <span className="range-price">
+                    <h5>{`${value[0]} - ${value[1]} Juta`}</h5>
+                  </span>
+                </div>
+              )}
             </>
           ) : (
             <>
