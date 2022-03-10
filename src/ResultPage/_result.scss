@@ -14,8 +14,7 @@
     height: auto;
     max-width: 350px;
     margin: auto;
-    margin-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   h1 {
@@ -152,7 +151,7 @@
 
   .item-desc-btn:hover {
     width: 265px;
-    background-color: #79c76b;
+    background-color: darken($color: $green, $amount: 10%);
   }
 
   .insights-container {

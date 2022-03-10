@@ -88,7 +88,7 @@ class Result extends React.Component {
               >
                 <Item.Image src={value.imageLink[0]} />
                 <Item.Content>
-                  <Item.Header as="string">{value.name}</Item.Header>
+                  <Item.Header as="strong">{value.name}</Item.Header>
                   <Item.Meta>
                     <span className="price">
                       <CurrencyFormat
@@ -145,7 +145,7 @@ class Result extends React.Component {
 
         // Populate Laptop Description on right side of page
         itemDescription.push(
-          <Item.Group divided className="itemDesc">
+          <Item.Group key={highlightedItem.id} divided className="itemDesc">
             <Item>
               <Item.Content>
                 <Item.Header as="a" className="title">
@@ -163,8 +163,10 @@ class Result extends React.Component {
                 </Item.Meta>
                 <Item.Description className="item-desc-box">
                   <b>Processor: </b> {highlightedItem.processor} <br />{" "}
-                  <b>RAM: </b> {highlightedItem.ram}GB <br />{" "}
-                  <b>Graphics Card:</b> {highlightedItem.graphics}{" "}
+                  <b>RAM: </b> {`${highlightedItem.ram} GB`} <br />{" "}
+                  <b>Storage Capacity:</b> {`${highlightedItem.storageOne} GB`}{" "}
+                  <br /> <b>Display Size:</b> {`${highlightedItem.size} inches`}{" "}
+                  <br /> <b>Graphics Card:</b> {highlightedItem.graphics}
                 </Item.Description>
                 <Item.Extra className="d-flex align-items-center justify-content-center">
                   {itemLinks}
@@ -265,7 +267,7 @@ class Result extends React.Component {
         </Helmet>
         <Menubar />
         <div
-          class="alert alert-success promo-banner col-xs-1 text-center"
+          className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
         >
           Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}

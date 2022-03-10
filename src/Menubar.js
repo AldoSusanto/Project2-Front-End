@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Nav } from "reactstrap";
 import logoImage from "./assets/Logo/Original-Transparent.png";
-import logoSm from "./assets/Logo/Symbol.png";
 import { MdOutlineMenu, MdOutlineClose } from "react-icons/md";
 
 const Menubar = (props) => {
@@ -15,14 +14,8 @@ const Menubar = (props) => {
         <a href="/">
           <img
             href="/"
-            className="logo d-none d-md-block ml-3 ml-md-5"
+            className="logo ml-3 ml-md-5"
             src={logoImage}
-            alt="Propicks logo"
-          />
-          <img
-            href="/"
-            className="logoSm d-block d-md-none ml-3 ml-md-5"
-            src={logoSm}
             alt="Propicks logo"
           />
         </a>
