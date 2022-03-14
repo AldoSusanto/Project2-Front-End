@@ -281,8 +281,6 @@ const Play = (props) => {
     setAnswer(jsonQuestions[currentQuestionIndex].answer);
   }, [currentQuestionIndex]);
 
-  console.log(result);
-
   return (
     <Fragment>
       <Helmet>
