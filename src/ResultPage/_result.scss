@@ -279,8 +279,8 @@
       width: 46vw;
       height: auto;
       max-width: 250px;
-      margin-bottom: 20px;
-      margin-top: 20px;
+      margin-bottom: 50px;
+      margin-top: 0px;
     }
 
     .itemList {
@@ -319,7 +319,6 @@
     .itemDesc {
       .title {
         font-size: calc(1.2rem + 1vw);
-        margin-bottom: 15px;
       }
 
       .price {
@@ -428,6 +427,7 @@
     .itemDesc {
       .title {
         font-size: calc(0.9rem + 1vw);
+        margin-bottom: 5px;
       }
 
       .price {
