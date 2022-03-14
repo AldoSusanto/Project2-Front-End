@@ -165,10 +165,10 @@ class Result extends React.Component {
                   <b>Processor: </b> {highlightedItem.processor} <br />{" "}
                   <b>RAM: </b> {`${highlightedItem.ram} GB`} <br />{" "}
                   <b>Storage:</b> {`${highlightedItem.storageOne} GB`} <br />{" "}
-                  <b>Graphics Card:</b> {highlightedItem.graphics}
+                  <b>Graphics:</b> {highlightedItem.graphics}
                   <br /> <b>
-                    Display Size:
-                  </b> {`${highlightedItem.size} inches`} <br /> <b>Weight:</b>{" "}
+                    Display 
+                  </b> {`${highlightedItem.size} "`} <br /> <b>Weight:</b>{" "}
                   {`${highlightedItem.weightGrams} kg`}{" "}
                 </Item.Description>
                 <Item.Extra className="d-flex align-items-center justify-content-center">
