@@ -63,7 +63,6 @@ class Result extends React.Component {
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
-    var storageDesc = [];
 
     if (typeof recList !== "undefined") {
       // Encrypt
