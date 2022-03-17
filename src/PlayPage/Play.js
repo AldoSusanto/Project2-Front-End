@@ -4,8 +4,10 @@ import Menubar from "../Menubar";
 import jsonQuestions from "../questions.json";
 import classNames from "classnames";
 import emailjs from "emailjs-com";
-import { MdCheckCircleOutline } from "react-icons/md";
+import { MdCheckCircleOutline, MdOutlineCircle } from "react-icons/md";
+import { FcClock, FcLike, FcApproval } from "react-icons/fc";
 import Slider from "@mui/material/Slider";
+import Footer from "../Footer";
 
 const Play = (props) => {
   let resultJson = {
@@ -287,6 +289,50 @@ const Play = (props) => {
         <title>ProPicks - Laptop Quiz</title>
       </Helmet>
       <Menubar />
+      <div className="quiz-header">
+        <span className="quiz-header-title">
+          <h2>Quiz Rekomendasi Laptop</h2>
+          <span>by Propicks.id</span>
+        </span>
+        <div className="quiz-header-body">
+          <div className="col-12 col-md-4">
+            <div className="quiz-detail">
+              <FcClock className="icon-clock" />
+              <div>
+                <h5 className="d-none d-md-block">Selesaikan Quiz</h5>
+                <p>
+                  Kamu dapat menyelesaikan Quiz hanya dalam waktu kurang dari 5
+                  menit.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-md-4">
+            <div className="quiz-detail">
+              <FcLike className="icon-like" />
+              <div>
+                <h5 className="d-none d-md-block">Quiz Ini Gratis</h5>
+                <p>
+                  Kamu dapat mengikuti quiz ini secara gratis tanpa biaya
+                  apapun.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-md-4">
+            <div className="quiz-detail">
+              <FcApproval className="icon-approval" />
+              <div>
+                <h5 className="d-none d-md-block">Rekomendasi Laptop</h5>
+                <p>
+                  Kami selalu merekomendasikan laptop yang sesuai dengan
+                  kebutuhan kamu.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="quiz-body">
         <div className="questions">
           <h5>
@@ -358,10 +404,12 @@ const Play = (props) => {
                           : "option-multiple"
                       }
                     >
-                      <span
-                        className={optionSelected ? "icon-check" : "d-none"}
-                      >
-                        <MdCheckCircleOutline />
+                      <span className="icon-check">
+                        {optionSelected ? (
+                          <MdCheckCircleOutline />
+                        ) : (
+                          <MdOutlineCircle />
+                        )}
                       </span>
                       {option}
                     </p>
@@ -382,6 +430,9 @@ const Play = (props) => {
               NEXT
             </button>
           </div>
+        </div>
+        <div className="footer-container">
+          <Footer />
         </div>
       </div>
     </Fragment>
