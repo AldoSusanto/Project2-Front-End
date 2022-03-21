@@ -289,51 +289,26 @@ const Play = (props) => {
         <title>ProPicks - Laptop Quiz</title>
       </Helmet>
       <Menubar />
-      <div className="quiz-header">
-        <span className="quiz-header-title">
-          <h2>Quiz Rekomendasi Laptop</h2>
-          <span>by Propicks.id</span>
-        </span>
-        <div className="quiz-header-body">
-          <div className="col-12 col-md-4">
+      <div className="quiz-body">
+        <div className="quiz-header">
+          <span className="quiz-header-title">
+            <h2>Laptop Quiz by Propicks.id</h2>
+          </span>
+          <div className="quiz-header-body">
             <div className="quiz-detail">
               <FcClock className="icon-clock" />
-              <div>
-                <h5 className="d-none d-md-block">Selesaikan Quiz</h5>
-                <p>
-                  Kamu dapat menyelesaikan Quiz hanya dalam waktu kurang dari 5
-                  menit.
-                </p>
-              </div>
+              <h5>Kurang dari 2 menit</h5>
             </div>
-          </div>
-          <div className="col-12 col-md-4">
             <div className="quiz-detail">
               <FcLike className="icon-like" />
-              <div>
-                <h5 className="d-none d-md-block">Quiz Ini Gratis</h5>
-                <p>
-                  Kamu dapat mengikuti quiz ini secara gratis tanpa biaya
-                  apapun.
-                </p>
-              </div>
+              <h5>Gratis tanpa biaya</h5>
             </div>
-          </div>
-          <div className="col-12 col-md-4">
             <div className="quiz-detail">
               <FcApproval className="icon-approval" />
-              <div>
-                <h5 className="d-none d-md-block">Rekomendasi Laptop</h5>
-                <p>
-                  Kami selalu merekomendasikan laptop yang sesuai dengan
-                  kebutuhan kamu.
-                </p>
-              </div>
+              <h5>Pilihan laptop terbaik</h5>
             </div>
           </div>
         </div>
-      </div>
-      <div className="quiz-body">
         <div className="questions">
           <h5>
             {currentQuestion.question}

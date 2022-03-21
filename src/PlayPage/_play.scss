@@ -1,10 +1,6 @@
 .quiz-header {
-  padding: 4rem 6rem;
-  background-color: lighten($color: $green, $amount: 15%);
-  margin: 10rem 5rem 4.5rem;
+  padding: 0 3rem;
   border-radius: 12px;
-  box-shadow: none;
-  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) all;
 
   &-title {
     display: flex;
@@ -14,65 +10,46 @@
     padding: 1rem 0;
 
     h2 {
-      font-size: calc(28px + 0.7vw);
+      font-size: calc(24px + 0.7vw);
       color: $dark-variant;
-      padding-bottom: 1rem;
-    }
-
-    span {
-      font-size: calc(10px + 0.7vw);
-      color: $dark-variant;
-      font-weight: 600;
     }
   }
 
   &-body {
-    margin: 3rem 0;
+    margin: 2rem 0 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .quiz-detail {
-      height: auto;
+      width: auto;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
-      background-color: lighten($color: $green, $amount: 18%);
-      border-radius: 12px;
-      padding: 3rem 0rem 3.2rem;
-      margin: 0 0.4rem;
+      border-radius: 40px;
+      border-left: 7px solid $green-variant;
+      padding: 0.4rem 0.8rem;
+      margin: 0 1rem;
       box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
         rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
       transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) all;
 
-      div {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin-top: 1.5rem;
+      h5 {
+        width: 100%;
+        padding-left: 1rem;
+        margin: 0;
         color: $dark-variant;
-
-        h5 {
-          font-size: calc(16px + 0.7vw);
-        }
-
-        p {
-          padding: 0 2rem;
-          margin-top: 1rem;
-          font-size: calc(7px + 0.7vw);
-          height: 60px;
-        }
+        font-size: calc(11px + 0.7vw);
       }
 
       .icon-clock {
-        font-size: 6.5rem;
+        font-size: 4.5rem;
       }
       .icon-like {
-        font-size: 6.5rem;
+        font-size: 4.5rem;
       }
       .icon-approval {
-        font-size: 6.5rem;
+        font-size: 4.5rem;
       }
     }
 
@@ -82,17 +59,12 @@
   }
 }
 
-.quiz-header:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-}
-
 .quiz-body {
   background-color: $light-blue;
   height: auto;
   min-height: 100vh;
   width: 100%;
-  padding-top: 15vh;
+  padding-top: 12vh;
 }
 
 .questions {
@@ -299,52 +271,35 @@
 
 @media screen and (max-width: 1366px) {
   .quiz-header {
-    padding: 1rem 2.6rem;
-    margin: 9rem 3rem 3rem;
-
     &-title {
+      padding: 1.5rem 0;
+
       h2 {
         font-size: calc(24px + 0.7vw);
-        padding-bottom: 0.2rem;
-      }
-
-      span {
-        font-size: calc(9px + 0.7vw);
       }
     }
 
     &-body {
+      margin: 1.5rem 0 3rem;
       .quiz-detail {
-        padding: 2rem 0 2.2rem;
-        margin: 0 0.2rem;
-
-        div {
-          margin-top: 1.4rem;
-
-          h5 {
-            font-size: calc(12px + 0.8vw);
-            height: 34px;
-          }
-
-          p {
-            padding: 0 1.5rem;
-            margin-top: 0.4rem;
-            font-size: calc(5px + 0.7vw);
-            height: 50px;
-          }
+        h5 {
+          font-size: calc(10px + 0.7vw);
         }
-
         .icon-clock {
-          font-size: 5rem;
+          font-size: 4rem;
         }
         .icon-like {
-          font-size: 5rem;
+          font-size: 4rem;
         }
         .icon-approval {
-          font-size: 5rem;
+          font-size: 4rem;
         }
       }
     }
+  }
+
+  .quiz-body {
+    padding-top: 15vh;
   }
 
   .questions {
@@ -377,49 +332,27 @@
 
 @media screen and (max-width: 767px) {
   .quiz-header {
-    padding: 1.4rem 0;
-    margin: 7rem 1.5rem 2.5rem;
+    padding: 0 1.5rem;
 
     &-title {
-      padding: 0;
-      h2 {
-        font-size: calc(20px + 0.7vw);
-        padding-bottom: 0;
-      }
+      padding: 1.5rem 0;
 
-      span {
-        font-size: calc(13px + 0.7vw);
+      h2 {
+        font-size: calc(18px + 0.7vw);
       }
     }
 
     &-body {
-      flex-direction: column;
-      margin: 1rem 0 0;
+      margin: 0 0 2rem;
 
       .quiz-detail {
-        flex-direction: row;
-        justify-content: flex-start;
-        padding: 0.6rem;
-        margin: 0.4rem 0;
+        padding: 0.2rem 0.6rem;
+        margin: 0 0.5rem;
+        border-left: 6px solid $green-variant;
 
-        div {
-          width: 100%;
-          margin-top: 0;
-          margin-left: 1rem;
-          text-align: start;
-
-          h5 {
-            font-size: calc(12px + 0.7vw);
-            height: auto;
-            margin: 0;
-          }
-
-          p {
-            padding: 0;
-            margin-top: 0;
-            font-size: calc(7px + 0.9vw);
-            height: auto;
-          }
+        h5 {
+          padding-left: 0.5rem;
+          font-size: calc(7px + 0.7vw);
         }
 
         .icon-clock {
@@ -535,6 +468,52 @@
       font-size: calc(12px + 0.9vw);
       width: 55%;
     }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .quiz-header {
+    padding: 0 1.5rem;
+
+    &-title {
+      padding: 1.5rem 0;
+
+      h2 {
+        font-size: calc(18px + 0.7vw);
+      }
+    }
+
+    &-body {
+      flex-direction: column;
+
+      .quiz-detail {
+        min-width: 220px;
+        width: 40%;
+        padding: 0.2rem 0.6rem;
+        margin: 0.5rem 0;
+        border-left: 6px solid $green-variant;
+
+        h5 {
+          text-align: center;
+          padding-left: 0.3rem;
+          font-size: calc(10px + 0.7vw);
+        }
+
+        .icon-clock {
+          font-size: 2.3rem;
+        }
+        .icon-like {
+          font-size: 2.3rem;
+        }
+        .icon-approval {
+          font-size: 2.3rem;
+        }
+      }
+    }
+  }
+
+  .quiz-body {
+    padding-top: 10vh;
   }
 }
 
