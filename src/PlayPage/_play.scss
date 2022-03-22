@@ -1,10 +1,70 @@
+.quiz-header {
+  padding: 0 3rem;
+  border-radius: 12px;
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+
+    h2 {
+      font-size: calc(24px + 0.7vw);
+      color: $dark-variant;
+    }
+  }
+
+  &-body {
+    margin: 2rem 0 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .quiz-detail {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 40px;
+      border-left: 7px solid $green-variant;
+      padding: 0.4rem 0.8rem;
+      margin: 0 1rem;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) all;
+
+      h5 {
+        width: 100%;
+        padding-left: 1rem;
+        margin: 0;
+        color: $dark-variant;
+        font-size: calc(11px + 0.7vw);
+      }
+
+      .icon-clock {
+        font-size: 4.5rem;
+      }
+      .icon-like {
+        font-size: 4.5rem;
+      }
+      .icon-approval {
+        font-size: 4.5rem;
+      }
+    }
+
+    .quiz-detail:hover {
+      box-shadow: none;
+    }
+  }
+}
+
 .quiz-body {
-  background-color: $blue;
+  background-color: $light-blue;
   height: auto;
   min-height: 100vh;
-  width: 100vw;
-  padding-top: 15vh;
-  padding-bottom: 15vh;
+  width: 100%;
+  padding-top: 12vh;
 }
 
 .questions {
@@ -12,7 +72,7 @@
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   background-color: #f2f2f2;
   width: 88%;
-  margin: 0px auto 0 auto;
+  margin: 0 auto;
   padding: $sm $md;
   border-radius: 6px;
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) all;
@@ -24,6 +84,7 @@
     line-height: 1.5;
     text-align: center;
     font-family: $quicksand;
+    color: $dark-variant;
   }
 
   .options-container {
@@ -204,7 +265,43 @@
   }
 }
 
+.footer-container {
+  margin-top: 8vh;
+}
+
 @media screen and (max-width: 1366px) {
+  .quiz-header {
+    &-title {
+      padding: 1.5rem 0;
+
+      h2 {
+        font-size: calc(24px + 0.7vw);
+      }
+    }
+
+    &-body {
+      margin: 1.5rem 0 3rem;
+      .quiz-detail {
+        h5 {
+          font-size: calc(10px + 0.7vw);
+        }
+        .icon-clock {
+          font-size: 4rem;
+        }
+        .icon-like {
+          font-size: 4rem;
+        }
+        .icon-approval {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+
+  .quiz-body {
+    padding-top: 15vh;
+  }
+
   .questions {
     .icon-check {
       left: 0.3rem;
@@ -234,6 +331,43 @@
 }
 
 @media screen and (max-width: 767px) {
+  .quiz-header {
+    padding: 0 1.5rem;
+
+    &-title {
+      padding: 1.5rem 0;
+
+      h2 {
+        font-size: calc(18px + 0.7vw);
+      }
+    }
+
+    &-body {
+      margin: 0 0 2rem;
+
+      .quiz-detail {
+        padding: 0.2rem 0.6rem;
+        margin: 0 0.5rem;
+        border-left: 6px solid $green-variant;
+
+        h5 {
+          padding-left: 0.5rem;
+          font-size: calc(7px + 0.7vw);
+        }
+
+        .icon-clock {
+          font-size: 2.4rem;
+        }
+        .icon-like {
+          font-size: 2.4rem;
+        }
+        .icon-approval {
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
+
   .questions {
     width: 90%;
     margin: 0px auto 0 auto;
@@ -337,7 +471,65 @@
   }
 }
 
+@media screen and (max-width: 576px) {
+  .quiz-header {
+    padding: 0 1.5rem;
+
+    &-title {
+      padding: 1.5rem 0;
+
+      h2 {
+        font-size: calc(18px + 0.7vw);
+      }
+    }
+
+    &-body {
+      flex-direction: column;
+
+      .quiz-detail {
+        min-width: 220px;
+        width: 40%;
+        padding: 0.2rem 0.6rem;
+        margin: 0.5rem 0;
+        border-left: 6px solid $green-variant;
+
+        h5 {
+          text-align: center;
+          padding-left: 0.3rem;
+          font-size: calc(10px + 0.7vw);
+        }
+
+        .icon-clock {
+          font-size: 2.3rem;
+        }
+        .icon-like {
+          font-size: 2.3rem;
+        }
+        .icon-approval {
+          font-size: 2.3rem;
+        }
+      }
+    }
+  }
+
+  .quiz-body {
+    padding-top: 10vh;
+  }
+}
+
 @media screen and (max-width: 349px) {
+  .quiz-header {
+    &-title {
+      h2 {
+        font-size: calc(16px + 0.7vw);
+      }
+
+      span {
+        font-size: calc(11px + 0.7vw);
+      }
+    }
+  }
+
   .questions {
     h5 {
       font-size: calc(1rem + 0.8vw);

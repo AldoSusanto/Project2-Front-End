@@ -4,8 +4,10 @@ import Menubar from "../Menubar";
 import jsonQuestions from "../questions.json";
 import classNames from "classnames";
 import emailjs from "emailjs-com";
-import { MdCheckCircleOutline } from "react-icons/md";
+import { MdCheckCircleOutline, MdOutlineCircle } from "react-icons/md";
+import { FcClock, FcLike, FcApproval } from "react-icons/fc";
 import Slider from "@mui/material/Slider";
+import Footer from "../Footer";
 
 const Play = (props) => {
   let resultJson = {
@@ -288,6 +290,25 @@ const Play = (props) => {
       </Helmet>
       <Menubar />
       <div className="quiz-body">
+        <div className="quiz-header">
+          <span className="quiz-header-title">
+            <h2>Laptop Quiz by Propicks.id</h2>
+          </span>
+          <div className="quiz-header-body">
+            <div className="quiz-detail">
+              <FcClock className="icon-clock" />
+              <h5>Kurang dari 2 menit</h5>
+            </div>
+            <div className="quiz-detail">
+              <FcLike className="icon-like" />
+              <h5>Gratis tanpa biaya</h5>
+            </div>
+            <div className="quiz-detail">
+              <FcApproval className="icon-approval" />
+              <h5>Pilihan laptop terbaik</h5>
+            </div>
+          </div>
+        </div>
         <div className="questions">
           <h5>
             {currentQuestion.question}
@@ -358,10 +379,12 @@ const Play = (props) => {
                           : "option-multiple"
                       }
                     >
-                      <span
-                        className={optionSelected ? "icon-check" : "d-none"}
-                      >
-                        <MdCheckCircleOutline />
+                      <span className="icon-check">
+                        {optionSelected ? (
+                          <MdCheckCircleOutline />
+                        ) : (
+                          <MdOutlineCircle />
+                        )}
                       </span>
                       {option}
                     </p>
@@ -382,6 +405,9 @@ const Play = (props) => {
               NEXT
             </button>
           </div>
+        </div>
+        <div className="footer-container">
+          <Footer />
         </div>
       </div>
     </Fragment>
