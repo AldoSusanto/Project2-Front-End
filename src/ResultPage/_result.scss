@@ -271,6 +271,72 @@
   //   border: 2px solid $blue;
 }
 
+.modal-content {
+  border-radius: 12px !important;
+  border: 3px solid $blue !important;
+
+  .modal-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem 1rem !important;
+
+    .icon-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: $dark;
+      cursor: pointer;
+    }
+
+    .icon-close:hover {
+      color: $dark-variant;
+    }
+
+    &-top {
+      color: $blue;
+      font-size: calc(0.7rem + 0.6vw);
+      text-align: center;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    &-mid {
+      width: 80%;
+      height: auto;
+      margin: 0.75rem 0;
+    }
+
+    &-bottom {
+      color: $blue;
+      font-size: calc(0.7rem + 0.6vw);
+      text-align: center;
+      font-weight: 600;
+    }
+  }
+
+  .modal-footer {
+    padding: 1rem !important;
+
+    &-btn {
+      padding: 6px 30px;
+      border-radius: 8px;
+      border: none;
+      color: $off-white;
+      background-color: $green;
+      transition: 0.3s linear all;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    &-btn:hover {
+      background-color: darken($color: $green, $amount: 10%);
+    }
+  }
+}
+
 @media screen and (max-width: 991px) {
   #result {
     margin: 70px 0 0 0;
@@ -480,5 +546,47 @@
 
   .result-text {
     height: 50vh;
+  }
+
+  .modal-dialog {
+    width: 90% !important;
+    margin: 0.5rem auto !important;
+  }
+
+  .modal-content {
+    .modal-main {
+      padding: 4rem 1.4rem 1rem !important;
+
+      &-top {
+        font-size: calc(0.95rem + 0.7vw);
+      }
+
+      &-mid {
+        width: 90%;
+      }
+
+      &-bottom {
+        font-size: calc(0.95rem + 0.7vw);
+      }
+    }
+
+    .modal-footer {
+      padding: 1rem !important;
+
+      &-btn {
+        padding: 6px 30px;
+        border-radius: 8px;
+        border: none;
+        color: $off-white;
+        background-color: $green;
+        transition: 0.3s linear all;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      &-btn:hover {
+        background-color: darken($color: $green, $amount: 10%);
+      }
+    }
   }
 }
