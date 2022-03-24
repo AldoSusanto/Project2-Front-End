@@ -293,7 +293,7 @@ class Result extends React.Component {
           toggle={this.toggleModal}
         >
           <ModalBody className="modal-main">
-            <HiX className="icon-close" />
+            <HiX onClick={this.toggleModal} className="icon-close" />
             <p className="modal-main-top">
               Jangan lupa untuk menaruh laptop yang kamu suka di keranjang
               Tokopediamu

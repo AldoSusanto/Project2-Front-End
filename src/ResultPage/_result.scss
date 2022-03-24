@@ -273,7 +273,6 @@
 
 .modal-content {
   border-radius: 12px !important;
-  border: 3px solid $blue !important;
 
   .modal-main {
     display: flex;
@@ -321,19 +320,25 @@
     padding: 1rem !important;
 
     &-btn {
-      padding: 6px 30px;
+      padding: 8px 30px;
       border-radius: 8px;
       border: none;
       color: $off-white;
       background-color: $green;
       transition: 0.3s linear all;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
     }
 
     &-btn:hover {
       background-color: darken($color: $green, $amount: 10%);
     }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .modal-dialog {
+    max-width: 420px !important;
   }
 }
 
@@ -549,7 +554,7 @@
   }
 
   .modal-dialog {
-    width: 90% !important;
+    width: 80% !important;
     margin: 0.5rem auto !important;
   }
 
