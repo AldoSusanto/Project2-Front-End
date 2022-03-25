@@ -10,6 +10,9 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
+import shoppingCartPng from "../assets/shopping-cart.png";
+import { HiX } from "react-icons/hi";
 
 class Result extends React.Component {
   constructor(props) {
@@ -22,10 +25,12 @@ class Result extends React.Component {
       highlight: this.highlightDefault,
       recommendations: {},
       highlightedIndex: 0,
+      showModal: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // Call Backend for recommendations
@@ -47,6 +52,12 @@ class Result extends React.Component {
   changeHighlight(event, index) {
     this.setState({
       highlightedIndex: index,
+    });
+  }
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal,
     });
   }
 
@@ -166,10 +177,8 @@ class Result extends React.Component {
                   <b>RAM: </b> {`${highlightedItem.ram} GB`} <br />{" "}
                   <b>Storage:</b> {`${highlightedItem.storageOne} GB`} <br />{" "}
                   <b>Graphics:</b> {highlightedItem.graphics}
-                  <br /> <b>
-                    Display 
-                  </b> {`${highlightedItem.size} "`} <br /> <b>Weight:</b>{" "}
-                  {`${highlightedItem.weightGrams} kg`}{" "}
+                  <br /> <b>Display</b> {`${highlightedItem.size} "`} <br />{" "}
+                  <b>Weight:</b> {`${highlightedItem.weightGrams} kg`}{" "}
                 </Item.Description>
                 <Item.Extra className="d-flex align-items-center justify-content-center">
                   {itemLinks}
@@ -277,6 +286,34 @@ class Result extends React.Component {
           <strong> Rp. 500,000 !! </strong>
         </div>
         {resultsPage}
+        <Modal
+          centered
+          size="md"
+          isOpen={this.state.showModal}
+          toggle={this.toggleModal}
+        >
+          <ModalBody className="modal-main">
+            <HiX onClick={this.toggleModal} className="icon-close" />
+            <p className="modal-main-top">
+              Jangan lupa untuk menaruh laptop yang kamu suka di keranjang
+              Tokopediamu
+            </p>
+            <img
+              src={shoppingCartPng}
+              alt="Masukkan ke Keranjang Belanja-mu"
+              className="modal-main-mid"
+            />
+            <p className="modal-main-bottom">
+              Setiap pembelanjaan laptop dari anda akan membantu Propicks
+              bertumbuh di masa depan
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <button onClick={this.toggleModal} className="modal-footer-btn">
+              OK
+            </button>
+          </ModalFooter>
+        </Modal>
       </Fragment>
     );
   }
