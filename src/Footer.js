@@ -32,12 +32,6 @@ class Footer extends React.Component {
               <a className="menuBtn" href="/play">
                 <li>Mulai quiz</li>
               </a>
-              <a className="menuBtn" href="/">
-                <li>Homepage</li>
-              </a>
-              <a className="menuBtn" href="/">
-                <li>Kontak Kami</li>
-              </a>
             </ul>
           </div>
         </div>
