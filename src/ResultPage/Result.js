@@ -18,6 +18,37 @@ import Carousel from "nuka-carousel";
 class Result extends React.Component {
   constructor(props) {
     super(props);
+    var resultJson = {
+      priceRange: "10-15",
+      pricePref: "medium",
+      activities: ["videoConference"],
+      operatingSystem: [],
+      film: {
+        method: "",
+        hd: "",
+      },
+      imageGraphics: {
+        software: [],
+        image: {
+          quality: "",
+          hd: "",
+        },
+      },
+      gaming: {
+        software: [],
+      },
+      videoEditing: {
+        software: [],
+        hd: "",
+      },
+      threeDGraphics: {
+        software: [],
+      },
+      size: "15",
+      weight: ["light", "light"],
+      touchScreen: "",
+      brand: ["noPref"],
+    };
     this.state = {
       name: "",
       email: "",
@@ -27,6 +58,7 @@ class Result extends React.Component {
       recommendations: {},
       highlightedIndex: 0,
       showModal: true,
+      initialResult: resultJson,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +68,15 @@ class Result extends React.Component {
 
   // Call Backend for recommendations
   componentDidMount() {
-    var reqBody = this.state.result;
+    var reqBody;
+    if (this.state.result == undefined) {
+      reqBody = this.state.initialResult;
+    } else {
+      reqBody = this.state.result;
+    }
+
+    console.log("Result: " + reqBody);
+    console.log(this.state.initialResult);
 
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
