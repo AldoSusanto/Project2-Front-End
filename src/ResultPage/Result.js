@@ -12,7 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
 import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
-import { HiX } from "react-icons/hi";
+import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import Carousel from "nuka-carousel";
 
 class Result extends React.Component {
   constructor(props) {
@@ -74,6 +75,7 @@ class Result extends React.Component {
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
+    var laptopImages = [];
 
     if (typeof recList !== "undefined") {
       // Encrypt
@@ -188,12 +190,48 @@ class Result extends React.Component {
           </Item.Group>
         );
 
+        laptopImages = highlightedItem.imageLink.filter((url) => url !== "");
+
         itemImage.push(
-          <img
-            className="laptop-img"
-            src={highlightedItem.imageLink[0]}
-            alt="Highlighted Laptop"
-          />
+          <>
+            {laptopImages.length > 1 ? (
+              <div className="slider-image-container">
+                <Carousel
+                  renderCenterLeftControls={({ previousSlide }) => (
+                    <button onClick={previousSlide} className="slider-prev-btn">
+                      <HiChevronLeft className="icon-left" />
+                    </button>
+                  )}
+                  renderCenterRightControls={({ nextSlide }) => (
+                    <button onClick={nextSlide} className="slider-next-btn">
+                      <HiChevronRight className="icon-right" />
+                    </button>
+                  )}
+                  defaultControlsConfig={{
+                    pagingDotsClassName: "dots-custom",
+                  }}
+                  width="100%"
+                  dragging
+                  swiping
+                >
+                  {laptopImages.map((item, index) => (
+                    <img
+                      key={`Slide ${index}`}
+                      src={item}
+                      alt="Highlighted Laptop"
+                      className="carousel-img"
+                    />
+                  ))}
+                </Carousel>
+              </div>
+            ) : (
+              <img
+                className="laptop-img"
+                src={highlightedItem.imageLink[0]}
+                alt="Highlighted Laptop"
+              />
+            )}
+          </>
         );
 
         // Compile all components

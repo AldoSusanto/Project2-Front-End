@@ -6,15 +6,23 @@
     "isSlider": false,
     "questionLabel": "priceRange",
     "options": [
+      "Custom Budget",
       "0 - 8 Juta",
       "8 - 15 Juta",
       "15 - 22 Juta",
       "22 - 30 Juta",
       "30++ Juta",
-      "Belum Tahu",
-      "Custom Budget"
+      "Belum Tahu"
     ],
-    "tags": ["0-8", "8-15", "15-22", "22-30", "30-55", "budgetUnknown","customBudget"]
+    "tags": [
+      "customBudget",
+      "0-8",
+      "8-15",
+      "15-22",
+      "22-30",
+      "30-55",
+      "budgetUnknown"
+    ]
   },
   {
     "question": "Apakah kamu tahu berapa budget laptop kamu?",
@@ -277,7 +285,7 @@
       "Razer",
       "Avita",
       "Microsoft",
-      "Toshiba"      
+      "Toshiba"
     ]
   }
 ]
