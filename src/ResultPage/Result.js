@@ -74,10 +74,6 @@ class Result extends React.Component {
     } else {
       reqBody = this.state.result;
     }
-
-    console.log("Result: " + reqBody);
-    console.log(this.state.initialResult);
-
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
       // axios
