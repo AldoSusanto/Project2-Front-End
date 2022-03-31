@@ -356,7 +356,7 @@ class Result extends React.Component {
           className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
         >
-          Konsultasi dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
+          Masih bingung? Ngobrol dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
           <strong> Rp. 500,000 !! </strong>
         </div>
         {resultsPage}
