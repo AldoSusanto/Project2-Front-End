@@ -48,7 +48,7 @@ const Home = () => {
           className="alert alert-success position-absolute promo-banner col-12 text-center"
           role="alert"
         >
-          Ngobrol dengan kami via WA dan dapatkan cashback hingga &nbsp;{" "}
+          Ngobrol dengan kami via WA secara gratis dan dapatkan cashback hingga &nbsp;{" "}
           <strong> Rp. 500,000 !! </strong>
         </div>
         <div id="home" className="row">
