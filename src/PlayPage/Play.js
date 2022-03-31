@@ -290,25 +290,29 @@ const Play = (props) => {
       </Helmet>
       <Menubar />
       <div className="quiz-body">
-        <div className="quiz-header">
-          <span className="quiz-header-title">
-            <h2>Laptop Quiz by Propicks.id</h2>
-          </span>
-          <div className="quiz-header-body">
-            <div className="quiz-detail">
-              <FcClock className="icon-clock" />
-              <h5>Kurang dari 2 menit</h5>
+        {currentQuestion.question ===
+          "Apakah kamu tahu berapa budget laptop kamu?" &&
+          !currentQuestion.isSlider && (
+            <div className="quiz-header">
+              <span className="quiz-header-title">
+                <h2>Laptop Quiz by Propicks.id</h2>
+              </span>
+              <div className="quiz-header-body">
+                <div className="quiz-detail">
+                  <FcClock className="icon-clock" />
+                  <h5>Kurang dari 2 menit</h5>
+                </div>
+                <div className="quiz-detail">
+                  <FcLike className="icon-like" />
+                  <h5>Gratis tanpa biaya</h5>
+                </div>
+                <div className="quiz-detail">
+                  <FcApproval className="icon-approval" />
+                  <h5>Pilihan laptop terbaik</h5>
+                </div>
+              </div>
             </div>
-            <div className="quiz-detail">
-              <FcLike className="icon-like" />
-              <h5>Gratis tanpa biaya</h5>
-            </div>
-            <div className="quiz-detail">
-              <FcApproval className="icon-approval" />
-              <h5>Pilihan laptop terbaik</h5>
-            </div>
-          </div>
-        </div>
+          )}
         <div className="questions">
           <h5>
             {currentQuestion.question}
