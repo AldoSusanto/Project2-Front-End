@@ -443,7 +443,7 @@ class Result extends React.Component {
     var recList = this.state.recommendations.data;
 
     emailHTML = emailHTML.replace("PROCESSOR_1" , recList[0].processor);
-    emailHTML = emailHTML.replace("RAM_1" , recList[0].ram = " GB");
+    emailHTML = emailHTML.replace("RAM_1" , recList[0].ram + " GB");
     emailHTML = emailHTML.replace("STORAGE_1" , recList[0].storageOne + " GB");
     emailHTML = emailHTML.replace("GRAPHICS_1" , recList[0].graphics);
 
