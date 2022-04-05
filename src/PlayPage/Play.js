@@ -201,6 +201,7 @@ const Play = (props) => {
     setResult(currResult);
   }
 
+  // Deprecated
   function sendEmail() {
     var emailBody = {
       result: JSON.stringify(result, null, "\t"),
@@ -251,7 +252,7 @@ const Play = (props) => {
     } else {
       // 4) If we reached the end of questions list, we show the result page
       console.log(JSON.stringify(result));
-      sendEmail();
+      // sendEmail();
       props.history.push({
         pathname: "/result",
         state: result,
