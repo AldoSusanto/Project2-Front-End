@@ -59,6 +59,7 @@ class Result extends React.Component {
       highlightedIndex: 0,
       showModal: true,
       initialResult: resultJson,
+      showDetail: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -346,6 +347,8 @@ class Result extends React.Component {
       );
     }
 
+    console.log(recList);
+
     return (
       <Fragment>
         <Helmet>
@@ -356,10 +359,209 @@ class Result extends React.Component {
           className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
         >
-          Masih bingung? Ngobrol dengan kami via WA secara gratis dan dapatkan cashback hingga &nbsp;{" "}
-          <strong> Rp. 500,000 !! </strong>
+          Masih bingung? Ngobrol dengan kami via WA secara gratis dan dapatkan
+          cashback hingga &nbsp; <strong> Rp. 500,000 !! </strong>
         </div>
-        {resultsPage}
+        {/* {resultsPage} */}
+        <div className="result-container">
+          <div id="result" className="result">
+            <aside className="result-sidebar">
+              <h3 className="result-sidebar-title">Jawaban Kamu</h3>
+              <div className="result-sidebar-body">
+                <div>
+                  <h5>Budget</h5>
+                  <p>10 Juta - 15 Juta</p>
+                </div>
+                <div>
+                  <h5>Aktivitas</h5>
+                  <span>
+                    <p>Video conference</p>
+                    <p>Nonton film</p>
+                    <p>Gaming</p>
+                  </span>
+                </div>
+                <div>
+                  <h5>Ukuran laptop</h5>
+                  <p>15-inch</p>
+                </div>
+                <div>
+                  <h5>Brand Laptop</h5>
+                  <span>
+                    <p>Brand apa saja</p>
+                  </span>
+                </div>
+              </div>
+            </aside>
+            <main className="result-main">
+              <h1 className="result-main-title">
+                Top 10 Laptop Yang Sesuai Dengan Kamu
+              </h1>
+              <div className="result-main-body">
+                {recList !== undefined ? (
+                  recList.map((item) => {
+                    return (
+                      <div key={item.id} className="result-main-item">
+                        <div className="result-main-item-img">
+                          <h4 className="desc-name">{item.name}</h4>
+                          <img
+                            className="laptop-img"
+                            src={item.imageLink[0]}
+                            alt="Highlighted Laptop"
+                          />
+                        </div>
+                        <div className="result-main-item-desc">
+                          <p className="desc-price">
+                            <CurrencyFormat
+                              value={item.price}
+                              displayType={"text"}
+                              thousandSeparator={true}
+                              prefix={"Rp. "}
+                            />
+                          </p>
+                          <div className="desc-specs">
+                            <p>
+                              <strong>Processor: </strong> {item.processor}
+                            </p>
+                            <p>
+                              <strong>RAM: </strong> {`${item.ram} GB`}
+                            </p>
+                            <p>
+                              <strong>Storage: </strong>{" "}
+                              {`${item.storageOne} GB`}
+                            </p>
+                            <p>
+                              <strong>Graphics: </strong> {item.graphics}
+                            </p>
+                            <p>
+                              <strong>Display: </strong> {`${item.size} "`}
+                            </p>
+                            <p>
+                              <strong>Weight: </strong>{" "}
+                              {`${item.weightGrams} kg`}
+                            </p>
+                          </div>
+                          <div className="desc-btn">
+                            {item.link
+                              .filter((link) => link.linkFrom !== "")
+                              .map((originalLink) => {
+                                return (
+                                  <a
+                                    href={originalLink.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <Button
+                                      className={`item-desc-btn ${originalLink.linkFrom}`}
+                                    >
+                                      {`Visit ${originalLink.linkFrom}`}
+                                      <Icon name="right chevron" />
+                                    </Button>
+                                  </a>
+                                );
+                              })}
+                          </div>
+                        </div>
+                        <div className="result-main-item-insights">
+                          {item.insights.map((insight) => {
+                            return (
+                              <Popup
+                                inverted
+                                content={insight.description}
+                                trigger={
+                                  <Label
+                                    className={`insights-item insights-label ${
+                                      insight.type === "Positive"
+                                        ? "insights-positive"
+                                        : "insights-negative"
+                                    }`}
+                                    size="large"
+                                  >
+                                    <FontAwesomeIcon icon={insight.icon} />
+                                    {" " + insight.title}
+                                  </Label>
+                                }
+                              />
+                            );
+                          })}
+                        </div>
+                        <Button
+                          onClick={() =>
+                            this.setState({
+                              showDetail: !this.state.showDetail,
+                            })
+                          }
+                          className={`detail-btn`}
+                        >
+                          Lihat Detail
+                        </Button>
+                        <div
+                          className={`${
+                            this.state.showDetail
+                              ? "detail-dropdown-active"
+                              : "detail-dropdown-none"
+                          }`}
+                        >
+                          <div className="result-main-item-insights">
+                            {item.insights.map((insight) => {
+                              return (
+                                <Popup
+                                  inverted
+                                  content={insight.description}
+                                  trigger={
+                                    <Label
+                                      className={`insights-item insights-label ${
+                                        insight.type === "Positive"
+                                          ? "insights-positive"
+                                          : "insights-negative"
+                                      }`}
+                                      size="large"
+                                    >
+                                      <FontAwesomeIcon icon={insight.icon} />
+                                      {" " + insight.title}
+                                    </Label>
+                                  }
+                                />
+                              );
+                            })}
+                          </div>
+                          <div className="desc-btn">
+                            {item.link
+                              .filter((link) => link.linkFrom !== "")
+                              .map((originalLink) => {
+                                return (
+                                  <a
+                                    href={originalLink.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <Button
+                                      className={`item-desc-btn ${originalLink.linkFrom}`}
+                                    >
+                                      {`Visit ${originalLink.linkFrom}`}
+                                      <Icon name="right chevron" />
+                                    </Button>
+                                  </a>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <Loader
+                    className="loader"
+                    type="TailSpin"
+                    color="#fff"
+                    height={100}
+                    width={100}
+                    timeout={100000}
+                  />
+                )}
+              </div>
+            </main>
+          </div>
+        </div>
         <Modal
           centered
           size="md"
