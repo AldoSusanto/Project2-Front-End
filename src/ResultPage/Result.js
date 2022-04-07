@@ -484,67 +484,6 @@ class Result extends React.Component {
                             );
                           })}
                         </div>
-                        <Button
-                          onClick={() =>
-                            this.setState({
-                              showDetail: !this.state.showDetail,
-                            })
-                          }
-                          className={`detail-btn`}
-                        >
-                          Lihat Detail
-                        </Button>
-                        <div
-                          className={`${
-                            this.state.showDetail
-                              ? "detail-dropdown-active"
-                              : "detail-dropdown-none"
-                          }`}
-                        >
-                          <div className="result-main-item-insights">
-                            {item.insights.map((insight) => {
-                              return (
-                                <Popup
-                                  inverted
-                                  content={insight.description}
-                                  trigger={
-                                    <Label
-                                      className={`insights-item insights-label ${
-                                        insight.type === "Positive"
-                                          ? "insights-positive"
-                                          : "insights-negative"
-                                      }`}
-                                      size="large"
-                                    >
-                                      <FontAwesomeIcon icon={insight.icon} />
-                                      {" " + insight.title}
-                                    </Label>
-                                  }
-                                />
-                              );
-                            })}
-                          </div>
-                          <div className="desc-btn">
-                            {item.link
-                              .filter((link) => link.linkFrom !== "")
-                              .map((originalLink) => {
-                                return (
-                                  <a
-                                    href={originalLink.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <Button
-                                      className={`item-desc-btn ${originalLink.linkFrom}`}
-                                    >
-                                      {`Visit ${originalLink.linkFrom}`}
-                                      <Icon name="right chevron" />
-                                    </Button>
-                                  </a>
-                                );
-                              })}
-                          </div>
-                        </div>
                       </div>
                     );
                   })
