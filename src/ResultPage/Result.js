@@ -10,7 +10,14 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
-import { Modal, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  Toast,
+  ToastHeader,
+  ToastBody,
+} from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
 import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Carousel from "nuka-carousel";
@@ -59,6 +66,8 @@ class Result extends React.Component {
       highlightedIndex: 0,
       showModal: true,
       initialResult: resultJson,
+      showToastSuccess: false,
+      showToastFailed: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -280,22 +289,48 @@ class Result extends React.Component {
               </h1>
               <hr className="hr-line d-none d-lg-block" />
               {/* ini kode lama syawal, jd mngkin bsa ada classname ga jelas, remove or add anything sebutuhnya lu aja*/}
-              <form
-                onSubmit={this.handleSubmit}
-                class="form-inline form-custom"
-              >
-                Suka dengan rekomendasinya ? Simpan list laptop ini ke emailmu.
-                <div class="form-group mx-sm-3 mb-2">
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-control email-field"
-                    placeholder="Tulis email kamu"
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <button type="submit" class="btn btn-outline-light mb-2">
-                  Send
+              <div className="toast-container">
+                <Toast
+                  className="toast-success"
+                  isOpen={this.state.showToastSuccess}
+                >
+                  <ToastHeader
+                    toggle={() =>
+                      this.setState({
+                        showToastSuccess: !this.state.showToastSuccess,
+                      })
+                    }
+                  >
+                    Berhasil disimpan, silahkan cek email kamu.
+                  </ToastHeader>
+                </Toast>
+                <Toast
+                  className="toast-failed"
+                  isOpen={this.state.showToastFailed}
+                >
+                  <ToastHeader
+                    toggle={() =>
+                      this.setState({
+                        showToastFailed: !this.state.showToastFailed,
+                      })
+                    }
+                  >
+                    Gagal disimpan, mohon periksa email kamu.
+                  </ToastHeader>
+                </Toast>
+              </div>
+              <form onSubmit={this.handleSubmit} className="email-form">
+                <span>Simpan rekomendasimu</span>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="form-control email-field mx-2 mx-sm-3 my-0"
+                  placeholder="example@gmail.com"
+                  onChange={this.handleChange}
+                />
+                <button type="submit" className="email-form-btn">
+                  Kirim
                 </button>
               </form>
               <div className="result-text">{itemList}</div>
@@ -429,8 +464,15 @@ class Result extends React.Component {
   }
 
   handleSubmit(event) {
-    this.sendEmail();
     event.preventDefault();
+
+    try {
+      this.sendEmail();
+      this.setState({ showToastSuccess: !this.state.showToastSuccess });
+    } catch (error) {
+      this.setState({ showToastFailed: !this.state.showToastFailed });
+      console.error(error);
+    }
     // toast
   }
 
@@ -442,10 +484,10 @@ class Result extends React.Component {
     // ---- START Replace variables -----
     var recList = this.state.recommendations.data;
 
-    emailHTML = emailHTML.replace("PROCESSOR_1" , recList[0].processor);
-    emailHTML = emailHTML.replace("RAM_1" , recList[0].ram + " GB");
-    emailHTML = emailHTML.replace("STORAGE_1" , recList[0].storageOne + " GB");
-    emailHTML = emailHTML.replace("GRAPHICS_1" , recList[0].graphics);
+    emailHTML = emailHTML.replace("PROCESSOR_1", recList[0].processor);
+    emailHTML = emailHTML.replace("RAM_1", recList[0].ram + " GB");
+    emailHTML = emailHTML.replace("STORAGE_1", recList[0].storageOne + " GB");
+    emailHTML = emailHTML.replace("GRAPHICS_1", recList[0].graphics);
 
     for (const [index, value] of recList.entries()) {
       var newVal = index + 1;

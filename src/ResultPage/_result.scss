@@ -17,6 +17,66 @@
     margin-top: 30px;
   }
 
+  .toast-container {
+    display: flex;
+    justify-content: center;
+
+    .toast-success {
+      margin: 1vw 0 0;
+
+      .toast-header {
+        padding: 6px 10px;
+        border-radius: 0.25rem;
+        border-bottom: none;
+        color: $green-variant;
+      }
+    }
+    .toast-failed {
+      margin: 1vw 0 0;
+
+      .toast-header {
+        padding: 6px 10px;
+        border-radius: 0.25rem;
+        border-bottom: none;
+        color: $danger;
+      }
+    }
+  }
+
+  .email-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    margin: 0 auto;
+
+    span {
+      margin: 0;
+      padding: 0;
+      color: $off-white;
+    }
+
+    input {
+      width: 36%;
+      color: $dark;
+    }
+
+    &-btn {
+      border-radius: 4px;
+      padding: 8px 20px;
+      border: 1px solid $green;
+      font-weight: 600;
+      color: $off-white;
+      background-color: $green;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &-btn:hover {
+      border: 1px solid $off-white;
+      color: $off-white;
+      background-color: $green-variant;
+    }
+  }
+
   h1 {
     text-align: center;
     color: white;
@@ -409,6 +469,23 @@
       margin-top: 20px;
     }
 
+    .email-form {
+      padding: 2vw 0;
+
+      span {
+        margin: 0;
+        padding: 0;
+        color: $off-white;
+        font-size: calc(0.7rem + 0.6vw);
+      }
+
+      input {
+        width: 25%;
+        color: $dark;
+        font-size: calc(0.7rem + 0.6vw);
+      }
+    }
+
     .itemList {
       padding: 0px 10px;
       display: flex;
@@ -535,6 +612,46 @@
 
   #result {
     margin: 0px 0 0 0;
+
+    .toast-container {
+      .toast-success {
+        margin: 2vw 0 0;
+
+        .toast-header {
+          font-size: calc(0.7rem + 0.5vw);
+        }
+      }
+      .toast-failed {
+        margin: 2vw 0 0;
+
+        .toast-header {
+          font-size: calc(0.7rem + 0.5vw);
+        }
+      }
+    }
+
+    .email-form {
+      padding: 2vw 0;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      span {
+        width: 100%;
+        text-align: center;
+        font-size: calc(0.7rem + 0.5vw);
+        padding: 0.8vw 0 1vw;
+      }
+
+      input {
+        width: 45%;
+        font-size: calc(0.7rem + 0.5vw);
+      }
+
+      &-btn {
+        padding: 8px 16px;
+        font-size: calc(0.7rem + 0.5vw);
+      }
+    }
 
     .itemList {
       .header {
