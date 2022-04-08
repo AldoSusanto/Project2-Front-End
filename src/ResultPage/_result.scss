@@ -59,13 +59,15 @@
       text-align: center;
       width: 100%;
       margin-bottom: 1vw;
-      padding: 0;
+      padding: 0.2vw;
       color: $off-white;
+      font-size: calc(0.7rem + 0.6vw);
     }
 
     input {
       width: 50%;
       color: $dark;
+      font-size: calc(0.4rem + 0.5vw);
     }
 
     &-btn {
@@ -87,7 +89,7 @@
   h1 {
     text-align: center;
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     margin-top: 1.8rem;
   }
 
@@ -444,6 +446,18 @@
 }
 
 @media screen and (max-width: 1366px) {
+  #result {
+    .email-form {
+      span {
+        font-size: calc(0.6rem + 0.6vw);
+      }
+
+      input {
+        font-size: calc(0.4rem + 0.6vw);
+      }
+    }
+  }
+
   .slider-image-container {
     .icon-left,
     .icon-right {
@@ -481,9 +495,9 @@
 
       span {
         margin: 0;
-        padding: 0;
+        padding: 0.8vw 0 2.2vw;
         color: $off-white;
-        font-size: calc(0.7rem + 0.6vw);
+        font-size: calc(0.8rem + 0.6vw);
       }
 
       input {
@@ -647,8 +661,7 @@
       span {
         width: 100%;
         text-align: center;
-        font-size: calc(0.7rem + 0.5vw);
-        padding: 0.8vw 0 1vw;
+        padding: 1vw 0 2vw;
       }
 
       input {
