@@ -10,14 +10,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
-import {
-  Modal,
-  ModalBody,
-  ModalFooter,
-  Toast,
-  ToastHeader,
-  ToastBody,
-} from "reactstrap";
+import { Modal, ModalBody, ModalFooter, Toast, ToastHeader } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
 import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Carousel from "nuka-carousel";
@@ -288,7 +281,6 @@ class Result extends React.Component {
                 Yang Sesuai Denganmu
               </h1>
               <hr className="hr-line d-none d-lg-block" />
-              {/* ini kode lama syawal, jd mngkin bsa ada classname ga jelas, remove or add anything sebutuhnya lu aja*/}
               <div className="toast-container">
                 <Toast
                   className="toast-success"
@@ -301,7 +293,7 @@ class Result extends React.Component {
                       })
                     }
                   >
-                    Berhasil disimpan, silahkan cek email kamu.
+                    Rekomendasi sudah terkirim! silahkan cek email kamu.
                   </ToastHeader>
                 </Toast>
                 <Toast
@@ -315,18 +307,18 @@ class Result extends React.Component {
                       })
                     }
                   >
-                    Gagal disimpan, mohon periksa email kamu.
+                    Rekomendasi gagal dikirim! mohon periksa email kamu.
                   </ToastHeader>
                 </Toast>
               </div>
               <form onSubmit={this.handleSubmit} className="email-form">
-                <span>Simpan rekomendasimu</span>
+                <span>Simpan rekomendasi ini ke emailmu</span>
                 <input
                   type="email"
                   name="email"
                   required
                   className="form-control email-field mx-2 mx-sm-3 my-0"
-                  placeholder="example@gmail.com"
+                  placeholder="emailKamu@gmail.com"
                   onChange={this.handleChange}
                 />
                 <button type="submit" className="email-form-btn">

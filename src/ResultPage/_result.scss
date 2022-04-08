@@ -18,10 +18,12 @@
   }
 
   .toast-container {
-    display: flex;
-    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 
     .toast-success {
+      max-width: 100%;
+      flex-basis: auto;
       margin: 1vw 0 0;
 
       .toast-header {
@@ -32,6 +34,8 @@
       }
     }
     .toast-failed {
+      max-width: 100%;
+      flex-basis: auto;
       margin: 1vw 0 0;
 
       .toast-header {
@@ -47,17 +51,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 1vw;
     margin: 0 auto;
 
     span {
-      margin: 0;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1vw;
       padding: 0;
       color: $off-white;
     }
 
     input {
-      width: 36%;
+      width: 50%;
       color: $dark;
     }
 
@@ -614,6 +621,8 @@
     margin: 0px 0 0 0;
 
     .toast-container {
+      width: 100%;
+
       .toast-success {
         margin: 2vw 0 0;
 
@@ -643,7 +652,7 @@
       }
 
       input {
-        width: 45%;
+        width: 55%;
         font-size: calc(0.7rem + 0.5vw);
       }
 
