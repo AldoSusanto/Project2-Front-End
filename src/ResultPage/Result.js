@@ -277,8 +277,7 @@ class Result extends React.Component {
           <div id="result" className="row result-home">
             <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
               <h1 className="d-none d-lg-block">
-                Top 10 Laptops <br />
-                Yang Sesuai Denganmu
+                Top 10 Laptop Yang Tepat Untukmu
               </h1>
               <hr className="hr-line d-none d-lg-block" />
               <div className="toast-container">
