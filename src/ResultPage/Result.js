@@ -14,6 +14,7 @@ import { Modal, ModalBody, ModalFooter, Toast, ToastHeader } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
 import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Carousel from "nuka-carousel";
+import officialIcon from "../assets/official-store.png";
 
 class Result extends React.Component {
   constructor(props) {
@@ -167,7 +168,7 @@ class Result extends React.Component {
             itemLinks.push(
               <a href={value.link} target="_blank" rel="noopener noreferrer">
                 <Button className={`item-desc-btn ${value.linkFrom}`}>
-                  {`Visit ${value.linkFrom}`}
+                  {`${value.linkFrom} Official Store`}
                   <Icon name="right chevron" />
                 </Button>
               </a>
