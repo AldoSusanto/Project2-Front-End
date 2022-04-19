@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import emailjs from "emailjs-com";
 import Menubar from "../Menubar";
 import axios from "axios";
-import { Button, Icon, Item, Label, Popup } from "semantic-ui-react";
+import { Button, Icon, Label, Popup } from "semantic-ui-react";
 import CurrencyFormat from "react-currency-format";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -13,6 +13,7 @@ import CryptoJS from "crypto-js";
 import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
 import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { MdCircle } from "react-icons/md";
 import Carousel from "nuka-carousel";
 
 class Result extends React.Component {
@@ -86,13 +87,6 @@ class Result extends React.Component {
       });
   }
 
-  // When user clicks on a laptop, we highlight that laptop
-  changeHighlight(event, index) {
-    this.setState({
-      highlightedIndex: index,
-    });
-  }
-
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal,
@@ -102,252 +96,20 @@ class Result extends React.Component {
   render() {
     var recList = this.state.recommendations.data;
     var reqBody = this.state.result;
-    var itemList = [];
-    var itemDescription = [];
-    var itemImage = [];
-    var highlightedItem = {};
-    var resultsPage = [];
-    var itemLinks = [];
-    var insightsList = [];
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
     var laptopImages = [];
 
-    if (typeof recList !== "undefined") {
-      // Encrypt
-      var ciphertext = CryptoJS.AES.encrypt(
-        JSON.stringify(reqBody),
-        "ppid"
-      ).toString();
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(
+      JSON.stringify(reqBody),
+      "ppid"
+    ).toString();
 
-      prefix_url =
-        "https://wa.me/6287868572240?text=" +
-        encodeURIComponent(prefix_wa + ciphertext);
-
-      if (recList.length > 0) {
-        // Populate Laptop List on left side of page
-        for (const [index, value] of recList.entries()) {
-          itemList.push(
-            <Item.Group divided>
-              <Item
-                className={`itemList ${
-                  index === this.state.highlightedIndex ? "selectedItem" : ""
-                }`}
-                onClick={(e) => this.changeHighlight(e, index)}
-              >
-                <Item.Image src={value.imageLink[0]} />
-                <Item.Content>
-                  <Item.Header as="strong">{value.name}</Item.Header>
-                  <Item.Meta>
-                    <span className="price">
-                      <CurrencyFormat
-                        value={value.price}
-                        displayType={"text"}
-                        thousandSeparator={true}
-                        prefix={"Rp. "}
-                      />
-                    </span>
-                  </Item.Meta>
-                  <Item.Extra></Item.Extra>
-                </Item.Content>
-              </Item>
-            </Item.Group>
-          );
-        }
-
-        highlightedItem = recList[this.state.highlightedIndex];
-
-        // Populate the links(green button) for the highlightedItem
-        for (const [index, value] of highlightedItem.link.entries()) {
-          if (value.link.trim() !== "") {
-            //if link is empty
-            // console.log("linkfrom", value.linkFrom);
-            itemLinks.push(
-              <a href={value.link} target="_blank" rel="noopener noreferrer">
-                <Button className={`item-desc-btn ${value.linkFrom}`}>
-                  {`Visit ${value.linkFrom}`}
-                  <Icon name="right chevron" />
-                </Button>
-              </a>
-            );
-          }
-        }
-
-        for (const [index, value] of highlightedItem.insights.entries()) {
-          insightsList.push(
-            <Popup
-              inverted
-              content={value.description}
-              trigger={
-                <Label
-                  className="insights-item insights-label"
-                  size="large"
-                  color={value.type === "Positive" ? "green" : "red"}
-                >
-                  <FontAwesomeIcon icon={value.icon} />
-                  {" " + value.title}
-                </Label>
-              }
-            />
-          );
-        }
-
-        // Populate Laptop Description on right side of page
-        itemDescription.push(
-          <Item.Group key={highlightedItem.id} divided className="itemDesc">
-            <Item>
-              <Item.Content>
-                <Item.Header as="a" className="title">
-                  {highlightedItem.name}
-                </Item.Header>
-                <Item.Meta>
-                  <span className="price">
-                    <CurrencyFormat
-                      value={highlightedItem.price}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                      prefix={"Rp. "}
-                    />
-                  </span>
-                </Item.Meta>
-                <Item.Description className="item-desc-box">
-                  <b>Processor: </b> {highlightedItem.processor} <br />{" "}
-                  <b>RAM: </b> {`${highlightedItem.ram} GB`} <br />{" "}
-                  <b>Storage:</b> {`${highlightedItem.storageOne} GB`} <br />{" "}
-                  <b>Graphics:</b> {highlightedItem.graphics}
-                  <br /> <b>Display</b> {`${highlightedItem.size} "`} <br />{" "}
-                  <b>Weight:</b> {`${highlightedItem.weightGrams} kg`}{" "}
-                </Item.Description>
-                <Item.Extra className="d-flex align-items-center justify-content-center">
-                  {itemLinks}
-                </Item.Extra>
-              </Item.Content>
-            </Item>
-          </Item.Group>
-        );
-
-        laptopImages = highlightedItem.imageLink.filter((url) => url !== "");
-
-        itemImage.push(
-          <>
-            {laptopImages.length > 1 ? (
-              <div className="slider-image-container">
-                <Carousel
-                  renderCenterLeftControls={({ previousSlide }) => (
-                    <button onClick={previousSlide} className="slider-prev-btn">
-                      <HiChevronLeft className="icon-left" />
-                    </button>
-                  )}
-                  renderCenterRightControls={({ nextSlide }) => (
-                    <button onClick={nextSlide} className="slider-next-btn">
-                      <HiChevronRight className="icon-right" />
-                    </button>
-                  )}
-                  defaultControlsConfig={{
-                    pagingDotsClassName: "dots-custom",
-                  }}
-                  width="100%"
-                  dragging
-                  swiping
-                >
-                  {laptopImages.map((item, index) => (
-                    <img
-                      key={`Slide ${index}`}
-                      src={item}
-                      alt="Highlighted Laptop"
-                      className="carousel-img"
-                    />
-                  ))}
-                </Carousel>
-              </div>
-            ) : (
-              <img
-                className="laptop-img"
-                src={highlightedItem.imageLink[0]}
-                alt="Highlighted Laptop"
-              />
-            )}
-          </>
-        );
-
-        // Compile all components
-        resultsPage.push(
-          <div id="result" className="row result-home">
-            <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
-              <h1 className="d-none d-lg-block">
-                Top 10 Laptops <br />
-                Yang Sesuai Denganmu
-              </h1>
-              <hr className="hr-line d-none d-lg-block" />
-              <div className="result-text">{itemList}</div>
-            </div>
-            <div className="mt-4 mb-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
-              <div className="row mt-lg-5">
-                <div className="col-6 d-flex justify-content-center align-items-center">
-                  {itemImage}
-                </div>
-                <div className="itemDesc-container col-6 d-flex justify-content-center align-items-center">
-                  {itemDescription}
-                </div>
-              </div>
-
-              <div className="row insights-parent">
-                <div className="insights-container col-12 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-xl-4 justify-content-start d-flex flex-wrap">
-                  {insightsList}
-                </div>
-                <Popup
-                  inverted
-                  content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
-                  trigger={
-                    <a
-                      href={prefix_url}
-                      className="whatsapp-float"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fa fa-whatsapp whatsapp-icon"></i>
-                    </a>
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        // If BE returns empty list
-        resultsPage.push(
-          <div className="row loading-page">
-            <h1>Oops, ini memalukan :(</h1>
-            <h2>
-              Kami tidak berhasil menemukan laptop yang cocok dengan pilihanmu
-              <br /> Coba mengulang quiznya lagi
-            </h2>
-            <p>
-              Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan kamu
-            </p>
-          </div>
-        );
-      }
-    } else {
-      resultsPage.push(
-        <div className="row loading-page">
-          <h1>
-            Mohon menunggu <br /> Sedang mencari hasil yang terbaik untukmu...
-          </h1>
-          <Loader
-            className="loader"
-            type="TailSpin"
-            color="#fff"
-            height={100}
-            width={100}
-            timeout={100000}
-          />
-        </div>
-      );
-    }
-
-    console.log(recList);
+    prefix_url =
+      "https://wa.me/6287868572240?text=" +
+      encodeURIComponent(prefix_wa + ciphertext);
 
     return (
       <Fragment>
@@ -364,130 +126,243 @@ class Result extends React.Component {
         </div>
         {/* {resultsPage} */}
         <div className="result-container">
-          <div id="result" className="result">
-            <aside className="result-sidebar">
-              <h3 className="result-sidebar-title">Jawaban Kamu</h3>
-              <div className="result-sidebar-body">
-                <div>
-                  <h5>Budget</h5>
-                  <p>10 Juta - 15 Juta</p>
-                </div>
-                <div>
-                  <h5>Aktivitas</h5>
-                  <span>
-                    <p>Video conference</p>
-                    <p>Nonton film</p>
-                    <p>Gaming</p>
-                  </span>
-                </div>
-                <div>
-                  <h5>Ukuran laptop</h5>
-                  <p>15-inch</p>
-                </div>
-                <div>
-                  <h5>Brand Laptop</h5>
-                  <span>
-                    <p>Brand apa saja</p>
-                  </span>
-                </div>
-              </div>
-            </aside>
-            <main className="result-main">
-              <h1 className="result-main-title">
-                Top 10 Laptop Yang Sesuai Dengan Kamu
-              </h1>
-              <div className="result-main-body">
-                {recList !== undefined ? (
-                  recList.map((item) => {
-                    return (
-                      <div key={item.id} className="result-main-item">
-                        <div className="result-main-item-img">
-                          <h4 className="desc-name">{item.name}</h4>
-                          <img
-                            className="laptop-img"
-                            src={item.imageLink[0]}
-                            alt="Highlighted Laptop"
-                          />
-                        </div>
-                        <div className="result-main-item-desc">
-                          <p className="desc-price">
-                            <CurrencyFormat
-                              value={item.price}
-                              displayType={"text"}
-                              thousandSeparator={true}
-                              prefix={"Rp. "}
-                            />
+          {typeof recList !== "undefined" ? (
+            <div id="result" className="result">
+              <aside className="result-sidebar">
+                <h3 className="result-sidebar-title">Jawaban Kamu</h3>
+                <div className="result-sidebar-body">
+                  <div className="quizAnswer">
+                    <h5 className="quizAnswer-title">Budget</h5>
+                    <p className="quizAnswer-price">{`${
+                      reqBody.priceRange !== "budgetUnknown"
+                        ? `${reqBody.priceRange} Juta`
+                        : `Belum tahu - ${
+                            reqBody.pricePref === "LOW"
+                              ? "Pilihkan laptop dengan spesifikasi budget friendly"
+                              : reqBody.pricePref === "MEDIUM"
+                              ? "Pilihkan laptop dengan spesifikasi recommended"
+                              : "Pilihkan laptop dengan spesifikasi maximal"
+                          }`
+                    }`}</p>
+                  </div>
+                  <div className="quizAnswer">
+                    <h5 className="quizAnswer-title">Aktivitas</h5>
+                    <span className="quizAnswer-item">
+                      {reqBody.activities.map((item) => {
+                        return (
+                          <p>
+                            <MdCircle className="icon-circle" />{" "}
+                            {item === "videoConference"
+                              ? "Video Conference"
+                              : ""}
+                            {item === "surfInternet" ? "Browsing Internet" : ""}
+                            {item === "watchFilm" ? "Nonton Film" : ""}
+                            {item === "Microsoft Office"
+                              ? "Microsoft Office"
+                              : ""}
+                            {item === "imageGraphics"
+                              ? "Image Editing atau 2D Graphics Design"
+                              : ""}
+                            {item === "programming" ? "Programming" : ""}
+                            {item === "gaming" ? "Gaming" : ""}
+                            {item === "streaming" ? "Streaming to Public" : ""}
+                            {item === "videoEdit" ? "Video Editing" : ""}
+                            {item === "3dGraphics" ? "3D Graphics Design" : ""}
                           </p>
-                          <div className="desc-specs">
-                            <p>
-                              <strong>Processor: </strong> {item.processor}
-                            </p>
-                            <p>
-                              <strong>RAM: </strong> {`${item.ram} GB`}
-                            </p>
-                            <p>
-                              <strong>Storage: </strong>{" "}
-                              {`${item.storageOne} GB`}
-                            </p>
-                            <p>
-                              <strong>Graphics: </strong> {item.graphics}
-                            </p>
-                            <p>
-                              <strong>Display: </strong> {`${item.size} "`}
-                            </p>
-                            <p>
-                              <strong>Weight: </strong>{" "}
-                              {`${item.weightGrams} kg`}
-                            </p>
-                          </div>
-                          <div className="desc-btn">
-                            {item.link
-                              .filter((link) => link.linkFrom !== "")
-                              .map((originalLink) => {
-                                return (
-                                  <a
-                                    href={originalLink.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <Button
-                                      className={`item-desc-btn ${originalLink.linkFrom}`}
+                        );
+                      })}
+                    </span>
+                  </div>
+                  <div className="quizAnswer">
+                    <h5 className="quizAnswer-title">Brand Laptop</h5>
+                    <span className="quizAnswer-item">
+                      {reqBody.brand.map((item) => {
+                        return (
+                          <p>
+                            <MdCircle className="icon-circle" />{" "}
+                            {item === "noPref" ? "Brand Apa Saja" : item}
+                          </p>
+                        );
+                      })}
+                    </span>
+                  </div>
+                </div>
+              </aside>
+              <main className="result-main">
+                <h1 className="result-main-title">
+                  Top 10 Laptop Yang Sesuai Dengan Kamu
+                </h1>
+                <div className="result-main-body">
+                  {recList !== undefined ? (
+                    recList.map((item, idx) => {
+                      return (
+                        <div key={item.id} className="result-main-item">
+                          <span className="laptop-num">{idx + 1}.</span>
+                          <div className="result-main-item-img">
+                            <h4 className="desc-name">{item.name}</h4>
+                            {laptopImages.length > 1 ? (
+                              <div className="slider-image-container">
+                                <Carousel
+                                  renderCenterLeftControls={({
+                                    previousSlide,
+                                  }) => (
+                                    <button
+                                      onClick={previousSlide}
+                                      className="slider-prev-btn"
                                     >
-                                      {`Visit ${originalLink.linkFrom}`}
-                                      <Icon name="right chevron" />
-                                    </Button>
-                                  </a>
-                                );
-                              })}
+                                      <HiChevronLeft className="icon-left" />
+                                    </button>
+                                  )}
+                                  renderCenterRightControls={({
+                                    nextSlide,
+                                  }) => (
+                                    <button
+                                      onClick={nextSlide}
+                                      className="slider-next-btn"
+                                    >
+                                      <HiChevronRight className="icon-right" />
+                                    </button>
+                                  )}
+                                  defaultControlsConfig={{
+                                    pagingDotsClassName: "dots-custom",
+                                  }}
+                                  width="100%"
+                                  dragging
+                                  swiping
+                                >
+                                  {item.imageLink
+                                    .filter((url) => url !== "")
+                                    .map((item, index) => (
+                                      <img
+                                        key={`Slide ${index}`}
+                                        src={item}
+                                        alt="Highlighted Laptop"
+                                        className="carousel-img"
+                                      />
+                                    ))}
+                                </Carousel>
+                              </div>
+                            ) : (
+                              <img
+                                className="laptop-img"
+                                src={item.imageLink[0]}
+                                alt="Highlighted Laptop"
+                              />
+                            )}
+                          </div>
+                          <div className="result-main-item-desc">
+                            <p className="desc-price">
+                              <CurrencyFormat
+                                value={item.price}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                prefix={"Rp. "}
+                              />
+                            </p>
+                            <div className="desc-specs">
+                              <p>
+                                <strong>Processor: </strong> {item.processor}
+                              </p>
+                              <p>
+                                <strong>RAM: </strong> {`${item.ram} GB`}
+                              </p>
+                              <p>
+                                <strong>Storage: </strong>{" "}
+                                {`${item.storageOne} GB`}
+                              </p>
+                              <p>
+                                <strong>Graphics: </strong> {item.graphics}
+                              </p>
+                              <p>
+                                <strong>Display: </strong> {`${item.size} "`}
+                              </p>
+                              <p>
+                                <strong>Weight: </strong>{" "}
+                                {`${item.weightGrams} kg`}
+                              </p>
+                            </div>
+                            <div className="desc-btn">
+                              {item.link
+                                .filter((link) => link.linkFrom !== "")
+                                .map((originalLink) => {
+                                  return (
+                                    <a
+                                      href={originalLink.link}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      <Button
+                                        className={`item-desc-btn ${originalLink.linkFrom}`}
+                                      >
+                                        {`Visit ${originalLink.linkFrom}`}
+                                        <Icon name="right chevron" />
+                                      </Button>
+                                    </a>
+                                  );
+                                })}
+                            </div>
+                          </div>
+                          <div className="result-main-item-insights">
+                            {item.insights.map((insight) => {
+                              return (
+                                <Popup
+                                  inverted
+                                  content={insight.description}
+                                  trigger={
+                                    <Label
+                                      className={`insights-item insights-label ${
+                                        insight.type === "Positive"
+                                          ? "insights-positive"
+                                          : "insights-negative"
+                                      }`}
+                                      size="medium"
+                                    >
+                                      <FontAwesomeIcon icon={insight.icon} />
+                                      {" " + insight.title}
+                                    </Label>
+                                  }
+                                />
+                              );
+                            })}
                           </div>
                         </div>
-                        <div className="result-main-item-insights">
-                          {item.insights.map((insight) => {
-                            return (
-                              <Popup
-                                inverted
-                                content={insight.description}
-                                trigger={
-                                  <Label
-                                    className={`insights-item insights-label ${
-                                      insight.type === "Positive"
-                                        ? "insights-positive"
-                                        : "insights-negative"
-                                    }`}
-                                    size="large"
-                                  >
-                                    <FontAwesomeIcon icon={insight.icon} />
-                                    {" " + insight.title}
-                                  </Label>
-                                }
-                              />
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (
+                      );
+                    })
+                  ) : (
+                    <Loader
+                      className="loader"
+                      type="TailSpin"
+                      color="#fff"
+                      height={100}
+                      width={100}
+                      timeout={100000}
+                    />
+                  )}
+                </div>
+                <Popup
+                  inverted
+                  content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
+                  trigger={
+                    <a
+                      href={prefix_url}
+                      className="whatsapp-float"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-whatsapp whatsapp-icon"></i>
+                    </a>
+                  }
+                />
+              </main>
+            </div>
+          ) : (
+            <>
+              {typeof recList === "undefined" ? (
+                <div className="loading-page">
+                  <h1>
+                    Mohon menunggu <br /> Sedang mencari hasil yang terbaik
+                    untukmu...
+                  </h1>
                   <Loader
                     className="loader"
                     type="TailSpin"
@@ -496,10 +371,23 @@ class Result extends React.Component {
                     width={100}
                     timeout={100000}
                   />
-                )}
-              </div>
-            </main>
-          </div>
+                </div>
+              ) : (
+                <div className="loading-page">
+                  <h1>Oops, ini memalukan :(</h1>
+                  <h2>
+                    Kami tidak berhasil menemukan laptop yang cocok dengan
+                    pilihanmu
+                    <br /> Coba mengulang quiznya lagi
+                  </h2>
+                  <p>
+                    Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan
+                    kamu
+                  </p>
+                </div>
+              )}
+            </>
+          )}
         </div>
         <Modal
           centered
@@ -555,6 +443,14 @@ class Result extends React.Component {
     this.sendEmail();
     event.preventDefault();
     this.props.history.push("/");
+  }
+
+  // When user clicks on a laptop, we highlight that laptop
+  // Deprecated
+  changeHighlight(event, index) {
+    this.setState({
+      highlightedIndex: index,
+    });
   }
 
   // Deprecated
