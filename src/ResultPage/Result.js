@@ -4,18 +4,18 @@ import { Fragment } from "react";
 import emailjs from "emailjs-com";
 import Menubar from "../Menubar";
 import axios from "axios";
-import { Button, Icon, Label, Popup } from "semantic-ui-react";
-import CurrencyFormat from "react-currency-format";
+import { Popup } from "semantic-ui-react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
-import { Modal, ModalBody, ModalFooter, Toast, ToastHeader } from "reactstrap";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
-import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { MdCircle } from "react-icons/md";
-import Carousel from "nuka-carousel";
+import { HiX } from "react-icons/hi";
 import officialIcon from "../assets/official-store.png";
+import ResultAnswer from "../components/result/ResultAnswer";
+import EmailFeatured from "../components/result/EmailFeatured";
+import ToastAlert from "../components/result/ToastAlert";
+import LaptopList from "../components/result/LaptopList";
 
 class Result extends React.Component {
   constructor(props) {
@@ -69,6 +69,8 @@ class Result extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleToastSuccess = this.toggleToastSuccess.bind(this);
+    this.toggleToastFailed = this.toggleToastFailed.bind(this);
   }
 
   // Call Backend for recommendations
@@ -96,13 +98,25 @@ class Result extends React.Component {
     });
   }
 
+  toggleToastSuccess() {
+    this.setState({
+      showToastSuccess: !this.state.showToastSuccess,
+    });
+  }
+
+  toggleToastFailed() {
+    this.setState({
+      showToastFailed: !this.state.showToastFailed,
+    });
+  }
+
   render() {
     var recList = this.state.recommendations.data;
     var reqBody = this.state.result;
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
-    var laptopImages = [];
+    console.log(recList);
 
     // Encrypt
     var ciphertext = CryptoJS.AES.encrypt(
@@ -132,272 +146,23 @@ class Result extends React.Component {
           {typeof recList !== "undefined" ? (
             <div id="result" className="result">
               <div className="sidebar">
-                <aside className="result-sidebar">
-                  <h3 className="result-sidebar-title">Jawaban Kamu</h3>
-                  <div className="result-sidebar-body">
-                    <div className="quizAnswer">
-                      <h5 className="quizAnswer-title">Budget</h5>
-                      <p className="quizAnswer-price">{`${
-                        reqBody.priceRange !== "budgetUnknown"
-                          ? `${reqBody.priceRange} Juta`
-                          : `Belum tahu - ${
-                              reqBody.pricePref === "LOW"
-                                ? "Pilihkan laptop dengan spesifikasi budget friendly"
-                                : reqBody.pricePref === "MEDIUM"
-                                ? "Pilihkan laptop dengan spesifikasi recommended"
-                                : "Pilihkan laptop dengan spesifikasi maximal"
-                            }`
-                      }`}</p>
-                    </div>
-                    <div className="quizAnswer">
-                      <h5 className="quizAnswer-title">Aktivitas</h5>
-                      <span className="quizAnswer-item">
-                        {reqBody.activities.map((item) => {
-                          return (
-                            <p>
-                              <MdCircle className="icon-circle" />{" "}
-                              {item === "videoConference"
-                                ? "Video Conference"
-                                : ""}
-                              {item === "surfInternet"
-                                ? "Browsing Internet"
-                                : ""}
-                              {item === "watchFilm" ? "Nonton Film" : ""}
-                              {item === "Microsoft Office"
-                                ? "Microsoft Office"
-                                : ""}
-                              {item === "imageGraphics"
-                                ? "Image Editing atau 2D Graphics Design"
-                                : ""}
-                              {item === "programming" ? "Programming" : ""}
-                              {item === "gaming" ? "Gaming" : ""}
-                              {item === "streaming"
-                                ? "Streaming to Public"
-                                : ""}
-                              {item === "videoEdit" ? "Video Editing" : ""}
-                              {item === "3dGraphics"
-                                ? "3D Graphics Design"
-                                : ""}
-                            </p>
-                          );
-                        })}
-                      </span>
-                    </div>
-                    <div className="quizAnswer">
-                      <h5 className="quizAnswer-title">Brand Laptop</h5>
-                      <span className="quizAnswer-item">
-                        {reqBody.brand.map((item) => {
-                          return (
-                            <p>
-                              <MdCircle className="icon-circle" />{" "}
-                              {item === "noPref" ? "Brand Apa Saja" : item}
-                            </p>
-                          );
-                        })}
-                      </span>
-                    </div>
-                  </div>
-                </aside>
-                <div className="email-featured">
-                  <h5 className="email-featured-title">
-                    Simpan rekomendasi ini ke emailmu
-                  </h5>
-                  <form onSubmit={this.handleSubmit} className="email-form">
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      className="form-control email-field"
-                      placeholder="emailKamu@gmail.com"
-                      onChange={this.handleChange}
-                    />
-                    <button type="submit" className="email-form-btn">
-                      Kirim
-                    </button>
-                  </form>
-                </div>
-                <div className="toast-container">
-                  <Toast
-                    className="toast-success"
-                    isOpen={this.state.showToastSuccess}
-                  >
-                    <ToastHeader
-                      toggle={() =>
-                        this.setState({
-                          showToastSuccess: !this.state.showToastSuccess,
-                        })
-                      }
-                    >
-                      Rekomendasi sudah terkirim! silahkan cek email kamu.
-                    </ToastHeader>
-                  </Toast>
-                  <Toast
-                    className="toast-failed"
-                    isOpen={this.state.showToastFailed}
-                  >
-                    <ToastHeader
-                      toggle={() =>
-                        this.setState({
-                          showToastFailed: !this.state.showToastFailed,
-                        })
-                      }
-                    >
-                      Rekomendasi gagal dikirim! mohon periksa email kamu.
-                    </ToastHeader>
-                  </Toast>
-                </div>
+                <ResultAnswer reqBody={reqBody} />
+                <EmailFeatured
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                />
+                <ToastAlert
+                  toggleToastSuccess={this.toggleToastSuccess}
+                  toggleToastFailed={this.toggleToastFailed}
+                  showToastSuccess={this.state.showToastSuccess}
+                  showToastFailed={this.state.showToastFailed}
+                />
               </div>
               <main className="result-main">
                 <h1 className="result-main-title">
                   Top 10 Laptop Yang Sesuai Dengan Kamu
                 </h1>
-                <div className="result-main-body">
-                  {recList !== undefined ? (
-                    recList.map((item, idx) => {
-                      return (
-                        <div key={item.id} className="result-main-item">
-                          <span className="laptop-num">{idx + 1}.</span>
-                          <div className="result-main-item-img">
-                            <h4 className="desc-name">{item.name}</h4>
-                            {laptopImages.length > 1 ? (
-                              <div className="slider-image-container">
-                                <Carousel
-                                  renderCenterLeftControls={({
-                                    previousSlide,
-                                  }) => (
-                                    <button
-                                      onClick={previousSlide}
-                                      className="slider-prev-btn"
-                                    >
-                                      <HiChevronLeft className="icon-left" />
-                                    </button>
-                                  )}
-                                  renderCenterRightControls={({
-                                    nextSlide,
-                                  }) => (
-                                    <button
-                                      onClick={nextSlide}
-                                      className="slider-next-btn"
-                                    >
-                                      <HiChevronRight className="icon-right" />
-                                    </button>
-                                  )}
-                                  defaultControlsConfig={{
-                                    pagingDotsClassName: "dots-custom",
-                                  }}
-                                  width="100%"
-                                  dragging
-                                  swiping
-                                >
-                                  {item.imageLink
-                                    .filter((url) => url !== "")
-                                    .map((item, index) => (
-                                      <img
-                                        key={`Slide ${index}`}
-                                        src={item}
-                                        alt="Highlighted Laptop"
-                                        className="carousel-img"
-                                      />
-                                    ))}
-                                </Carousel>
-                              </div>
-                            ) : (
-                              <img
-                                className="laptop-img"
-                                src={item.imageLink[0]}
-                                alt="Highlighted Laptop"
-                              />
-                            )}
-                          </div>
-                          <div className="result-main-item-desc">
-                            <p className="desc-price">
-                              <CurrencyFormat
-                                value={item.price}
-                                displayType={"text"}
-                                thousandSeparator={true}
-                                prefix={"Rp. "}
-                              />
-                            </p>
-                            <div className="desc-specs">
-                              <p>
-                                <strong>Processor: </strong> {item.processor}
-                              </p>
-                              <p>
-                                <strong>RAM: </strong> {`${item.ram} GB`}
-                              </p>
-                              <p>
-                                <strong>Storage: </strong>{" "}
-                                {`${item.storageOne} GB`}
-                              </p>
-                              <p>
-                                <strong>Graphics: </strong> {item.graphics}
-                              </p>
-                              <p>
-                                <strong>Display: </strong> {`${item.size} "`}
-                              </p>
-                              <p>
-                                <strong>Weight: </strong>{" "}
-                                {`${item.weightGrams} kg`}
-                              </p>
-                            </div>
-                            <div className="desc-btn">
-                              {item.link
-                                .filter((link) => link.linkFrom !== "")
-                                .map((originalLink) => {
-                                  return (
-                                    <a
-                                      href={originalLink.link}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                    >
-                                      <Button
-                                        className={`item-desc-btn ${originalLink.linkFrom}`}
-                                      >
-                                        {`Visit ${originalLink.linkFrom}`}
-                                        <Icon name="right chevron" />
-                                      </Button>
-                                    </a>
-                                  );
-                                })}
-                            </div>
-                          </div>
-                          <div className="result-main-item-insights">
-                            {item.insights.map((insight) => {
-                              return (
-                                <Popup
-                                  inverted
-                                  content={insight.description}
-                                  trigger={
-                                    <Label
-                                      className={`insights-item insights-label ${
-                                        insight.type === "Positive"
-                                          ? "insights-positive"
-                                          : "insights-negative"
-                                      }`}
-                                      size="medium"
-                                    >
-                                      <FontAwesomeIcon icon={insight.icon} />
-                                      {" " + insight.title}
-                                    </Label>
-                                  }
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <Loader
-                      className="loader"
-                      type="TailSpin"
-                      color="#fff"
-                      height={100}
-                      width={100}
-                      timeout={100000}
-                    />
-                  )}
-                </div>
+                <LaptopList recList={recList} />
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
@@ -448,6 +213,7 @@ class Result extends React.Component {
             </>
           )}
         </div>
+
         <Modal
           centered
           size="md"

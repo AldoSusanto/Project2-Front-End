@@ -38,6 +38,10 @@ $poppins: "Poppins", sans-serif;
 @import "./menubar";
 @import "./footer";
 @import "./components/headlineHighlight";
+@import "./components/result/laptopList";
+@import "./components/result/emailFeatured";
+@import "./components/result/resultAnswer";
+@import "./components/result/toastAlert";
 
 * {
   padding: 0;
