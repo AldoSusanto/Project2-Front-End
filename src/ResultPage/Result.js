@@ -141,7 +141,6 @@ class Result extends React.Component {
           Masih bingung? Ngobrol dengan kami via WA secara gratis dan dapatkan
           cashback hingga &nbsp; <strong> Rp. 500,000 !! </strong>
         </div>
-        {/* {resultsPage} */}
         <div className="result-container">
           {typeof recList !== "undefined" ? (
             <div id="result" className="result">

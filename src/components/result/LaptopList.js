@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Loader } from "semantic-ui-react";
-import { Button, Icon, Label, Popup } from "semantic-ui-react";
+import { Button, Icon, Label, Popup, Loader } from "semantic-ui-react";
 import CurrencyFormat from "react-currency-format";
 import Carousel from "nuka-carousel";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
@@ -41,10 +40,10 @@ const LaptopList = (props) => {
                     >
                       {item.imageLink
                         .filter((url) => url !== "")
-                        .map((item, index) => (
+                        .map((img, index) => (
                           <img
                             key={`Slide ${index}`}
-                            src={item}
+                            src={img}
                             alt="Highlighted Laptop"
                             className="carousel-img"
                             referrerPolicy="no-referrer"
