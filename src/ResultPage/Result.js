@@ -4,17 +4,18 @@ import { Fragment } from "react";
 import emailjs from "emailjs-com";
 import Menubar from "../Menubar";
 import axios from "axios";
-import { Button, Icon, Item, Label, Popup } from "semantic-ui-react";
-import CurrencyFormat from "react-currency-format";
+import { Popup } from "semantic-ui-react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CryptoJS from "crypto-js";
-import { Modal, ModalBody, ModalFooter, Toast, ToastHeader } from "reactstrap";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import shoppingCartPng from "../assets/shopping-cart.png";
-import { HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import Carousel from "nuka-carousel";
+import { HiX } from "react-icons/hi";
 import officialIcon from "../assets/official-store.png";
+import ResultAnswer from "../components/result/ResultAnswer";
+import EmailFeatured from "../components/result/EmailFeatured";
+import ToastAlert from "../components/result/ToastAlert";
+import LaptopList from "../components/result/LaptopList";
 
 class Result extends React.Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class Result extends React.Component {
       highlightedIndex: 0,
       showModal: true,
       initialResult: resultJson,
+      showDetail: false,
       showToastSuccess: false,
       showToastFailed: false,
     };
@@ -67,6 +69,8 @@ class Result extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleToastSuccess = this.toggleToastSuccess.bind(this);
+    this.toggleToastFailed = this.toggleToastFailed.bind(this);
   }
 
   // Call Backend for recommendations
@@ -88,309 +92,41 @@ class Result extends React.Component {
       });
   }
 
-  // When user clicks on a laptop, we highlight that laptop
-  changeHighlight(event, index) {
-    this.setState({
-      highlightedIndex: index,
-    });
-  }
-
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal,
     });
   }
 
+  toggleToastSuccess() {
+    this.setState({
+      showToastSuccess: !this.state.showToastSuccess,
+    });
+  }
+
+  toggleToastFailed() {
+    this.setState({
+      showToastFailed: !this.state.showToastFailed,
+    });
+  }
+
   render() {
     var recList = this.state.recommendations.data;
     var reqBody = this.state.result;
-    var itemList = [];
-    var itemDescription = [];
-    var itemImage = [];
-    var highlightedItem = {};
-    var resultsPage = [];
-    var itemLinks = [];
-    var insightsList = [];
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
-    var laptopImages = [];
+    console.log(recList);
 
-    if (typeof recList !== "undefined") {
-      // Encrypt
-      var ciphertext = CryptoJS.AES.encrypt(
-        JSON.stringify(reqBody),
-        "ppid"
-      ).toString();
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt(
+      JSON.stringify(reqBody),
+      "ppid"
+    ).toString();
 
-      prefix_url =
-        "https://wa.me/6287868572240?text=" +
-        encodeURIComponent(prefix_wa + ciphertext);
-
-      if (recList.length > 0) {
-        // Populate Laptop List on left side of page
-        for (const [index, value] of recList.entries()) {
-          itemList.push(
-            <Item.Group divided>
-              <Item
-                className={`itemList ${
-                  index === this.state.highlightedIndex ? "selectedItem" : ""
-                }`}
-                onClick={(e) => this.changeHighlight(e, index)}
-              >
-                <Item.Image src={value.imageLink[0]} />
-                <Item.Content>
-                  <Item.Header as="strong">{value.name}</Item.Header>
-                  <Item.Meta>
-                    <span className="price">
-                      <CurrencyFormat
-                        value={value.price}
-                        displayType={"text"}
-                        thousandSeparator={true}
-                        prefix={"Rp. "}
-                      />
-                    </span>
-                  </Item.Meta>
-                  <Item.Extra></Item.Extra>
-                </Item.Content>
-              </Item>
-            </Item.Group>
-          );
-        }
-
-        highlightedItem = recList[this.state.highlightedIndex];
-
-        // Populate the links(green button) for the highlightedItem
-        for (const [index, value] of highlightedItem.link.entries()) {
-          if (value.link.trim() !== "") {
-            //if link is empty
-            // console.log("linkfrom", value.linkFrom);
-            itemLinks.push(
-              <a href={value.link} target="_blank" rel="noopener noreferrer">
-                <Button className={`item-desc-btn ${value.linkFrom}`}>
-                  {`${value.linkFrom} Official Store`}
-                  <Icon name="right chevron" />
-                </Button>
-              </a>
-            );
-          }
-        }
-
-        for (const [index, value] of highlightedItem.insights.entries()) {
-          insightsList.push(
-            <Popup
-              inverted
-              content={value.description}
-              trigger={
-                <Label
-                  className="insights-item insights-label"
-                  size="large"
-                  color={value.type === "Positive" ? "green" : "red"}
-                >
-                  <FontAwesomeIcon icon={value.icon} />
-                  {" " + value.title}
-                </Label>
-              }
-            />
-          );
-        }
-
-        // Populate Laptop Description on right side of page
-        itemDescription.push(
-          <Item.Group key={highlightedItem.id} divided className="itemDesc">
-            <Item>
-              <Item.Content>
-                <Item.Header as="a" className="title">
-                  {highlightedItem.name}
-                </Item.Header>
-                <Item.Meta>
-                  <span className="price">
-                    <CurrencyFormat
-                      value={highlightedItem.price}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                      prefix={"Rp. "}
-                    />
-                  </span>
-                </Item.Meta>
-                <Item.Description className="item-desc-box">
-                  <b>Processor: </b> {highlightedItem.processor} <br />{" "}
-                  <b>RAM: </b> {`${highlightedItem.ram} GB`} <br />{" "}
-                  <b>Storage:</b> {`${highlightedItem.storageOne} GB`} <br />{" "}
-                  <b>Graphics:</b> {highlightedItem.graphics}
-                  <br /> <b>Display</b> {`${highlightedItem.size} "`} <br />{" "}
-                  <b>Weight:</b> {`${highlightedItem.weightGrams} kg`}{" "}
-                </Item.Description>
-                <Item.Extra className="d-flex align-items-center justify-content-center">
-                  {itemLinks}
-                </Item.Extra>
-              </Item.Content>
-            </Item>
-          </Item.Group>
-        );
-
-        laptopImages = highlightedItem.imageLink.filter((url) => url !== "");
-
-        itemImage.push(
-          <>
-            {laptopImages.length > 1 ? (
-              <div className="slider-image-container">
-                <Carousel
-                  renderCenterLeftControls={({ previousSlide }) => (
-                    <button onClick={previousSlide} className="slider-prev-btn">
-                      <HiChevronLeft className="icon-left" />
-                    </button>
-                  )}
-                  renderCenterRightControls={({ nextSlide }) => (
-                    <button onClick={nextSlide} className="slider-next-btn">
-                      <HiChevronRight className="icon-right" />
-                    </button>
-                  )}
-                  defaultControlsConfig={{
-                    pagingDotsClassName: "dots-custom",
-                  }}
-                  width="100%"
-                  dragging
-                  swiping
-                >
-                  {laptopImages.map((item, index) => (
-                    <img
-                      key={`Slide ${index}`}
-                      src={item}
-                      alt="Highlighted Laptop"
-                      className="carousel-img"
-                    />
-                  ))}
-                </Carousel>
-              </div>
-            ) : (
-              <img
-                className="laptop-img"
-                src={highlightedItem.imageLink[0]}
-                alt="Highlighted Laptop"
-              />
-            )}
-          </>
-        );
-
-        // Compile all components
-        resultsPage.push(
-          <div id="result" className="row result-home">
-            <div className="col-12 col-lg-5 order-2 order-lg-0 panel">
-              <h1 className="d-none d-lg-block">
-                Top 10 Laptop Yang Tepat Untukmu
-              </h1>
-              <hr className="hr-line d-none d-lg-block" />
-              <div className="toast-container">
-                <Toast
-                  className="toast-success"
-                  isOpen={this.state.showToastSuccess}
-                >
-                  <ToastHeader
-                    toggle={() =>
-                      this.setState({
-                        showToastSuccess: !this.state.showToastSuccess,
-                      })
-                    }
-                  >
-                    Rekomendasi sudah terkirim! silahkan cek email kamu.
-                  </ToastHeader>
-                </Toast>
-                <Toast
-                  className="toast-failed"
-                  isOpen={this.state.showToastFailed}
-                >
-                  <ToastHeader
-                    toggle={() =>
-                      this.setState({
-                        showToastFailed: !this.state.showToastFailed,
-                      })
-                    }
-                  >
-                    Rekomendasi gagal dikirim! mohon periksa email kamu.
-                  </ToastHeader>
-                </Toast>
-              </div>
-              <form onSubmit={this.handleSubmit} className="email-form">
-                <span>Simpan rekomendasi ini ke emailmu</span>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="form-control email-field mx-2 mx-sm-3 my-0"
-                  placeholder="emailKamu@gmail.com"
-                  onChange={this.handleChange}
-                />
-                <button type="submit" className="email-form-btn">
-                  Kirim
-                </button>
-              </form>
-              <div className="result-text">{itemList}</div>
-            </div>
-            <div className="mt-4 mb-5 my-lg-0 col-12 col-lg-7 order-1 order-lg-0">
-              <div className="row mt-lg-5">
-                <div className="col-6 d-flex justify-content-center align-items-center">
-                  {itemImage}
-                </div>
-                <div className="itemDesc-container col-6 d-flex justify-content-center align-items-center">
-                  {itemDescription}
-                </div>
-              </div>
-
-              <div className="row insights-parent">
-                <div className="insights-container col-12 col-lg-7 ml-md-0 ml-xl-4 pt-2 pt-xl-4 justify-content-start d-flex flex-wrap">
-                  {insightsList}
-                </div>
-                <Popup
-                  inverted
-                  content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
-                  trigger={
-                    <a
-                      href={prefix_url}
-                      className="whatsapp-float"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fa fa-whatsapp whatsapp-icon"></i>
-                    </a>
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        // If BE returns empty list
-        resultsPage.push(
-          <div className="row loading-page">
-            <h1>Oops, ini memalukan :(</h1>
-            <h2>
-              Kami tidak berhasil menemukan laptop yang cocok dengan pilihanmu
-              <br /> Coba mengulang quiznya lagi
-            </h2>
-            <p>
-              Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan kamu
-            </p>
-          </div>
-        );
-      }
-    } else {
-      resultsPage.push(
-        <div className="row loading-page">
-          <h1>
-            Mohon menunggu <br /> Sedang mencari hasil yang terbaik untukmu...
-          </h1>
-          <Loader
-            className="loader"
-            type="TailSpin"
-            color="#fff"
-            height={100}
-            width={100}
-            timeout={100000}
-          />
-        </div>
-      );
-    }
+    prefix_url =
+      "https://wa.me/6287868572240?text=" +
+      encodeURIComponent(prefix_wa + ciphertext);
 
     return (
       <Fragment>
@@ -405,7 +141,78 @@ class Result extends React.Component {
           Masih bingung? Ngobrol dengan kami via WA secara gratis dan dapatkan
           cashback hingga &nbsp; <strong> Rp. 500,000 !! </strong>
         </div>
-        {resultsPage}
+        <div className="result-container">
+          {typeof recList !== "undefined" ? (
+            <div id="result" className="result">
+              <div className="sidebar">
+                <ResultAnswer reqBody={reqBody} />
+                <EmailFeatured
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                />
+                <ToastAlert
+                  toggleToastSuccess={this.toggleToastSuccess}
+                  toggleToastFailed={this.toggleToastFailed}
+                  showToastSuccess={this.state.showToastSuccess}
+                  showToastFailed={this.state.showToastFailed}
+                />
+              </div>
+              <main className="result-main">
+                <h1 className="result-main-title">
+                  Top 10 Laptop Yang Sesuai Dengan Kamu
+                </h1>
+                <LaptopList recList={recList} />
+                <Popup
+                  inverted
+                  content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
+                  trigger={
+                    <a
+                      href={prefix_url}
+                      className="whatsapp-float"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-whatsapp whatsapp-icon"></i>
+                    </a>
+                  }
+                />
+              </main>
+            </div>
+          ) : (
+            <>
+              {typeof recList === "undefined" ? (
+                <div className="loading-page">
+                  <h1>
+                    Mohon menunggu <br /> Sedang mencari hasil yang terbaik
+                    untukmu...
+                  </h1>
+                  <Loader
+                    className="loader"
+                    type="TailSpin"
+                    color="#fff"
+                    height={100}
+                    width={100}
+                    timeout={100000}
+                  />
+                </div>
+              ) : (
+                <div className="loading-page">
+                  <h1>Oops, ini memalukan :(</h1>
+                  <h2>
+                    Kami tidak berhasil menemukan laptop yang cocok dengan
+                    pilihanmu
+                    <br /> Coba mengulang quiznya lagi
+                  </h2>
+                  <p>
+                    Tip: Coba naikan budgetmu sedikit untuk memperluas pilihan
+                    kamu
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+
         <Modal
           centered
           size="md"
@@ -468,6 +275,15 @@ class Result extends React.Component {
     // toast
   }
 
+  // When user clicks on a laptop, we highlight that laptop
+  // Deprecated
+  changeHighlight(event, index) {
+    this.setState({
+      highlightedIndex: index,
+    });
+  }
+
+  // Deprecated
   sendEmail() {
     var email = [];
     var emailHTML =
