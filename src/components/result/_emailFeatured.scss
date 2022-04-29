@@ -31,8 +31,9 @@
     }
 
     &-btn {
+      width: 100%;
       border-radius: 4px;
-      padding: 8px 36px;
+      padding: 8px 20px;
       border: 1px solid $green;
       font-weight: 600;
       color: $off-white;
@@ -77,7 +78,7 @@
       }
 
       &-btn {
-        width: 24%;
+        width: 28%;
         padding: 6px 20px;
         font-size: 2vw;
       }
@@ -99,12 +100,10 @@
       justify-content: space-between;
 
       input {
-        width: 70%;
         font-size: 3.3vw;
       }
 
       &-btn {
-        width: 24%;
         padding: 6px 20px;
         font-size: 3.3vw;
       }
