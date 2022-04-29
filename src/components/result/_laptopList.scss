@@ -1,5 +1,5 @@
 .laptopList {
-  padding: 1vw;
+  padding: 0 1vw;
   margin: 0;
   border-radius: 0 0 8px 8px;
 
@@ -9,24 +9,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 2vw 0;
+    padding: 1vw 0;
+    margin: 1vw 0;
     border-bottom: 2px solid #ccc7c7;
 
     .laptop-num {
       position: absolute;
       top: 0.5rem;
-      left: 0;
-      font-size: 1.4vw;
+      left: 0.5rem;
+      font-size: 1.3vw;
       font-weight: 600;
     }
 
     .laptopList-item-img {
-      width: 40%;
+      width: 34%;
       height: auto;
 
       h4 {
-        font-size: 1.6vw;
+        font-size: 1.5vw;
         text-align: center;
+        margin: 0;
       }
 
       img {
@@ -37,7 +39,6 @@
       .slider-image-container {
         position: relative;
         width: 100%;
-        margin-bottom: 50px;
 
         .slider-prev-btn,
         .slider-next-btn {
@@ -84,7 +85,7 @@
       .desc-price {
         color: $warning;
         font-weight: 500;
-        font-size: 1.4vw;
+        font-size: 1.3vw;
       }
 
       .desc-specs {
@@ -94,7 +95,7 @@
 
         p {
           margin: 0;
-          font-size: 1.05vw;
+          font-size: 1vw;
         }
       }
 
@@ -106,7 +107,7 @@
         .item-desc-btn {
           background-color: $green;
           color: $off-white;
-          font-size: 1.2vw;
+          font-size: 1.1vw;
           border-radius: 15px;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           padding: 1vw 3vw;
@@ -121,7 +122,7 @@
 
     .laptopList-item-insights {
       width: 100%;
-      margin-top: 3vw;
+      margin-top: 1.2vw;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -148,10 +149,6 @@
 
 @media screen and (max-width: 1366px) {
   .laptopList {
-    padding: 1vw;
-    margin: 0;
-    border-radius: 0 0 8px 8px;
-
     .laptopList-item {
       .laptopList-item-img {
         .slider-image-container {
@@ -176,56 +173,56 @@
 @media screen and (max-width: 991px) {
   .laptopList {
     .laptopList-item {
+      margin: 0.5vw 0;
+
       .laptop-num {
-        font-size: 1.5vw;
+        font-size: 3vw;
       }
 
       .laptopList-item-img {
         h4 {
-          font-size: 1.7vw;
+          font-size: 2.8vw;
           margin-bottom: 0.2vw;
         }
 
         .slider-image-container {
-          margin-bottom: 20px;
-
           .icon-left,
           .icon-right {
-            font-size: 3.4vw;
+            font-size: 3.5vw;
           }
           .paging-item {
             padding: 0 4px;
           }
 
           .dots-custom {
-            transform: scale(1.3);
+            transform: scale(1.2);
           }
         }
       }
 
       .laptopList-item-desc {
         .desc-price {
-          font-size: 1.5vw;
+          font-size: 2.4vw;
         }
 
         .desc-specs {
           p {
-            font-size: 1.15vw;
+            font-size: 1.95vw;
           }
         }
 
         .desc-btn {
           .item-desc-btn {
-            font-size: 1.25vw;
+            font-size: 1.95vw;
           }
         }
       }
 
       .laptopList-item-insights {
-        margin-top: 2.6vw;
+        margin-top: 1vw;
 
         .insights-item {
-          font-size: 1.2vw;
+          font-size: 1.7vw;
         }
       }
     }
@@ -234,23 +231,22 @@
 
 @media screen and (max-width: 576px) {
   .laptopList {
-    padding: 1vw;
-
     .laptopList-item {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       padding: 4vw 0;
+      margin: 0.7vw 0;
       border-bottom: 2px solid #ccc7c7;
 
       .laptop-num {
         font-size: 3.7vw;
-        left: 0.3rem;
+        left: 0.7rem;
       }
 
       .laptopList-item-img {
-        width: 75%;
+        width: 70%;
         height: auto;
 
         h4 {
@@ -265,8 +261,6 @@
         }
 
         .slider-image-container {
-          margin-bottom: 10px;
-
           .icon-left,
           .icon-right {
             font-size: 4.4vw;
@@ -316,7 +310,7 @@
       }
 
       .laptopList-item-insights {
-        margin-top: 4vw;
+        margin-top: 2vw;
 
         .insights-item {
           font-size: 2.6vw;

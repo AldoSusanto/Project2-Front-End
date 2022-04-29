@@ -27,10 +27,11 @@
     input {
       width: 100%;
       color: $dark;
-      font-size: calc(0.4rem + 0.5vw);
+      font-size: 1.1vw;
     }
 
     &-btn {
+      width: 100%;
       border-radius: 4px;
       padding: 8px 20px;
       border: 1px solid $green;
@@ -38,6 +39,7 @@
       color: $off-white;
       background-color: $green;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.1vw;
     }
     &-btn:hover {
       border: 1px solid $off-white;
@@ -63,7 +65,7 @@
     margin-top: 2.4vw;
 
     &-title {
-      font-size: 2.2vw;
+      font-size: 3.3vw;
     }
 
     .email-form {
@@ -72,13 +74,13 @@
 
       input {
         width: 70%;
-        font-size: 1.3vw;
+        font-size: 2.1vw;
       }
 
       &-btn {
-        width: 24%;
+        width: 28%;
         padding: 6px 20px;
-        font-size: 1.4vw;
+        font-size: 2vw;
       }
     }
   }
@@ -98,14 +100,12 @@
       justify-content: space-between;
 
       input {
-        width: 70%;
-        font-size: 3vw;
+        font-size: 3.3vw;
       }
 
       &-btn {
-        width: 24%;
         padding: 6px 20px;
-        font-size: 2.8vw;
+        font-size: 3.3vw;
       }
     }
   }
