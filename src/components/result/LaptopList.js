@@ -91,9 +91,10 @@ const LaptopList = (props) => {
                 <div className="desc-btn">
                   {item.link
                     .filter((link) => link.linkFrom !== "")
-                    .map((originalLink) => {
+                    .map((originalLink, index) => {
                       return (
                         <a
+                          key={`${originalLink}-${index}`}
                           href={originalLink.link}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -110,9 +111,10 @@ const LaptopList = (props) => {
                 </div>
               </div>
               <div className="laptopList-item-insights">
-                {item.insights.map((insight) => {
+                {item.insights.map((insight, index) => {
                   return (
                     <Popup
+                      key={`${insight.description}-${index}`}
                       inverted
                       content={insight.description}
                       trigger={
