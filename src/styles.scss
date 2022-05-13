@@ -11,6 +11,7 @@ $dark: #2a2c34;
 $dark-variant: #474b5a;
 $light-blue-variant: #e3f8ff;
 $danger: #ff7782;
+$warning: #e4a32b;
 $light-gray: #f3f3f3;
 
 // sizes
@@ -37,6 +38,10 @@ $poppins: "Poppins", sans-serif;
 @import "./menubar";
 @import "./footer";
 @import "./components/headlineHighlight";
+@import "./components/result/laptopList";
+@import "./components/result/emailFeatured";
+@import "./components/result/resultAnswer";
+@import "./components/result/toastAlert";
 
 * {
   padding: 0;

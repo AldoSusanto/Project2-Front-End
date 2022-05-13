@@ -1,4 +1,5 @@
 .quiz-header {
+  margin-top: -2.5rem;
   padding: 0 3rem;
   border-radius: 12px;
 
@@ -64,7 +65,7 @@
   height: auto;
   min-height: 100vh;
   width: 100%;
-  padding-top: 12vh;
+  padding-top: 14vh;
 }
 
 .questions {
@@ -271,8 +272,10 @@
 
 @media screen and (max-width: 1366px) {
   .quiz-header {
+    margin-top: -1.2rem;
+
     &-title {
-      padding: 1.5rem 0;
+      padding: 0 0 1.5rem;
 
       h2 {
         font-size: calc(24px + 0.7vw);
@@ -299,7 +302,7 @@
   }
 
   .quiz-body {
-    padding-top: 15vh;
+    padding-top: 20vh;
   }
 
   .questions {
@@ -332,6 +335,7 @@
 
 @media screen and (max-width: 767px) {
   .quiz-header {
+    margin-top: -2.8rem;
     padding: 0 1.5rem;
 
     &-title {
@@ -366,6 +370,10 @@
         }
       }
     }
+  }
+
+  .quiz-body {
+    padding-top: 15vh;
   }
 
   .questions {
@@ -473,6 +481,7 @@
 
 @media screen and (max-width: 576px) {
   .quiz-header {
+    margin-top: -2.8rem;
     padding: 0 1.5rem;
 
     &-title {
@@ -513,7 +522,7 @@
   }
 
   .quiz-body {
-    padding-top: 10vh;
+    padding-top: 28vw;
   }
 }
 

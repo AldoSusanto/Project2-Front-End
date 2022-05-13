@@ -1,0 +1,161 @@
+.resultAnswer {
+  width: 100%;
+  color: $dark-variant;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 8px;
+
+  &-title {
+    background-color: $light-blue;
+    padding: 1vw;
+    margin: 0;
+    font-size: 1.5vw;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 1vw;
+    margin: 0;
+    border-radius: 0 0 8px 8px;
+
+    .quizAnswer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4vw;
+      color: $dark-variant;
+
+      &-title {
+        margin: 0;
+        font-size: 1.3vw;
+        color: $blue;
+      }
+
+      &-price {
+        padding-top: 0.2vw;
+        padding-left: 0.5vw;
+        font-size: 1.16vw;
+        font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+      }
+
+      &-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6vw;
+        padding-top: 0.2vw;
+        padding-left: 0.5vw;
+
+        p {
+          margin: 0;
+          font-size: 1.16vw;
+          font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+          display: flex;
+          align-items: center;
+          gap: 0.6vw;
+
+          .icon-circle {
+            font-size: 0.7vw;
+            color: $dark-variant;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .resultAnswer {
+    &-title {
+      padding: 1.4vw;
+      font-size: 3.3vw;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 2vw;
+      padding: 1.2vw;
+
+      .quizAnswer {
+        gap: 0.6vw;
+
+        &-title {
+          font-size: 2.5vw;
+        }
+
+        &-price {
+          font-size: 2vw;
+        }
+
+        &-item {
+          gap: 0.7vw;
+
+          p {
+            font-size: 2vw;
+            gap: 0.6vw;
+
+            .icon-circle {
+              font-size: 1vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .resultAnswer {
+    width: 100%;
+
+    &-title {
+      padding: 2vw 0;
+      font-size: 3.8vw;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 3vw 1.2vw;
+
+      .quizAnswer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2vw;
+        color: $dark-variant;
+
+        &-title {
+          font-size: 3vw;
+        }
+
+        &-price {
+          padding-top: 0.8vw;
+          padding-left: 0;
+          font-size: 2.8vw;
+        }
+
+        &-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8vw;
+          padding-top: 0.7vw;
+          padding-left: 0;
+
+          p {
+            font-size: 2.8vw;
+            gap: 0.7vw;
+
+            .icon-circle {
+              font-size: 1.1vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}
