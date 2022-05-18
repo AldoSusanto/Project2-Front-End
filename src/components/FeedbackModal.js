@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { HiX } from "react-icons/hi";
 import { MdSend } from "react-icons/md";
 import { useSessionStorage } from "../utils";
+import { FiCheckCircle } from "react-icons/fi";
 
 const FeedbackModal = () => {
   const [showFeedback, setShowFeedback] = useSessionStorage("feedback", {
     show: false,
     feedback: false,
   });
+  const [showToast, setShowToast] = useState(true);
   const [feedbackInput, setFeedbackInput] = useState("");
   const [feedbackStar, setFeedbackStar] = useState(0);
   const [feedbackQuestion, setFeedbackQuestion] = useState("");
@@ -74,96 +76,110 @@ const FeedbackModal = () => {
   }, []);
 
   return (
-    <div
-      className={`feedback-container ${
-        showFeedback.show ? "feedback-show" : "feedback-hidden"
-      }`}
-    >
-      <div className="feedback">
-        <div className="feedback-header">
-          <h5 className="feedback-header-title">Give Feedback</h5>
-          <HiX onClick={handleShowFeedback} className="icon-close" />
-        </div>
-        <div className="feedback-body">
-          <div className="feedback-review">
-            <h6 className="feedback-review-title">
-              Bagaimana rekomendasi Propicks menurutmu sejauh ini?
-            </h6>
-            <div className="feedback-review-star">
-              <button
-                onClick={() => handleStar(1)}
-                className={`star-badge ${
-                  feedbackStar === 1 ? "star-active" : "star-nonactive"
-                }`}
-              >
-                1
-              </button>
-              <button
-                onClick={() => handleStar(2)}
-                className={`star-badge ${
-                  feedbackStar === 2 ? "star-active" : "star-nonactive"
-                }`}
-              >
-                2
-              </button>
-              <button
-                onClick={() => handleStar(3)}
-                className={`star-badge ${
-                  feedbackStar === 3 ? "star-active" : "star-nonactive"
-                }`}
-              >
-                3
-              </button>
-              <button
-                onClick={() => handleStar(4)}
-                className={`star-badge ${
-                  feedbackStar === 4 ? "star-active" : "star-nonactive"
-                }`}
-              >
-                4
-              </button>
-              <button
-                onClick={() => handleStar(5)}
-                className={`star-badge ${
-                  feedbackStar === 5 ? "star-active" : "star-nonactive"
-                }`}
-              >
-                5
-              </button>
-            </div>
+    <>
+      <div
+        className={`feedback-container ${
+          showFeedback.show ? "feedback-show" : "feedback-hidden"
+        }`}
+      >
+        <div className="feedback">
+          <div className="feedback-header">
+            <h5 className="feedback-header-title">Give Feedback</h5>
+            <HiX onClick={handleShowFeedback} className="icon-close" />
           </div>
-          <form onSubmit={handleSendFeedback}>
-            {feedbackStar < 5 && feedbackStar !== 0 && (
-              <div className="feedback-comments">
-                <label htmlFor="feedback">{feedbackQuestion}</label>
-                <textarea
-                  required
-                  id="feedback"
-                  name="feedback"
-                  className="feedback-comments-input"
-                  rows={4}
-                  onChange={(e) => setFeedbackInput(e.target.value)}
-                  value={feedbackInput}
-                  placeholder="Saya suka/tidak suka karena..."
-                />
+          <div className="feedback-body">
+            <div className="feedback-review">
+              <h6 className="feedback-review-title">
+                Bagaimana rekomendasi Propicks menurutmu sejauh ini?
+              </h6>
+              <div className="feedback-review-star">
+                <button
+                  onClick={() => handleStar(1)}
+                  className={`star-badge ${
+                    feedbackStar === 1 ? "star-active" : "star-nonactive"
+                  }`}
+                >
+                  1
+                </button>
+                <button
+                  onClick={() => handleStar(2)}
+                  className={`star-badge ${
+                    feedbackStar === 2 ? "star-active" : "star-nonactive"
+                  }`}
+                >
+                  2
+                </button>
+                <button
+                  onClick={() => handleStar(3)}
+                  className={`star-badge ${
+                    feedbackStar === 3 ? "star-active" : "star-nonactive"
+                  }`}
+                >
+                  3
+                </button>
+                <button
+                  onClick={() => handleStar(4)}
+                  className={`star-badge ${
+                    feedbackStar === 4 ? "star-active" : "star-nonactive"
+                  }`}
+                >
+                  4
+                </button>
+                <button
+                  onClick={() => handleStar(5)}
+                  className={`star-badge ${
+                    feedbackStar === 5 ? "star-active" : "star-nonactive"
+                  }`}
+                >
+                  5
+                </button>
               </div>
-            )}
-            <div className="feedback-btn">
-              <button
-                type="submit"
-                disabled={feedbackStar === 0 ? true : false}
-                className={`${
-                  feedbackStar === 0 ? "btn-disabled" : "btn-active"
-                }`}
-              >
-                <span>Kirim Feedback</span>
-                <MdSend className="icon-send" />
-              </button>
             </div>
-          </form>
+            <form onSubmit={handleSendFeedback}>
+              {feedbackStar < 5 && feedbackStar !== 0 && (
+                <div className="feedback-comments">
+                  <label htmlFor="feedback">{feedbackQuestion}</label>
+                  <textarea
+                    required
+                    id="feedback"
+                    name="feedback"
+                    className="feedback-comments-input"
+                    rows={4}
+                    onChange={(e) => setFeedbackInput(e.target.value)}
+                    value={feedbackInput}
+                    placeholder="Saya suka/tidak suka karena..."
+                  />
+                </div>
+              )}
+              <div className="feedback-btn">
+                <button
+                  type="submit"
+                  disabled={feedbackStar === 0 ? true : false}
+                  className={`${
+                    feedbackStar === 0 ? "btn-disabled" : "btn-active"
+                  }`}
+                >
+                  <span>Kirim Feedback</span>
+                  <MdSend className="icon-send" />
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      <div
+        className={`feedbackToast-container ${
+          showToast ? "feedbackToast-show" : "feedbackToast-hidden"
+        }`}
+      >
+        <div className="feedbackToast">
+          <FiCheckCircle className="icon-check" />
+          <h6 className="feedbackToast-title">
+            Terima kasih atas feedback yang anda berikan.
+          </h6>
+        </div>
+      </div>
+    </>
   );
 };
 
