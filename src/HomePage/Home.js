@@ -65,8 +65,8 @@ const Home = () => {
               />
             </div>
             <p>
-              Propicks akan merekomendasikan laptop{" "}
-              <br className="d-none d-sm-block"></br> yang tepat untukmu
+              Isi quiz kami dan dapatkan rekomendasi{" "}
+              <br className="d-none d-sm-block"></br> laptop yang tepat untukmu
             </p>
             <Link to={`/play`}>
               <button type="button" name="button" className="btn btn-success">
