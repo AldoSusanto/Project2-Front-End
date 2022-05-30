@@ -6,6 +6,7 @@ import Play from "./PlayPage/Play";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import "semantic-ui-css/semantic.min.css";
+import LaptopDetails from "./LaptopDetailsPage/LaptopDetails";
 
 const iconList = Object.keys(Icons)
   .filter((key) => key !== "fas" && key !== "prefix")
@@ -20,6 +21,7 @@ function App() {
       <Route path="/play" exact component={Play} />
       <Route path="/result" exact component={Result} />
       <Route path="/decrypt" exact component={Decrypt} />
+      <Route path="/laptop/:slug" exact component={LaptopDetails} />
     </Router>
   );
 }
