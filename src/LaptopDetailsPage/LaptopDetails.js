@@ -8,7 +8,6 @@ import Menubar from "../Menubar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CurrencyFormat from "react-currency-format";
 import axios from "axios";
-import { dummyLaptopContent } from "../utils/dummyData";
 import { BsShieldFillCheck } from "react-icons/bs";
 
 const LaptopDetails = (props) => {
@@ -50,8 +49,6 @@ const LaptopDetails = (props) => {
       ) : null}
     </>
   );
-
-  console.log(laptopDetail);
 
   return (
     <Fragment>
@@ -198,7 +195,7 @@ const LaptopDetails = (props) => {
               <div className="laptopDetails-review-reason">
                 <p>
                   <b>Alasan: </b>
-                  {dummyLaptopContent[0].reason}
+                  {laptopDetail.laptop.reason}
                 </p>
               </div>
             ) : null}
@@ -208,7 +205,7 @@ const LaptopDetails = (props) => {
                   <h6>Propicks Comments</h6>
                 </span>
                 <p className="laptopDetails-review-comments-content">
-                  {dummyLaptopContent[0].propicks_comments}
+                  {laptopDetail.laptop.review}
                 </p>
               </div>
             ) : null}

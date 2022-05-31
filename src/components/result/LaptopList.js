@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Icon, Label, Popup, Loader } from "semantic-ui-react";
 import CurrencyFormat from "react-currency-format";
@@ -6,17 +6,10 @@ import Carousel from "nuka-carousel";
 import { HiChevronDown, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
-import { dummyLaptopContent } from "../../utils/dummyData";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-} from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 const LaptopList = (props) => {
   const history = useHistory();
-  const [contentCollapse, setContentCollapse] = useState(0);
 
   const handleLaptopDetails = (reqBody, data) => {
     history.push({
@@ -25,10 +18,6 @@ const LaptopList = (props) => {
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  // function toggleCollapse (id) {
-  //   if(col)
-  // }
 
   const SponsorshipLabel = (props) => (
     <>
@@ -42,7 +31,6 @@ const LaptopList = (props) => {
       ) : null}
     </>
   );
-  console.log(props.recList);
 
   return (
     <div className="laptopList">
@@ -150,30 +138,18 @@ const LaptopList = (props) => {
                     .map((originalLink, linkIdx) => {
                       return (
                         <Fragment key={linkIdx}>
-                          {item.isSponsored ? (
+                          <a
+                            href={originalLink.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <Button
-                              onClick={() =>
-                                handleLaptopDetails(props.reqBody, item)
-                              }
                               className={`item-desc-btn ${originalLink.linkFrom}`}
                             >
                               {item.buttonMessage}
                               <Icon name="right chevron" />
                             </Button>
-                          ) : (
-                            <a
-                              href={originalLink.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Button
-                                className={`item-desc-btn ${originalLink.linkFrom}`}
-                              >
-                                {item.buttonMessage}
-                                <Icon name="right chevron" />
-                              </Button>
-                            </a>
-                          )}
+                          </a>
                         </Fragment>
                       );
                     })}
@@ -208,7 +184,7 @@ const LaptopList = (props) => {
                   <div className="laptopList-item-review-reason">
                     <p>
                       <b>Alasan: </b>
-                      {dummyLaptopContent[0].reason}
+                      {item.reason}
                     </p>
                   </div>
                 ) : null}
