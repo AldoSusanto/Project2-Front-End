@@ -150,7 +150,7 @@ const LaptopList = (props) => {
                             rel="noopener noreferrer"
                           >
                             <Button
-                              className={`item-desc-btn ${originalLink.linkFrom}`}
+                              className={"item-desc-btn " + (item.isSponsored ? 'sponsor-button' : '')}
                             >
                               {item.buttonMessage}
                               <Icon name="right chevron" />
