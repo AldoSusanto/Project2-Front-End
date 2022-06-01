@@ -1,0 +1,491 @@
+.laptopDetails {
+  position: relative;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3vw;
+  margin: 3rem auto 0;
+  position: relative;
+
+  .sponsorshipLabel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.9vw;
+    font-weight: 600;
+    font-family: $quicksand;
+    color: $blue;
+    padding: 4px 8px;
+    border-radius: 30px;
+    background-color: $off-white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    &-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    &-icon {
+      font-size: 1.1vw;
+    }
+
+    &-title {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .sponsorshipLabel:hover {
+    color: $dark-blue;
+    background-color: #e8e8e8;
+    box-shadow: none;
+  }
+
+  &-img {
+    width: 40%;
+    height: auto;
+    margin: 0 3vw;
+
+    .desc-name {
+      h4 {
+        font-size: 1.8vw;
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .slider-image-container {
+      position: relative;
+      width: 100%;
+
+      .slider-prev-btn,
+      .slider-next-btn {
+        border: none;
+        background-color: transparent;
+      }
+
+      .icon-left,
+      .icon-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #575761;
+        font-size: 2.4vw;
+      }
+
+      .paging-item {
+        padding: 0 6px;
+      }
+
+      .dots-custom {
+        transform: scale(1.7);
+      }
+
+      .carousel-img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+      }
+      .carousel-img:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+      }
+    }
+  }
+
+  &-desc {
+    width: 40%;
+    padding: 0 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .desc-price {
+      color: $warning;
+      font-weight: 500;
+      font-size: 1.5vw;
+    }
+
+    .desc-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5vw;
+
+      p {
+        margin: 0;
+        font-size: 1.2vw;
+      }
+    }
+
+    .desc-btn {
+      width: 100%;
+      text-align: center;
+      margin-top: 2vw;
+
+      .item-desc-btn {
+        background-color: $green;
+        color: $off-white;
+        font-size: 1.1vw;
+        border-radius: 15px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 1vw 3.5vw;
+      }
+
+      .item-desc-btn:visited {
+        background-color: $green;
+        color: $off-white;
+      }
+      .item-desc-btn:focus {
+        background-color: $green;
+        color: $off-white;
+      }
+      .item-desc-btn:hover {
+        padding: 1vw 3vw;
+        background-color: darken($color: $green, $amount: 10%);
+        color: $off-white;
+      }
+    }
+  }
+
+  .laptopDetails-insights {
+    width: 100%;
+    margin-top: 1.2vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .insights-item {
+      margin-bottom: 5px;
+      margin-top: 5px;
+      margin-left: 10px;
+      margin-right: 0px;
+    }
+
+    .insights-positive {
+      background-color: $green;
+      color: $off-white;
+    }
+
+    .insights-negative {
+      background-color: $danger;
+      color: $off-white;
+    }
+  }
+
+  .laptopDetails-review {
+    padding: 1.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+
+    &-reason {
+      font-size: 0.9vw;
+      font-family: $poppins;
+
+      p {
+        b {
+          font-weight: 700;
+        }
+        font-weight: 500;
+        color: $off-black;
+      }
+    }
+
+    &-comments {
+      display: flex;
+      flex-direction: column;
+      font-family: $poppins;
+
+      &-title {
+        display: flex;
+
+        h6 {
+          font-size: 1.05vw;
+          color: $orange;
+          border-bottom: 2px solid $orange;
+          padding: 0.6vw 1vw;
+          font-weight: 600;
+        }
+      }
+
+      &-content {
+        font-size: 0.9vw;
+        padding: 0.6vw 1vw;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .laptopDetails {
+    .laptopDetails {
+      .laptopDetails-img {
+        .slider-image-container {
+          .icon-left,
+          .icon-right {
+            font-size: 2.1vw;
+          }
+
+          .paging-item {
+            padding: 0 5px;
+          }
+
+          .dots-custom {
+            transform: scale(1.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .laptopDetails {
+    width: 90%;
+    margin: 5vw auto;
+    align-items: center;
+
+    .sponsorshipLabel {
+      top: 0;
+      right: 0;
+      padding: 3px 6px;
+      font-size: 1.5vw;
+      gap: 0.3rem;
+
+      &-icon {
+        font-size: 1.8vw;
+      }
+    }
+
+    .laptopDetails-img {
+      .desc-name {
+        h4 {
+          font-size: 3.1vw;
+          margin-bottom: 1.2vw;
+        }
+      }
+
+      .highlight-name {
+        gap: 0.4rem;
+
+        small {
+          font-size: calc(0.4rem + 0.6vw);
+        }
+      }
+
+      .slider-image-container {
+        .icon-left,
+        .icon-right {
+          font-size: 3.6vw;
+        }
+        .paging-item {
+          padding: 0 4px;
+        }
+
+        .dots-custom {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .laptopDetails-desc {
+      .desc-price {
+        font-size: 2.8vw;
+      }
+
+      .desc-specs {
+        p {
+          font-size: 2.2vw;
+        }
+      }
+
+      .desc-btn {
+        .item-desc-btn {
+          font-size: 2.2vw;
+        }
+      }
+    }
+
+    .laptopDetails-insights {
+      margin-top: 2.2vw;
+
+      .insights-item {
+        font-size: 1.9vw;
+      }
+    }
+
+    .laptopDetails-review {
+      padding: 1.6vw;
+      gap: 2vw;
+
+      &-reason {
+        font-size: 2vw;
+      }
+
+      &-comments {
+        &-title {
+          h6 {
+            font-size: 2.4vw;
+            padding: 1 1.4vw;
+          }
+        }
+
+        &-content {
+          font-size: 2vw;
+          padding: 1vw 1.4vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .laptopDetails {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 4vw 3vw;
+    margin: 2vw 0 1vw;
+
+    .sponsorshipLabel {
+      top: 0.5rem;
+      right: 0.8rem;
+      padding: 2px 4px;
+      font-size: 2.5vw;
+      gap: 0.2rem;
+
+      &-icon {
+        font-size: 3vw;
+      }
+    }
+
+    .laptopDetails-img {
+      width: 70%;
+      height: auto;
+      margin-top: 2.5rem;
+
+      .desc-name {
+        h4 {
+          font-size: 4vw;
+          text-align: center;
+        }
+      }
+
+      .highlight-name {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.4rem;
+        margin-top: 1.4rem;
+
+        small {
+          font-size: calc(0.4rem + 0.6vw);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      .slider-image-container {
+        .icon-left,
+        .icon-right {
+          font-size: 4.4vw;
+        }
+
+        .paging-item {
+          padding: 0 4px;
+        }
+
+        .dots-custom {
+          transform: scale(1);
+        }
+      }
+    }
+
+    .laptopDetails-desc {
+      width: 100%;
+      margin: 2vw auto 0;
+      display: flex;
+      flex-direction: column;
+
+      .desc-price {
+        text-align: center;
+        font-size: 3.4vw;
+      }
+
+      .desc-specs {
+        min-width: 50%;
+        max-width: 84%;
+        margin: 0 auto;
+        gap: 0.5vw;
+
+        p {
+          font-size: 3vw;
+        }
+      }
+
+      .desc-btn {
+        margin-top: 4vw;
+
+        .item-desc-btn {
+          font-size: 3.2vw;
+          padding: 2.2vw 8vw;
+        }
+        .item-desc-btn:hover {
+          padding: 2.2vw 8.7vw;
+        }
+      }
+    }
+
+    .laptopDetails-insights {
+      margin-top: 2vw;
+
+      .insights-item {
+        font-size: 2.6vw;
+      }
+    }
+
+    .laptopDetails-review {
+      padding: 4vw 2.4vw;
+      gap: 2vw;
+
+      &-reason {
+        font-size: 2.8vw;
+      }
+
+      &-comments {
+        &-title {
+          h6 {
+            font-size: 3.1vw;
+            padding: 1.6vw 3.4vw;
+            margin-bottom: 4px;
+          }
+        }
+
+        &-content {
+          font-size: 2.8vw;
+          padding: 1.6vw 3.2vw;
+        }
+      }
+    }
+  }
+}

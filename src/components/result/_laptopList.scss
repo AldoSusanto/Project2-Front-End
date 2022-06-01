@@ -21,14 +21,74 @@
       font-weight: 600;
     }
 
+    .sponsorship-num {
+      color: $blue;
+    }
+
+    .sponsorshipLabel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.8vw;
+      font-weight: 600;
+      font-family: $quicksand;
+      color: $blue;
+      padding: 4px 8px;
+      border-radius: 30px;
+      background-color: $off-white;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      cursor: default;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+
+      &-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      &-icon {
+        font-size: 1.2rem;
+      }
+
+      &-title {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .sponsorshipLabel:hover {
+      color: $dark-blue;
+      background-color: #e8e8e8;
+      box-shadow: none;
+    }
+
     .laptopList-item-img {
       width: 34%;
       height: auto;
 
-      h4 {
-        font-size: 1.5vw;
-        text-align: center;
-        margin: 0;
+      .desc-name {
+        h4 {
+          font-size: 1.5vw;
+          text-align: center;
+          margin: 0;
+        }
+      }
+
+      .highlight-name {
+        color: $blue;
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+
+        small {
+          font-size: calc(0.2rem + 0.6vw);
+        }
       }
 
       img {
@@ -144,6 +204,88 @@
         color: $off-white;
       }
     }
+
+    .laptopList-item-review {
+      width: 100%;
+      padding: 1.2vw;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2vw;
+
+      &-reason {
+        font-size: 0.9vw;
+        font-family: $poppins;
+
+        p {
+          b {
+            font-weight: 700;
+          }
+          font-weight: 500;
+          color: $off-black;
+        }
+      }
+
+      &-comments {
+        display: flex;
+        flex-direction: column;
+        font-family: $poppins;
+
+        .accordion {
+          box-shadow: none;
+          border-radius: 4px;
+          transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion:hover {
+          background-color: #efeded;
+        }
+
+        .icon-down {
+          color: $orange;
+          font-size: 1.6vw;
+        }
+
+        &-title {
+          display: flex;
+          margin: 0 !important;
+          padding: 0;
+          justify-content: flex-start !important;
+
+          // Delete margin & make icon beside title on MUI class
+          .css-o4b71y-MuiAccordionSummary-content {
+            flex-grow: 0;
+            margin: 0;
+          }
+
+          h6 {
+            font-size: 1.05vw;
+            color: $orange;
+            border-bottom: 2px solid $orange;
+            padding: 0.6vw 1vw;
+            font-weight: 600;
+            margin: 0;
+          }
+        }
+
+        .css-15v22id-MuiAccordionDetails-root {
+          padding: 0 1vw;
+        }
+
+        &-content {
+          font-size: 0.9vw;
+          // padding: 0.6vw 1vw;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .sponsorshipHighlight {
+    background-color: rgba($color: #59bd81, $alpha: 0.2);
+  }
+
+  .border-orange {
+    border-bottom: 2px solid $light-orange !important;
   }
 }
 
@@ -179,10 +321,32 @@
         font-size: 3vw;
       }
 
+      .sponsorshipLabel {
+        top: 0;
+        right: 0;
+        padding: 3px 6px;
+        font-size: 1.5vw;
+        gap: 0.3rem;
+
+        &-icon {
+          font-size: 1.8vw;
+        }
+      }
+
       .laptopList-item-img {
-        h4 {
-          font-size: 2.8vw;
-          margin-bottom: 0.2vw;
+        .desc-name {
+          h4 {
+            font-size: 2.8vw;
+            margin-bottom: 0.2vw;
+          }
+        }
+
+        .highlight-name {
+          gap: 0.4rem;
+
+          small {
+            font-size: calc(0.4rem + 0.6vw);
+          }
         }
 
         .slider-image-container {
@@ -225,6 +389,33 @@
           font-size: 1.7vw;
         }
       }
+
+      .laptopList-item-review {
+        padding: 1.6vw;
+        gap: 2vw;
+
+        &-reason {
+          font-size: 1.75vw;
+        }
+
+        &-comments {
+          &-title {
+            h6 {
+              font-size: 2vw;
+              padding: 1 1.4vw;
+            }
+          }
+
+          &-content {
+            font-size: 1.75vw;
+            padding: 1vw 1.4vw;
+          }
+        }
+      }
+    }
+
+    .sponsorship-padding {
+      padding-top: 4vw;
     }
   }
 }
@@ -245,14 +436,38 @@
         left: 0.7rem;
       }
 
+      .sponsorshipLabel {
+        top: 0.5rem;
+        right: 0.7rem;
+        padding: 2px 4px;
+        font-size: 2.5vw;
+        gap: 0.2rem;
+
+        &-icon {
+          font-size: 2.8vw;
+        }
+      }
+
       .laptopList-item-img {
         width: 70%;
         height: auto;
 
-        h4 {
-          font-size: 4vw;
-          text-align: center;
-          margin: 0;
+        .desc-name {
+          h4 {
+            font-size: 4vw;
+            text-align: center;
+          }
+        }
+
+        .highlight-name {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.4rem;
+          margin-top: 1.6rem;
+
+          small {
+            font-size: calc(0.4rem + 0.6vw);
+          }
         }
 
         img {
@@ -316,6 +531,48 @@
           font-size: 2.6vw;
         }
       }
+
+      .laptopList-item-review {
+        padding: 4vw 2.4vw 0;
+        gap: 2vw;
+
+        &-reason {
+          font-size: 2.8vw;
+        }
+
+        &-comments {
+          .icon-down {
+            font-size: 5vw;
+          }
+
+          &-title {
+            h6 {
+              font-size: 3.1vw;
+              padding: 1.6vw 3.4vw;
+            }
+          }
+
+          .css-15v22id-MuiAccordionDetails-root {
+            padding: 0;
+          }
+
+          &-content {
+            height: 3.6rem;
+            overflow: hidden;
+            font-size: 2.8vw;
+            padding: 1.6vw 3.2vw;
+          }
+
+          .mobileContent-show {
+            height: auto !important;
+            overflow: auto !important;
+          }
+        }
+      }
+    }
+
+    .sponsorship-padding {
+      padding-top: 4.5vw;
     }
   }
 }

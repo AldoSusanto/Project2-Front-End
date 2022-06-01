@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Fragment } from "react";
 import emailjs from "emailjs-com";
@@ -20,6 +20,7 @@ import LaptopList from "../components/result/LaptopList";
 class Result extends React.Component {
   constructor(props) {
     super(props);
+
     var resultJson = {
       priceRange: "10-15",
       pricePref: "medium",
@@ -51,6 +52,7 @@ class Result extends React.Component {
       touchScreen: "",
       brand: ["noPref"],
     };
+
     this.state = {
       name: "",
       email: "",
@@ -116,7 +118,6 @@ class Result extends React.Component {
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
-    console.log(recList);
 
     // Encrypt
     var ciphertext = CryptoJS.AES.encrypt(
@@ -161,7 +162,7 @@ class Result extends React.Component {
                 <h1 className="result-main-title">
                   Top 10 Laptop Yang Sesuai Dengan Kamu
                 </h1>
-                <LaptopList recList={recList} />
+                <LaptopList reqBody={reqBody} recList={recList} />
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"
