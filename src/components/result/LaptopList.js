@@ -40,7 +40,13 @@ const LaptopList = (props) => {
             <div
               key={item.id}
               className={`laptopList-item ${
-                item.isSponsored ? "border-orange" : ""
+                //If current item is sponsored or the next item is sponsored, then we add orange border
+                item.isSponsored ||
+                (props.recList[idx + 1]
+                  ? props.recList[idx + 1].isSponsored
+                  : false)
+                  ? "border-orange"
+                  : ""
               } ${item.isSponsored ? "sponsorship-padding" : ""}`}
             >
               <span
@@ -180,7 +186,7 @@ const LaptopList = (props) => {
                 })}
               </div>
               <div className="laptopList-item-review">
-                {item.reason ? (
+                {item.reason && item.isSponsored ? (
                   <div className="laptopList-item-review-reason">
                     <p>
                       <b>Alasan: </b>
