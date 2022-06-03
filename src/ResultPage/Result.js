@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Fragment } from "react";
 import emailjs from "emailjs-com";
@@ -21,6 +21,7 @@ import FeedbackModal from "../components/FeedbackModal";
 class Result extends React.Component {
   constructor(props) {
     super(props);
+
     var resultJson = {
       priceRange: "10-15",
       pricePref: "medium",
@@ -52,6 +53,7 @@ class Result extends React.Component {
       touchScreen: "",
       brand: ["noPref"],
     };
+
     this.state = {
       name: "",
       email: "",
@@ -134,7 +136,7 @@ class Result extends React.Component {
           <title>ProPicks - Top 10 Laptop khusus untukmu</title>
         </Helmet>
         <Menubar />
-        <FeedbackModal />
+        <FeedbackModal reqBody={reqBody} />
         <div
           className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
@@ -162,7 +164,7 @@ class Result extends React.Component {
                 <h1 className="result-main-title">
                   Top 10 Laptop Yang Sesuai Dengan Kamu
                 </h1>
-                <LaptopList recList={recList} />
+                <LaptopList reqBody={reqBody} recList={recList} />
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"

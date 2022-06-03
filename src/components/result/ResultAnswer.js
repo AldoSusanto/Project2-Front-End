@@ -23,9 +23,9 @@ const ResultAnswer = (props) => {
         <div className="quizAnswer">
           <h5 className="quizAnswer-title">Aktivitas</h5>
           <span className="quizAnswer-item">
-            {props.reqBody.activities.map((item, index) => {
+            {props.reqBody.activities.map((item, idx) => {
               return (
-                <p key={`${item}-${index}`}>
+                <p key={idx}>
                   <MdCircle className="icon-circle" />{" "}
                   {item === "videoConference" ? "Video Conference" : ""}
                   {item === "surfInternet" ? "Browsing Internet" : ""}
@@ -47,9 +47,9 @@ const ResultAnswer = (props) => {
         <div className="quizAnswer">
           <h5 className="quizAnswer-title">Brand Laptop</h5>
           <span className="quizAnswer-item">
-            {props.reqBody.brand.map((item, index) => {
+            {props.reqBody.brand.map((item, idx) => {
               return (
-                <p key={`${item}-${index}`}>
+                <p key={idx}>
                   <MdCircle className="icon-circle" />{" "}
                   {item === "noPref" ? "Brand Apa Saja" : item}
                 </p>

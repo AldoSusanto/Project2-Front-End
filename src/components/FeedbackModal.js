@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { HiX } from "react-icons/hi";
-import { MdSend } from "react-icons/md";
+import { MdErrorOutline, MdSend } from "react-icons/md";
 import { useSessionStorage } from "../utils";
 import { FiCheckCircle } from "react-icons/fi";
+import axios from "axios";
 
-const FeedbackModal = () => {
-  const [showFeedback, setShowFeedback] = useSessionStorage("feedback", {
-    show: false,
-    feedback: false,
-  });
-  const [showToast, setShowToast] = useState(true);
+const FeedbackModal = (props) => {
+  const [feedback, setFeedback] = useSessionStorage("feedback", false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [feedbackInput, setFeedbackInput] = useState("");
   const [feedbackStar, setFeedbackStar] = useState(0);
   const [feedbackQuestion, setFeedbackQuestion] = useState("");
+  const [feedbackError, setFeedbackError] = useState(false);
+
+  function toggleToastFeedback() {
+    setShowToast(!showToast);
+  }
+
+  function toggleFeedbackError() {
+    setFeedbackError(!feedbackError);
+  }
 
   const handleShowFeedback = () => {
-    setShowFeedback({ show: !showFeedback.show, feedback: false });
+    setShowFeedback(!showFeedback);
   };
 
   const handleStar = (id) => {
@@ -54,32 +62,55 @@ const FeedbackModal = () => {
     }
   };
 
-  const handleSendFeedback = (e) => {
+  const handleSendFeedback = async (e) => {
     e.preventDefault();
 
-    setShowFeedback({ show: !showFeedback.show, feedback: true });
+    let feedback = {
+      score: feedbackStar,
+      message: "",
+      userPicks: props.reqBody,
+    };
+
+    try {
+      await axios
+        .post("https://api.propicks.id/v1/feedback", feedback)
+        .then(() => {
+          console.log("Send feedback success");
+          setShowFeedback(!showFeedback);
+          setFeedback(true);
+          toggleToastFeedback();
+        });
+    } catch (error) {
+      console.log(error);
+      toggleFeedbackError();
+    }
   };
 
   useEffect(() => {
-    if (showFeedback.show === true && showFeedback.feedback === false) {
-      setShowFeedback({ show: false, feedback: showFeedback.feedback });
+    if (feedback === false && feedbackInput === "" && feedbackStar === 0) {
+      setTimeout(() => {
+        handleShowFeedback();
+      }, 5000);
     }
 
-    if (showFeedback.show === false && showFeedback.feedback === false) {
+    if (showToast) {
       setTimeout(() => {
-        setShowFeedback({
-          show: !showFeedback.show,
-          feedback: showFeedback.feedback,
-        });
-      }, 30000);
+        toggleToastFeedback();
+      }, 4000);
     }
-  }, []);
+
+    if (feedbackError) {
+      setTimeout(() => {
+        toggleFeedbackError();
+      }, 4000);
+    }
+  }, [showToast, feedbackError]);
 
   return (
     <>
       <div
         className={`feedback-container ${
-          showFeedback.show ? "feedback-show" : "feedback-hidden"
+          showFeedback ? "feedback-show" : "feedback-hidden"
         }`}
       >
         <div className="feedback">
@@ -88,6 +119,12 @@ const FeedbackModal = () => {
             <HiX onClick={handleShowFeedback} className="icon-close" />
           </div>
           <div className="feedback-body">
+            {feedbackError && (
+              <div className="feedback-error">
+                <MdErrorOutline className="icon-error" />
+                <p>Mohon maaf terjadi masalah dengan feedback kami.</p>
+              </div>
+            )}
             <div className="feedback-review">
               <h6 className="feedback-review-title">
                 Bagaimana rekomendasi Propicks menurutmu sejauh ini?
