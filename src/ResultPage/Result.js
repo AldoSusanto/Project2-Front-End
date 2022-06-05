@@ -16,6 +16,7 @@ import ResultAnswer from "../components/result/ResultAnswer";
 import EmailFeatured from "../components/result/EmailFeatured";
 import ToastAlert from "../components/result/ToastAlert";
 import LaptopList from "../components/result/LaptopList";
+import FeedbackModal from "../components/FeedbackModal";
 
 class Result extends React.Component {
   constructor(props) {
@@ -135,6 +136,7 @@ class Result extends React.Component {
           <title>ProPicks - Top 10 Laptop khusus untukmu</title>
         </Helmet>
         <Menubar />
+        <FeedbackModal reqBody={reqBody} />
         <div
           className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"

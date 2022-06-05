@@ -11,13 +11,14 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 const LaptopList = (props) => {
   const history = useHistory();
 
-  const handleLaptopDetails = (reqBody, data) => {
-    history.push({
-      pathname: `/laptop/${data.sponsorId}`,
-      state: reqBody,
-    });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // Route to details page
+  // const handleLaptopDetails = (reqBody, data) => {
+  //   history.push({
+  //     pathname: `/laptop/${data.sponsorId}`,
+  //     state: reqBody,
+  //   });
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
 
   const SponsorshipLabel = (props) => (
     <>

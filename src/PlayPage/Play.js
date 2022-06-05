@@ -257,6 +257,7 @@ const Play = (props) => {
         pathname: "/result",
         state: result,
       });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     // console.log("CollectedTags: " + JSON.stringify(tagArray));
     disableButtonIfNeeded(currentQuestionIndex + 1);
