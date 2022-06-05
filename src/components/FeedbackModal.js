@@ -67,13 +67,14 @@ const FeedbackModal = (props) => {
 
     let feedback = {
       score: feedbackStar,
-      message: "",
+      message: feedbackInput,
       userPicks: props.reqBody,
     };
 
     try {
       await axios
         .post("https://api.propicks.id/v1/feedback", feedback)
+        // .post("http://127.0.0.1:8080/v1/feedback", feedback)
         .then(() => {
           console.log("Send feedback success");
           setShowFeedback(!showFeedback);
@@ -90,7 +91,7 @@ const FeedbackModal = (props) => {
     if (feedback === false && feedbackInput === "" && feedbackStar === 0) {
       setTimeout(() => {
         handleShowFeedback();
-      }, 30000);
+      }, 20000);
     }
 
     if (showToast) {
@@ -177,7 +178,6 @@ const FeedbackModal = (props) => {
                 <div className="feedback-comments">
                   <label htmlFor="feedback">{feedbackQuestion}</label>
                   <textarea
-                    required
                     id="feedback"
                     name="feedback"
                     className="feedback-comments-input"
