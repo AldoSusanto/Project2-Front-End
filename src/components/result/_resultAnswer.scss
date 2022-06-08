@@ -28,6 +28,21 @@
       gap: 0.4vw;
       color: $dark-variant;
 
+      &-budget {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon-pen {
+          font-size: 1.2vw;
+          color: #777777;
+          cursor: pointer;
+        }
+        .icon-pen:hover {
+          color: #5b5959;
+        }
+      }
+
       &-title {
         margin: 0;
         font-size: 1.3vw;
@@ -39,6 +54,7 @@
         padding-left: 0.5vw;
         font-size: 1.16vw;
         font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+        margin: 0;
       }
 
       &-item {
@@ -66,6 +82,64 @@
   }
 }
 
+.budget-collapse {
+  margin-top: -0.4rem;
+}
+
+// Multi Slider
+.budget-slider {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+
+  &-multi-range {
+    position: relative;
+    width: 90%;
+    display: flex;
+    margin: 6px auto;
+
+    .min-value {
+      position: absolute;
+      font-size: 1.16vw;
+      left: 0;
+      top: 2.5rem;
+    }
+
+    .max-value {
+      position: absolute;
+      font-size: 1.16vw;
+      right: 0;
+      top: 2.5rem;
+    }
+
+    .MuiSlider-root {
+      height: 5px;
+
+      .MuiSlider-thumb {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &-btn {
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 4px;
+    padding: 8px 20px;
+    border: 1px solid $green;
+    font-weight: 600;
+    color: $off-white;
+    background-color: $green;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1vw;
+  }
+  &-btn:hover {
+    border: 1px solid $off-white;
+    color: $off-white;
+    background-color: $green-variant;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .resultAnswer {
     &-title {
@@ -82,6 +156,13 @@
 
       .quizAnswer {
         gap: 0.6vw;
+
+        &-budget {
+          gap: 1vw;
+          .icon-pen {
+            font-size: 1.5vw;
+          }
+        }
 
         &-title {
           font-size: 2.5vw;
@@ -104,6 +185,44 @@
           }
         }
       }
+
+      .mobile-slider-budget {
+        width: 100%;
+      }
+    }
+  }
+
+  .budget-collapse {
+    margin-top: 0;
+  }
+
+  // Multi Slider
+  .budget-slider {
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-multi-range {
+      width: 90%;
+
+      .min-value {
+        font-size: 2vw;
+        top: 2.7rem;
+      }
+
+      .max-value {
+        font-size: 2vw;
+        top: 2.7rem;
+      }
+    }
+
+    &-btn {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      width: 90%;
+      font-size: 2vw;
     }
   }
 }
@@ -128,6 +247,14 @@
         flex-direction: column;
         gap: 1.2vw;
         color: $dark-variant;
+
+        &-budget {
+          gap: 2vw;
+
+          .icon-pen {
+            font-size: 2.5vw;
+          }
+        }
 
         &-title {
           font-size: 3vw;
@@ -156,6 +283,44 @@
           }
         }
       }
+    }
+  }
+
+  .budget-collapse {
+    margin-top: 0;
+  }
+
+  // Multi Slider
+  .budget-slider {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+
+    &-multi-range {
+      .min-value {
+        font-size: 2.8vw;
+        top: 2.5rem;
+      }
+
+      .max-value {
+        font-size: 2.8vw;
+        top: 2.5rem;
+      }
+
+      .MuiSlider-root {
+        height: 4px;
+
+        .MuiSlider-thumb {
+          width: 17px;
+          height: 17px;
+        }
+      }
+    }
+
+    &-btn {
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+      width: 90%;
+      font-size: 3vw;
     }
   }
 }
