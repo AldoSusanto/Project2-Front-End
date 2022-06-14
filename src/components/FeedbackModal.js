@@ -91,7 +91,7 @@ const FeedbackModal = (props) => {
     if (feedback === false && feedbackInput === "" && feedbackStar === 0) {
       setTimeout(() => {
         handleShowFeedback();
-      }, 20000);
+      }, 25000);
     }
 
     if (showToast) {
