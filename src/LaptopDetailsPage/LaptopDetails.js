@@ -128,7 +128,7 @@ const LaptopDetails = (props) => {
               </p>
               <p>
                 <strong>Storage: </strong>{" "}
-                {`${laptopDetail.laptop.storageOne} GB`}
+                {`${laptopDetail.laptop.totalStorage} GB`}
               </p>
               <p>
                 <strong>Graphics: </strong> {laptopDetail.laptop.graphics}

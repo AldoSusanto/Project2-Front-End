@@ -86,8 +86,7 @@ class Result extends React.Component {
     }
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
-      // axios
-      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      //  .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
