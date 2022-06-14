@@ -28,21 +28,6 @@
       gap: 0.4vw;
       color: $dark-variant;
 
-      &-budget {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .icon-pen {
-          font-size: 1.2vw;
-          color: #777777;
-          cursor: pointer;
-        }
-        .icon-pen:hover {
-          color: #5b5959;
-        }
-      }
-
       &-title {
         margin: 0;
         font-size: 1.3vw;
@@ -148,21 +133,16 @@
     }
 
     &-body {
+      width: 90%;
+      margin: 0 auto;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
       gap: 2vw;
       padding: 1.2vw;
 
       .quizAnswer {
         gap: 0.6vw;
-
-        &-budget {
-          gap: 1vw;
-          .icon-pen {
-            font-size: 1.5vw;
-          }
-        }
 
         &-title {
           font-size: 2.5vw;
@@ -192,6 +172,29 @@
     }
   }
 
+  .quizAnswer-budget {
+    width: 90%;
+    margin: 0.8rem auto 0;
+    padding: 0 1.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    color: $dark-variant;
+
+    &-title {
+      font-size: 2.5vw;
+      color: $blue;
+      margin: 0;
+    }
+
+    &-price {
+      padding-top: 0.6vw;
+      padding-bottom: 1.1rem;
+      padding-left: 0;
+      font-size: 2vw;
+    }
+  }
+
   .budget-collapse {
     margin-top: 0;
   }
@@ -205,16 +208,29 @@
     align-items: center;
 
     &-multi-range {
-      width: 90%;
+      width: 100%;
 
       .min-value {
         font-size: 2vw;
-        top: 2.7rem;
+        top: 3.2rem;
       }
 
       .max-value {
         font-size: 2vw;
-        top: 2.7rem;
+        top: 3.2rem;
+      }
+
+      .result-value {
+        font-weight: 500;
+        position: absolute;
+        font-size: 2.2vw;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        top: 3.3rem;
       }
     }
 
@@ -237,9 +253,11 @@
     }
 
     &-body {
+      width: 90%;
+      margin: 0 auto;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
       padding: 3vw 1.2vw;
 
       .quizAnswer {
@@ -247,14 +265,6 @@
         flex-direction: column;
         gap: 1.2vw;
         color: $dark-variant;
-
-        &-budget {
-          gap: 2vw;
-
-          .icon-pen {
-            font-size: 2.5vw;
-          }
-        }
 
         &-title {
           font-size: 3vw;
@@ -284,6 +294,21 @@
         }
       }
     }
+
+    .quizAnswer-budget {
+      margin: 0 auto;
+
+      &-title {
+        font-size: 3vw;
+      }
+
+      &-price {
+        padding-top: 1vw;
+        padding-bottom: 0.8rem;
+        padding-left: 0;
+        font-size: 2.8vw;
+      }
+    }
   }
 
   .budget-collapse {
@@ -296,14 +321,29 @@
     margin-bottom: 0.3rem;
 
     &-multi-range {
+      margin: 0 auto 6px;
+
       .min-value {
         font-size: 2.8vw;
-        top: 2.5rem;
+        top: 2.8rem;
       }
 
       .max-value {
         font-size: 2.8vw;
-        top: 2.5rem;
+        top: 2.8rem;
+      }
+
+      .result-value {
+        font-weight: 500;
+        position: absolute;
+        font-size: 3vw;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        top: 2.8rem;
       }
 
       .MuiSlider-root {
@@ -317,10 +357,10 @@
     }
 
     &-btn {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       margin-bottom: 0.6rem;
-      width: 90%;
-      font-size: 3vw;
+      width: 100%;
+      font-size: 3.3vw;
     }
   }
 }

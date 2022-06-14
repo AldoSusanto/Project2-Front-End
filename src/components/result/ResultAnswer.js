@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { MdCircle } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
 import Slider from "@mui/material/Slider";
@@ -38,33 +38,33 @@ const ResultAnswer = (props) => {
       },
     });
     history.go(0);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const sliderBudget = (
-    <Collapse className="budget-collapse" in={editBudget}>
-      <Fade in={editBudget}>
-        <div className="budget-slider">
-          <div className="budget-slider-multi-range">
-            <Slider
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
-              disableSwap
-              min={0}
-              max={50}
-            />
-            <span className="min-value">0</span>
-            <span className="max-value">50</span>
-          </div>
-          <button onClick={handleSave} className="budget-slider-btn">
-            Simpan
-          </button>
-        </div>
-      </Fade>
-    </Collapse>
+    <div className="budget-slider">
+      <div className="budget-slider-multi-range">
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          getAriaValueText={valuetext}
+          disableSwap
+          min={0}
+          max={50}
+        />
+        <span className="min-value">0</span>
+        <span className="d-block d-lg-none result-value">{`${value[0]}-${value[1]} Juta`}</span>
+        <span className="max-value">50</span>
+      </div>
+      <button onClick={handleSave} className="budget-slider-btn">
+        Ubah Budget
+      </button>
+    </div>
   );
 
   useEffect(() => {
@@ -89,27 +89,26 @@ const ResultAnswer = (props) => {
     <div className="resultAnswer">
       <h3 className="resultAnswer-title">Jawaban Kamu</h3>
       <div className="resultAnswer-body">
-        <div className="quizAnswer">
-          <span className="quizAnswer-budget">
-            <h5 className="quizAnswer-title">Budget </h5>
-            <FaPen onClick={toggleEdit} className="icon-pen" />
-          </span>
-          {editBudget ? (
-            <p className="quizAnswer-price">{`${value[0]}-${value[1]} Juta`}</p>
+        <div className="quizAnswer d-none d-lg-flex">
+          <h5 className="quizAnswer-title">Budget</h5>
+          {props.reqBody.priceRange !== "budgetUnknown" ? (
+            <Fragment>
+              <p className="quizAnswer-price">
+                {`${value[0]}-${value[1]} Juta`}
+              </p>
+              <div className="d-none d-lg-block">{sliderBudget}</div>
+            </Fragment>
           ) : (
-            <p className="quizAnswer-price">{`${
-              props.reqBody.priceRange !== "budgetUnknown"
-                ? `${props.reqBody.priceRange} Juta`
-                : `Belum tahu - ${
-                    props.reqBody.pricePref === "LOW"
-                      ? "Pilihkan laptop dengan spesifikasi budget friendly"
-                      : props.reqBody.pricePref === "MEDIUM"
-                      ? "Pilihkan laptop dengan spesifikasi recommended"
-                      : "Pilihkan laptop dengan spesifikasi maximal"
-                  }`
-            }`}</p>
+            <p className="quizAnswer-price">
+              {`Belum tahu - ${
+                props.reqBody.pricePref === "LOW"
+                  ? "Pilihkan laptop dengan spesifikasi budget friendly"
+                  : props.reqBody.pricePref === "MEDIUM"
+                  ? "Pilihkan laptop dengan spesifikasi recommended"
+                  : "Pilihkan laptop dengan spesifikasi maximal"
+              }`}
+            </p>
           )}
-          <div className="d-none d-lg-block">{sliderBudget}</div>
         </div>
         <div className="quizAnswer">
           <h5 className="quizAnswer-title">Aktivitas</h5>
@@ -149,7 +148,22 @@ const ResultAnswer = (props) => {
           </span>
         </div>
       </div>
-      <div className="d-block d-lg-none">{sliderBudget}</div>
+      <div className="quizAnswer-budget d-flex d-lg-none">
+        <h5 className="quizAnswer-budget-title">Budget </h5>
+        {props.reqBody.priceRange !== "budgetUnknown" ? (
+          <div>{sliderBudget}</div>
+        ) : (
+          <p className="quizAnswer-budget-price">
+            {`Belum tahu - ${
+              props.reqBody.pricePref === "LOW"
+                ? "Pilihkan laptop dengan spesifikasi budget friendly"
+                : props.reqBody.pricePref === "MEDIUM"
+                ? "Pilihkan laptop dengan spesifikasi recommended"
+                : "Pilihkan laptop dengan spesifikasi maximal"
+            }`}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
