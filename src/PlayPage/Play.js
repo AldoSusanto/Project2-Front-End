@@ -186,6 +186,10 @@ const Play = (props) => {
       currResult.size = selectedTag;
     }
 
+    if (questionLabel === "touchScreen") {
+      currResult.touchScreen = selectedTag;
+    }
+
     if (questionLabel === "weightOne") {
       currResult.weight = currResult.weight.concat(selectedTag);
     }
