@@ -261,7 +261,7 @@
     "isMultiple": false,
     "isSlider": false,
     "questionLabel": "touchScreen",
-    "options": ["Ya", "Mungking", "Tidak"],
+    "options": ["Ya", "Mungkin", "Tidak"],
     "tags": ["YesTouch", "CanTouch", "NoTouch"]
   },
   {
