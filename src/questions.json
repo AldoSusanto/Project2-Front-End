@@ -256,12 +256,12 @@
     "tags": ["light", "medium"]
   },
   {
-    "question": "Apakah kamu ingin laptop touch screen?",
+    "question": "Apakah kamu butuh laptop yang bisa touch screen?",
     "askIf": "",
     "isMultiple": false,
     "isSlider": false,
     "questionLabel": "touchScreen",
-    "options": ["Harus Touchscreen", "Boleh Touchscreen", "Tidak Touchscreen"],
+    "options": ["Ya", "Tidak", "Mungkin"],
     "tags": ["YesTouch", "CanTouch", "NoTouch"]
   },
   {
