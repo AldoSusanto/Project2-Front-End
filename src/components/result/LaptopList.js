@@ -127,7 +127,7 @@ const LaptopList = (props) => {
                     <strong>RAM: </strong> {`${item.ram} GB`}
                   </p>
                   <p>
-                    <strong>Storage: </strong> {`${item.storageOne} GB`}
+                    <strong>Storage: </strong> {`${item.totalStorage} GB`}
                   </p>
                   <p>
                     <strong>Graphics: </strong> {item.graphics}
