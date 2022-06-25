@@ -20,7 +20,7 @@ const TryQuizModal = () => {
   useEffect(() => {
     setTimeout(() => {
       toggleQuizModal();
-    }, 60000);
+    }, 5000);
   }, []);
 
   return (
@@ -37,12 +37,9 @@ const TryQuizModal = () => {
           <span className="tryQuiz-body-image">
             <img src={tryQuizImg} alt="Try Quiz" />
           </span>
-          <h6 className="tryQuiz-body-title">
-            Sudahkah kamu mencoba quiz Propicks?
-          </h6>
+          <h6 className="tryQuiz-body-title">Bingung mulai dari mana?</h6>
           <p className="tryQuiz-body-content">
-            Yuk coba quiz sekarang untuk mengetahui rekomendasi laptop dari
-            Propicks
+            Yuk coba quiz Propicks untuk mengetahui laptop yang terbaik untukmu.
           </p>
           <button onClick={handleTryQuiz} className="tryQuiz-body-btn">
             <span className="tryQuiz-body-btn-title">Coba Quiz</span>
