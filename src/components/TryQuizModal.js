@@ -20,7 +20,7 @@ const TryQuizModal = () => {
   useEffect(() => {
     setTimeout(() => {
       toggleQuizModal();
-    }, 5000);
+    }, 45000);
   }, []);
 
   return (
