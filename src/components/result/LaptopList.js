@@ -1,20 +1,71 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Icon, Label, Popup, Loader } from "semantic-ui-react";
 import CurrencyFormat from "react-currency-format";
 import Carousel from "nuka-carousel";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { HiChevronDown, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { BsShieldFillCheck } from "react-icons/bs";
+import { useHistory } from "react-router-dom";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 const LaptopList = (props) => {
+  const history = useHistory();
+
+  // Route to details page
+  // const handleLaptopDetails = (reqBody, data) => {
+  //   history.push({
+  //     pathname: `/laptop/${data.sponsorId}`,
+  //     state: reqBody,
+  //   });
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
+
+  const SponsorshipLabel = (props) => (
+    <>
+      {props.isSponsored ? (
+        <div className="sponsorshipLabel">
+          <BsShieldFillCheck className="sponsorshipLabel-icon" />
+          <span className="sponsorshipLabel-info">
+            <span className="sponsorshipLabel-title">Trusted Partner</span>
+          </span>
+        </div>
+      ) : null}
+    </>
+  );
+
   return (
     <div className="laptopList">
       {props.recList !== undefined ? (
         props.recList.map((item, idx) => {
           return (
-            <div key={item.id} className="laptopList-item">
-              <span className="laptop-num">{idx + 1}.</span>
+            <div
+              key={item.id}
+              className={`laptopList-item ${
+                //If current item is sponsored or the next item is sponsored, then we add orange border
+                item.isSponsored ||
+                (props.recList[idx + 1]
+                  ? props.recList[idx + 1].isSponsored
+                  : false)
+                  ? "border-orange"
+                  : ""
+              } ${item.isSponsored ? "sponsorship-padding" : ""}`}
+            >
+              <span
+                className={`laptop-num ${
+                  item.isSponsored ? "sponsorship-num" : ""
+                }`}
+              >
+                {idx + 1}.
+              </span>
+              <SponsorshipLabel isSponsored={item.isSponsored} />
               <div className="laptopList-item-img">
-                <h4 className="desc-name">{item.name}</h4>
+                <span
+                  className={`desc-name ${
+                    item.isSponsored ? "highlight-name" : ""
+                  }`}
+                >
+                  <h4>{item.name}</h4>
+                </span>
                 {item.imageLink.length > 1 ? (
                   <div className="slider-image-container">
                     <Carousel
@@ -76,7 +127,7 @@ const LaptopList = (props) => {
                     <strong>RAM: </strong> {`${item.ram} GB`}
                   </p>
                   <p>
-                    <strong>Storage: </strong> {`${item.storageOne} GB`}
+                    <strong>Storage: </strong> {`${item.totalStorage} GB`}
                   </p>
                   <p>
                     <strong>Graphics: </strong> {item.graphics}
@@ -90,29 +141,36 @@ const LaptopList = (props) => {
                 </div>
                 <div className="desc-btn">
                   {item.link
-                    .filter((link) => link.linkFrom !== "")
-                    .map((originalLink) => {
+                    .filter((link) => link.link !== "" || link.linkFrom !== "")
+                    .map((originalLink, linkIdx) => {
                       return (
-                        <a
-                          href={originalLink.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button
-                            className={`item-desc-btn ${originalLink.linkFrom}`}
+                        <Fragment key={linkIdx}>
+                          <a
+                            href={originalLink.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
                           >
-                            {`Visit ${originalLink.linkFrom}`}
-                            <Icon name="right chevron" />
-                          </Button>
-                        </a>
+                            <Button
+                              id={item.sponsorId}
+                              className={
+                                "item-desc-btn " +
+                                (item.isSponsored ? "sponsor-button" : "")
+                              }
+                            >
+                              {item.buttonMessage}
+                              <Icon name="right chevron" />
+                            </Button>
+                          </a>
+                        </Fragment>
                       );
                     })}
                 </div>
               </div>
               <div className="laptopList-item-insights">
-                {item.insights.map((insight) => {
+                {item.insights.map((insight, insightIdx) => {
                   return (
                     <Popup
+                      key={insightIdx}
                       inverted
                       content={insight.description}
                       trigger={
@@ -131,6 +189,35 @@ const LaptopList = (props) => {
                     />
                   );
                 })}
+              </div>
+              <div className="laptopList-item-review">
+                {item.reason && item.isSponsored ? (
+                  <div className="laptopList-item-review-reason">
+                    <p>
+                      <b>Alasan: </b>
+                      {item.reason}
+                    </p>
+                  </div>
+                ) : null}
+                {item.review !== "-" ? (
+                  <div className="laptopList-item-review-comments">
+                    <Accordion className="accordion">
+                      <AccordionSummary
+                        expandIcon={<HiChevronDown className="icon-down" />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        className="laptopList-item-review-comments-title"
+                      >
+                        <h6>Propicks Comments</h6>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <p className="laptopList-item-review-comments-content">
+                          {item.review}
+                        </p>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                ) : null}
               </div>
             </div>
           );

@@ -256,6 +256,15 @@
     "tags": ["light", "medium"]
   },
   {
+    "question": "Apakah kamu butuh laptop yang bisa touch screen?",
+    "askIf": "",
+    "isMultiple": false,
+    "isSlider": false,
+    "questionLabel": "touchScreen",
+    "options": ["Ya", "Mungkin", "Tidak"],
+    "tags": ["YesTouch", "CanTouch", "NoTouch"]
+  },
+  {
     "question": "Pilih brand2 yang kamu inginkan",
     "askIf": "",
     "isMultiple": true,

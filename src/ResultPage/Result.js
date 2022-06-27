@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Fragment } from "react";
 import emailjs from "emailjs-com";
@@ -16,10 +16,12 @@ import ResultAnswer from "../components/result/ResultAnswer";
 import EmailFeatured from "../components/result/EmailFeatured";
 import ToastAlert from "../components/result/ToastAlert";
 import LaptopList from "../components/result/LaptopList";
+import FeedbackModal from "../components/FeedbackModal";
 
 class Result extends React.Component {
   constructor(props) {
     super(props);
+
     var resultJson = {
       priceRange: "10-15",
       pricePref: "medium",
@@ -51,6 +53,7 @@ class Result extends React.Component {
       touchScreen: "",
       brand: ["noPref"],
     };
+
     this.state = {
       name: "",
       email: "",
@@ -83,8 +86,7 @@ class Result extends React.Component {
     }
     axios
       .post("https://api.propicks.id/v1/recommendation", reqBody)
-      // axios
-      //   .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
+      //  .post("http://127.0.0.1:8080/v1/recommendation", reqBody)
       .then((res) => {
         this.setState({
           recommendations: res,
@@ -116,7 +118,6 @@ class Result extends React.Component {
     var prefix_wa =
       "Hello Propicks, saya ingin mencari laptop yang tepat untuk saya ! Code:\n\n";
     var prefix_url = "https://wa.me/6287868572240?text=";
-    console.log(recList);
 
     // Encrypt
     var ciphertext = CryptoJS.AES.encrypt(
@@ -134,6 +135,7 @@ class Result extends React.Component {
           <title>ProPicks - Top 10 Laptop khusus untukmu</title>
         </Helmet>
         <Menubar />
+        <FeedbackModal reqBody={reqBody} />
         <div
           className="alert alert-success promo-banner col-xs-1 text-center"
           role="alert"
@@ -161,7 +163,7 @@ class Result extends React.Component {
                 <h1 className="result-main-title">
                   Top 10 Laptop Yang Sesuai Dengan Kamu
                 </h1>
-                <LaptopList recList={recList} />
+                <LaptopList reqBody={reqBody} recList={recList} />
                 <Popup
                   inverted
                   content="Dapatkan konsultasi gratis dari tim professional kami dari Whatsapp !"

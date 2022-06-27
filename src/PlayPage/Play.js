@@ -186,6 +186,10 @@ const Play = (props) => {
       currResult.size = selectedTag;
     }
 
+    if (questionLabel === "touchScreen") {
+      currResult.touchScreen = selectedTag;
+    }
+
     if (questionLabel === "weightOne") {
       currResult.weight = currResult.weight.concat(selectedTag);
     }
@@ -257,6 +261,7 @@ const Play = (props) => {
         pathname: "/result",
         state: result,
       });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     // console.log("CollectedTags: " + JSON.stringify(tagArray));
     disableButtonIfNeeded(currentQuestionIndex + 1);

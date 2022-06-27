@@ -16,6 +16,7 @@ import homeImg from "../assets/image-1.png";
 import { Popup } from "semantic-ui-react";
 import HeadlineHighlight from "../components/HeadlineHighlight";
 import { TiShoppingCart } from "react-icons/ti";
+import TryQuizModal from "../components/TryQuizModal";
 
 var prefix_url =
   "https://wa.me/6287868572240?text=Hello%20Propicks%2C%20saya%20ingin%20mencari%20laptop%20yang%20tepat%20untuk%20saya%20%21%20%3AD";
@@ -42,14 +43,17 @@ const Home = () => {
       </Helmet>
       <Menubar />
 
+      {/* Try Quiz Modal */}
+      <TryQuizModal />
+
       {/* Cover Page */}
       <div className="main">
         <div
           className="alert alert-success position-absolute promo-banner col-12 text-center"
           role="alert"
         >
-          Ngobrol dengan kami via WA secara gratis dan dapatkan cashback hingga &nbsp;{" "}
-          <strong> Rp. 500,000 !! </strong>
+          Ngobrol dengan kami via WA secara gratis dan dapatkan cashback hingga
+          &nbsp; <strong> Rp. 500,000 !! </strong>
         </div>
         <div id="home" className="row">
           <div className="col-12 col-md-6 col-xl-8 text-center">
@@ -65,8 +69,8 @@ const Home = () => {
               />
             </div>
             <p>
-              Propicks akan merekomendasikan laptop{" "}
-              <br className="d-none d-sm-block"></br> yang tepat untukmu
+              Isi quiz kami dan dapatkan rekomendasi{" "}
+              <br className="d-none d-sm-block"></br> laptop yang tepat untukmu
             </p>
             <Link to={`/play`}>
               <button type="button" name="button" className="btn btn-success">

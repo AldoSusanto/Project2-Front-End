@@ -1,5 +1,6 @@
 // colors
 $orange: #ffa500;
+$light-orange: #ffba39;
 $off-white: #f8f8f8;
 $green: #59bd81;
 $green-variant: #43a877;
@@ -31,17 +32,20 @@ $quicksand: "Quicksand", sans-serif;
 $poppins: "Poppins", sans-serif;
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "./HomePage/home";
 @import "./PlayPage/play";
 @import "./ResultPage/result";
 @import "./menubar";
 @import "./footer";
 @import "./components/headlineHighlight";
+@import "./components/feedbackModal";
 @import "./components/result/laptopList";
 @import "./components/result/emailFeatured";
 @import "./components/result/resultAnswer";
 @import "./components/result/toastAlert";
+@import "./components/tryQuizModal";
+@import "./LaptopDetailsPage/laptopDetails";
 
 * {
   padding: 0;
