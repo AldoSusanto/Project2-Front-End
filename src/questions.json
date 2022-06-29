@@ -296,5 +296,14 @@
       "Microsoft",
       "Toshiba"
     ]
+  },
+  {
+    "question": "Apakah kamu ingin dihubungi Propicks Expert untuk dibantu direkomendasikan laptop? (optional)",
+    "askIf": "",
+    "isMultiple": false,
+    "isSlider": false,
+    "questionLabel": "contactForm",
+    "options": [],
+    "tags": []
   }
 ]

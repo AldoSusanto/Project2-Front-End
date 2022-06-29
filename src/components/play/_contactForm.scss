@@ -1,0 +1,88 @@
+.contact-form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .contact-form-input {
+    label,
+    div,
+    input,
+    select,
+    option,
+    li {
+      font-size: calc(0.5rem + 0.7vw);
+    }
+  }
+}
+
+.option-input {
+  font-size: calc(0.4rem + 0.7vw) !important;
+}
+
+@media screen and (max-width: 1366px) {
+  .contact-form {
+    width: 50%;
+    gap: 2rem;
+
+    .contact-form-input {
+      label,
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(0.44rem + 0.7vw);
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.35rem + 0.7vw) !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .contact-form {
+    width: 90%;
+    gap: 2.2rem;
+
+    .contact-form-input {
+      label,
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(1rem + 0.7vw);
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.8rem + 0.7vw) !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .contact-form {
+    width: 100%;
+    gap: 2rem;
+
+    .contact-form-input {
+      label,
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(0.9rem + 0.7vw);
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.8rem + 0.7vw) !important;
+  }
+}
