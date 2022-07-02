@@ -57,7 +57,7 @@ const Play = (props) => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState([]);
   const [otherCategory, setOtherCategory] = useState("");
-  const [telp, setTelp] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
@@ -282,20 +282,19 @@ const Play = (props) => {
       contactUser = {
         name,
         category: [...filterCategory, otherCategory],
-        telp,
+        phoneNumber,
       };
     } else {
       contactUser = {
         name,
         category: [...category],
-        telp,
+        phoneNumber,
       };
     }
-    console.log(contactUser);
     sendEmail();
     props.history.push({
       pathname: "/result",
-      state: result,
+      state: { ...result, ...contactUser },
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -438,11 +437,11 @@ const Play = (props) => {
                 name={name}
                 category={category}
                 otherCategory={otherCategory}
-                telp={telp}
+                phoneNumber={phoneNumber}
                 setName={setName}
                 setCategory={setCategory}
                 setOtherCategory={setOtherCategory}
-                setTelp={setTelp}
+                setPhoneNumber={setPhoneNumber}
               />
               <p className="form-note">
                 Note: Jika tidak berkenan anda dapat mengabaikan form ini dan

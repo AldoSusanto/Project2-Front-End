@@ -42,7 +42,8 @@ export default function ContactForm(props) {
         name="wa"
         label="Nomor Whatsapp"
         variant="outlined"
-        onChange={(e) => props.setTelp(e.target.value)}
+        onChange={(e) => props.setPhoneNumber(e.target.value)}
+        value={props.phoneNumber}
         className="contact-form-input"
         InputLabelProps={{
           shrink: true,
