@@ -58,14 +58,16 @@ export default function SelectInput(props) {
   return (
     <Fragment>
       <FormControl className="contact-form-input">
-        <InputLabel id="category">Kategori</InputLabel>
+        <InputLabel shrink id="category">
+          Kategori
+        </InputLabel>
         <Select
           labelId="category"
           id="category-multiple"
           multiple
           value={props.category}
           onChange={handleChange}
-          input={<OutlinedInput id="category" label="Category" />}
+          input={<OutlinedInput id="category" notched label="Category" />}
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
@@ -96,6 +98,9 @@ export default function SelectInput(props) {
           onChange={(e) => props.setOtherCategory(e.target.value)}
           value={props.otherCategory}
           className="contact-form-input"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
       )}
     </Fragment>

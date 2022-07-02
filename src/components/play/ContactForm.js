@@ -1,5 +1,7 @@
-import { Box, TextField } from "@mui/material";
+import { Box, InputAdornment, TextField } from "@mui/material";
 import React from "react";
+import { FaUser, FaWhatsapp } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 import SelectInput from "./SelectInput";
 
 export default function ContactForm(props) {
@@ -18,6 +20,16 @@ export default function ContactForm(props) {
         onChange={(e) => props.setName(e.target.value)}
         value={props.name}
         className="contact-form-input"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment sx={{ borderRadius: "30px" }} position="end">
+              <FaUser className="icon-account" />
+            </InputAdornment>
+          ),
+        }}
       />
       <SelectInput
         category={props.category}
@@ -28,10 +40,20 @@ export default function ContactForm(props) {
       <TextField
         id="wa"
         name="wa"
-        label="Nomor Whats App"
+        label="Nomor Whatsapp"
         variant="outlined"
         onChange={(e) => props.setTelp(e.target.value)}
         className="contact-form-input"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment sx={{ borderRadius: "30px" }} position="end">
+              <IoLogoWhatsapp className="icon-whatsapp" />
+            </InputAdornment>
+          ),
+        }}
       />
     </Box>
   );

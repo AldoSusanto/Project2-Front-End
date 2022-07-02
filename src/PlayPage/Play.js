@@ -433,16 +433,22 @@ const Play = (props) => {
             </>
           )}
           {currentQuestion.questionLabel === "contactForm" && (
-            <ContactForm
-              name={name}
-              category={category}
-              otherCategory={otherCategory}
-              telp={telp}
-              setName={setName}
-              setCategory={setCategory}
-              setOtherCategory={setOtherCategory}
-              setTelp={setTelp}
-            />
+            <Fragment>
+              <ContactForm
+                name={name}
+                category={category}
+                otherCategory={otherCategory}
+                telp={telp}
+                setName={setName}
+                setCategory={setCategory}
+                setOtherCategory={setOtherCategory}
+                setTelp={setTelp}
+              />
+              <p className="form-note">
+                Note: Jika tidak berkenan anda dapat mengabaikan form ini dan
+                dapat langsung menekan tombol "Next" dibawah.
+              </p>
+            </Fragment>
           )}
           <div className="button-container d-flex justify-content-center justify-content-md-start">
             {currentQuestion.questionLabel === "contactForm" ? (
