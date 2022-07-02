@@ -1,6 +1,6 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import React from "react";
-import { FaUser, FaWhatsapp } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import SelectInput from "./SelectInput";
 
