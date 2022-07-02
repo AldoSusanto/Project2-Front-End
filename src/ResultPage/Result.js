@@ -285,7 +285,6 @@ class Result extends React.Component {
     });
   }
 
-  // Deprecated
   sendEmail() {
     var email = [];
     var emailHTML =

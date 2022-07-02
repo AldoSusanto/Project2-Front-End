@@ -296,5 +296,14 @@
       "Microsoft",
       "Toshiba"
     ]
+  },
+  {
+    "question": "(Optional) Apakah kamu ingin dibantu oleh expert Propicks via WA untuk mencari laptop terbaikmu?",
+    "askIf": "",
+    "isMultiple": false,
+    "isSlider": false,
+    "questionLabel": "contactForm",
+    "options": [],
+    "tags": []
   }
 ]
