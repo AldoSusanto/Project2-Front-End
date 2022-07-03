@@ -171,6 +171,11 @@
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
+.form-note {
+  padding: 2rem 2rem 0;
+  font-size: calc(0.4rem + 0.6vw);
+}
+
 .button-container {
   margin: 20px 0 $sm 0;
   padding: $md;
@@ -316,6 +321,10 @@
     }
   }
 
+  .form-note {
+    font-size: calc(0.45rem + 0.6vw);
+  }
+
   .multi-range {
     .min-value {
       top: 2.8rem;
@@ -426,6 +435,11 @@
     }
   }
 
+  .form-note {
+    padding: 2rem 2rem 0;
+    font-size: calc(0.9rem + 0.6vw);
+  }
+
   .button-container {
     margin: 10px 0 $normal 0;
     padding: $md;
@@ -523,6 +537,11 @@
 
   .quiz-body {
     padding-top: 28vw;
+  }
+
+  .form-note {
+    padding: 2rem 0 0;
+    font-size: calc(0.7rem + 0.6vw);
   }
 }
 

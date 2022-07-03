@@ -1,0 +1,175 @@
+.contact-form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .contact-form-input {
+    label {
+      font-size: calc(0.8rem + 0.7vw) !important;
+      color: var(--color-dark);
+    }
+
+    div,
+    input,
+    select,
+    option,
+    li {
+      font-size: calc(0.8rem + 0.7vw) !important;
+      color: var(--color-dark);
+    }
+
+    input {
+      padding: 18.5px;
+    }
+
+    // Override border radius
+    .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root,
+    .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+      border-radius: 30px;
+
+      .icon-account {
+        font-size: calc(0.9rem + 0.7vw);
+        color: $green;
+        margin-right: 0.5vw;
+      }
+
+      .icon-whatsapp {
+        font-size: calc(1.2rem + 0.7vw);
+        color: $green;
+        margin-right: 0.5vw;
+      }
+    }
+
+    // Ovveride border width
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border-width: 2px;
+    }
+  }
+}
+
+.option-input {
+  font-size: calc(0.4rem + 0.7vw) !important;
+}
+
+@media screen and (max-width: 1366px) {
+  .contact-form {
+    width: 50%;
+    gap: 2rem;
+
+    .contact-form-input {
+      label {
+        font-size: calc(0.6rem + 0.7vw) !important;
+      }
+
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(0.52rem + 0.7vw) !important;
+      }
+
+      input {
+        padding: 16.5px 14px;
+      }
+
+      .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+        border-radius: 30px;
+
+        .icon-account {
+          font-size: calc(0.7rem + 0.7vw);
+          color: $green;
+          margin-right: 0.5vw;
+        }
+
+        .icon-whatsapp {
+          font-size: calc(0.9rem + 0.7vw);
+          color: $green;
+          margin-right: 0.5vw;
+        }
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.35rem + 0.7vw) !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .contact-form {
+    width: 90%;
+    gap: 2.2rem;
+
+    .contact-form-input {
+      label {
+        font-size: calc(1rem + 0.7vw) !important;
+      }
+
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(1rem + 0.7vw) !important;
+      }
+
+      .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+        .icon-account {
+          font-size: calc(1.2rem + 0.7vw);
+          color: $green;
+          margin-right: 0.5vw;
+        }
+
+        .icon-whatsapp {
+          font-size: calc(1.5rem + 0.7vw);
+          color: $green;
+          margin-right: 0.5vw;
+        }
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.8rem + 0.7vw) !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .contact-form {
+    width: 100%;
+    gap: 2rem;
+
+    .contact-form-input {
+      label {
+        font-size: calc(1rem + 0.7vw) !important;
+      }
+
+      div,
+      input,
+      select,
+      option,
+      li {
+        font-size: calc(0.9rem + 0.7vw) !important;
+      }
+
+      .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+        .icon-account {
+          font-size: calc(1.2rem + 0.7vw);
+          margin-right: 1vw;
+        }
+
+        .icon-whatsapp {
+          font-size: calc(1.5rem + 0.7vw);
+          margin-right: 1vw;
+        }
+      }
+    }
+  }
+
+  .option-input {
+    font-size: calc(0.8rem + 0.7vw) !important;
+  }
+}

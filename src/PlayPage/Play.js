@@ -8,6 +8,7 @@ import { MdCheckCircleOutline, MdOutlineCircle } from "react-icons/md";
 import { FcClock, FcLike, FcApproval } from "react-icons/fc";
 import Slider from "@mui/material/Slider";
 import Footer from "../Footer";
+import ContactForm from "../components/play/ContactForm";
 
 const Play = (props) => {
   let resultJson = {
@@ -51,6 +52,12 @@ const Play = (props) => {
 
   // Slider State
   let [value, setValue] = useState([12, 17]);
+
+  // Contact Form State
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState([]);
+  const [otherCategory, setOtherCategory] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   // Deprecated
   const [questions, setQuestions] = useState(jsonQuestions);
@@ -267,6 +274,31 @@ const Play = (props) => {
     disableButtonIfNeeded(currentQuestionIndex + 1);
   };
 
+  const handleResult = () => {
+    console.log(JSON.stringify(result));
+    let contactUser = null;
+    if (otherCategory !== "") {
+      let filterCategory = category.filter((item) => item !== "Lainnya");
+      contactUser = {
+        name,
+        category: [...filterCategory, otherCategory],
+        phoneNumber,
+      };
+    } else {
+      contactUser = {
+        name,
+        category: [...category],
+        phoneNumber,
+      };
+    }
+    sendEmail();
+    props.history.push({
+      pathname: "/result",
+      state: { ...result, ...contactUser },
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   function valuetext(value) {
     return `${value} Juta`;
   }
@@ -399,17 +431,41 @@ const Play = (props) => {
               })}
             </>
           )}
+          {currentQuestion.questionLabel === "contactForm" && (
+            <Fragment>
+              <ContactForm
+                name={name}
+                category={category}
+                otherCategory={otherCategory}
+                phoneNumber={phoneNumber}
+                setName={setName}
+                setCategory={setCategory}
+                setOtherCategory={setOtherCategory}
+                setPhoneNumber={setPhoneNumber}
+              />
+              <p className="form-note">
+                Note: Jika tidak berkenan anda dapat mengabaikan form ini dan
+                dapat langsung menekan tombol "Next" dibawah.
+              </p>
+            </Fragment>
+          )}
           <div className="button-container d-flex justify-content-center justify-content-md-start">
-            <button
-              id="next-button"
-              onClick={handleNext}
-              className={classNames(
-                "",
-                currentSelectedTags.length === 0 && "disable"
-              )}
-            >
-              NEXT
-            </button>
+            {currentQuestion.questionLabel === "contactForm" ? (
+              <button id="result-button" onClick={handleResult}>
+                NEXT
+              </button>
+            ) : (
+              <button
+                id="next-button"
+                onClick={handleNext}
+                className={classNames(
+                  "",
+                  currentSelectedTags.length === 0 && "disable"
+                )}
+              >
+                NEXT
+              </button>
+            )}
           </div>
         </div>
         <div className="footer-container">
