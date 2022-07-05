@@ -11,11 +11,11 @@ const TooltipWa = () => {
       }, 15000);
     }
 
-    // if (show === true) {
-    //   setTimeout(() => {
-    //     setShow(false);
-    //   }, 10000);
-    // }
+    if (show === true) {
+      setTimeout(() => {
+        setShow(false);
+      }, 10000);
+    }
   }, [show]);
 
   return (
