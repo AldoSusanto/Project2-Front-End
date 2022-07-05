@@ -1,19 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { MdCircle } from "react-icons/md";
-import { FaPen } from "react-icons/fa";
 import Slider from "@mui/material/Slider";
 import { useHistory } from "react-router-dom";
-import Fade from "@mui/material/Fade";
-import Collapse from "@mui/material/Collapse";
 
 const ResultAnswer = (props) => {
   const history = useHistory();
-  const [editBudget, setEditBudget] = useState(false);
   let [value, setValue] = useState([12, 17]);
-
-  function toggleEdit() {
-    setEditBudget(!editBudget);
-  }
 
   function valuetext(value) {
     return `${value} Juta`;
