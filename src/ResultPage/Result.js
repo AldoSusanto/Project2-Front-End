@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { Fragment } from "react";
 import emailjs from "emailjs-com";
@@ -8,15 +8,13 @@ import { Popup } from "semantic-ui-react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import CryptoJS from "crypto-js";
-import { Modal, ModalBody, ModalFooter } from "reactstrap";
-import shoppingCartPng from "../assets/shopping-cart.png";
-import { HiX } from "react-icons/hi";
-import officialIcon from "../assets/official-store.png";
+// import officialIcon from "../assets/official-store.png";
 import ResultAnswer from "../components/result/ResultAnswer";
 import EmailFeatured from "../components/result/EmailFeatured";
 import ToastAlert from "../components/result/ToastAlert";
 import LaptopList from "../components/result/LaptopList";
 import FeedbackModal from "../components/FeedbackModal";
+import TooltipWa from "../components/TooltipWa";
 
 class Result extends React.Component {
   constructor(props) {
@@ -62,7 +60,6 @@ class Result extends React.Component {
       highlight: this.highlightDefault,
       recommendations: {},
       highlightedIndex: 0,
-      showModal: true,
       initialResult: resultJson,
       showDetail: false,
       showToastSuccess: false,
@@ -71,7 +68,6 @@ class Result extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
     this.toggleToastSuccess = this.toggleToastSuccess.bind(this);
     this.toggleToastFailed = this.toggleToastFailed.bind(this);
   }
@@ -92,12 +88,6 @@ class Result extends React.Component {
           recommendations: res,
         });
       });
-  }
-
-  toggleModal() {
-    this.setState({
-      showModal: !this.state.showModal,
-    });
   }
 
   toggleToastSuccess() {
@@ -178,6 +168,7 @@ class Result extends React.Component {
                     </a>
                   }
                 />
+                <TooltipWa />
               </main>
             </div>
           ) : (
@@ -214,35 +205,6 @@ class Result extends React.Component {
             </>
           )}
         </div>
-
-        <Modal
-          centered
-          size="md"
-          isOpen={this.state.showModal}
-          toggle={this.toggleModal}
-        >
-          <ModalBody className="modal-main">
-            <HiX onClick={this.toggleModal} className="icon-close" />
-            <p className="modal-main-top">
-              Jangan lupa untuk menaruh laptop yang kamu suka di keranjang
-              Tokopediamu
-            </p>
-            <img
-              src={shoppingCartPng}
-              alt="Masukkan ke Keranjang Belanja-mu"
-              className="modal-main-mid"
-            />
-            <p className="modal-main-bottom">
-              Setiap pembelanjaan laptop dari anda akan membantu Propicks
-              bertumbuh di masa depan
-            </p>
-          </ModalBody>
-          <ModalFooter>
-            <button onClick={this.toggleModal} className="modal-footer-btn">
-              OK
-            </button>
-          </ModalFooter>
-        </Modal>
       </Fragment>
     );
   }
