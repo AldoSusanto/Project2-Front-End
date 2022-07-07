@@ -64,6 +64,29 @@
   margin-right: 1.5rem;
 }
 
+.socmed-list {
+  padding-right: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .ig-icons {
+    font-size: calc(1rem + 0.8vw);
+    color: $off-white;
+    cursor: pointer;
+  }
+  .wa-icons {
+    font-size: calc(1rem + 0.8vw);
+    color: $off-white;
+    cursor: pointer;
+  }
+  .tt-icons {
+    font-size: calc(0.8rem + 0.8vw);
+    color: $off-white;
+    cursor: pointer;
+  }
+}
+
 .menu-icons:hover {
   color: #d8d8d8;
 }
@@ -96,7 +119,8 @@
   }
 
   &__nav {
-    height: 14rem;
+    height: 100vh;
+    padding-top: 0.8rem;
   }
 
   &__close {
@@ -122,6 +146,34 @@
   &__link:hover {
     background-color: $blue;
     color: $off-white;
+  }
+
+  &__sclink {
+    margin: 0.8rem 0;
+    color: $off-white;
+    font-family: $poppins;
+    font-size: calc(1.1rem + 0.6vw);
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    padding: 8px 0;
+
+    .ig-icons {
+      font-size: calc(1.8rem + 0.8vw);
+      color: $off-white;
+      cursor: pointer;
+      text-align: center;
+    }
+    .wa-icons {
+      font-size: calc(1.8rem + 0.8vw);
+      color: $off-white;
+      cursor: pointer;
+    }
+    .tt-icons {
+      font-size: calc(1.6rem + 0.8vw);
+      color: $off-white;
+      cursor: pointer;
+    }
   }
 }
 
